@@ -214,7 +214,7 @@
     }
 
     /* Autoplay: troca sozinho a cada ~4.5s, pausa no hover/foco e respeita reduced-motion */
-    var AUTOPLAY_DELAY = 4500;
+    var AUTOPLAY_DELAY = 7000;
     var autoplayTimer = null;
     var reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 

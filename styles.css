@@ -4106,11 +4106,11 @@ textarea,
       var(--bg);
   }
   .jogador-grid {
-    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    grid-template-columns: auto minmax(0, 1fr);
     gap: clamp(3rem, 6vw, 6rem);
-    align-items: start;
+    align-items: center;
   }
-  .jogador-head .section-title { font-size: clamp(3.2rem, 4.8vw, 5.6rem); line-height: 1; }
+  .jogador-head .section-title { font-size: clamp(3rem, 3.4vw, 4.8rem); line-height: 1; width: 10.9em; max-width: 100%; }
   .jogador-content { max-width: none; padding-left: clamp(2rem, 3vw, 3.5rem); }
   .jogador-content p { font-size: clamp(1.05rem, 1.2vw, 1.3rem); line-height: 1.7; margin-bottom: 1.5rem; color: #a7adb7; }
   .jogador-content p:last-child { margin-bottom: 0; }
