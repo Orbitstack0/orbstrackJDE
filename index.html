@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Jogador de Elite | Preparação e Desenvolvimento de Atletas</title>
+<meta name="description" content="Jogador de Elite — consultoria para atletas e treinamento presencial em Criciúma e região. Preparação, acompanhamento e desenvolvimento para quem quer se tornar um atleta de elite.">
+<meta name="theme-color" content="#060708">
+
+<link rel="canonical" href="https://jogadordeelite.com.br/">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://jogadordeelite.com.br/">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Jogador de Elite">
+<meta property="og:title" content="Jogador de Elite | Preparação e Desenvolvimento de Atletas">
+<meta property="og:description" content="Consultoria para atletas e treinamento presencial em Criciúma e região. Preparação, acompanhamento e desenvolvimento para quem quer se tornar um atleta de elite.">
+<meta property="og:image" content="https://jogadordeelite.com.br/imagens/HENRIQUE%20POSE%20TREINADOR.png">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Jogador de Elite | Preparação e Desenvolvimento de Atletas">
+<meta name="twitter:description" content="Consultoria para atletas e treinamento presencial em Criciúma e região. Preparação, acompanhamento e desenvolvimento para quem quer se tornar um atleta de elite.">
+<meta name="twitter:image" content="https://jogadordeelite.com.br/imagens/HENRIQUE%20POSE%20TREINADOR.png">
+
+<link rel="icon" type="image/png" href="imagens/LOGO.png">
+
+<link rel="preload" as="image" href="imagens/imagem de fundo do papai.webp" media="(max-width: 1279px)" fetchpriority="high">
+<link rel="preload" as="image" href="imagens/HENRIQUE POSE TREINADOR.png" media="(min-width: 1280px)" fetchpriority="high">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="styles.css">
+
+<!-- JSON-LD: apenas dados reais e confirmados no conteúdo do site. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Jogador de Elite",
+  "url": "https://jogadordeelite.com.br/",
+  "description": "Consultoria para atletas e treinamento presencial em Criciúma e região. Preparação, acompanhamento e desenvolvimento para quem quer se tornar um atleta de elite.",
+  "areaServed": "Criciúma e região",
+  "founder": {
+    "@type": "Person",
+    "name": "Henrique",
+    "description": "Acadêmico de Educação Física, apaixonado por preparação física no futebol, performance e desenvolvimento de atletas."
+  },
+  "sameAs": [
+    "https://www.instagram.com/jogadordeelite_/",
+    "https://www.youtube.com/@Jogadordeelitee",
+    "https://www.tiktok.com/@jogadordeelite05"
+  ]
+}
+</script>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="site-header" id="site-header">
+  <div class="header-inner container">
+    <a href="#inicio" class="brand" aria-label="Jogador de Elite - Início">
+      <img src="imagens/LOGO COM ESCRITA DO LADO.png" alt="Jogador de Elite" class="brand-logo" width="1558" height="458">
+    </a>
+
+    <nav class="main-nav" id="main-nav">
+      <ul>
+        <li><a href="#inicio" class="nav-link">Início</a></li>
+        <li><a href="#metodo" class="nav-link">Como Funciona</a></li>
+        <li><a href="#servicos" class="nav-link">Treinar</a></li>
+        <li><a href="#depoimentos" class="nav-link">Resultados</a></li>
+        <li><a href="#sobre" class="nav-link">Sobre</a></li>
+      </ul>
+    </nav>
+
+    <a href="#servicos" class="btn btn-primary btn-header" data-jde-contact data-modalidade="">Comece sua evolução</a>
+
+    <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-nav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <div class="mobile-nav" id="mobile-nav">
+    <ul>
+      <li><a href="#inicio" class="nav-link">Início</a></li>
+      <li><a href="#metodo" class="nav-link">Como Funciona</a></li>
+      <li><a href="#servicos" class="nav-link">Treinar</a></li>
+      <li><a href="#depoimentos" class="nav-link">Resultados</a></li>
+      <li><a href="#sobre" class="nav-link">Sobre</a></li>
+    </ul>
+    <a href="#servicos" class="btn btn-primary btn-mobile-cta" data-jde-contact data-modalidade="">Comece sua evolução</a>
+  </div>
+</header>
+
+<main>
+
+<!-- ================= 01. HERO — A PROMESSA ================= -->
+<section class="hero" id="inicio">
+  <div class="hero-bg" aria-hidden="true">
+    <div class="hero-glow"></div>
+  </div>
+
+  <img src="imagens/LOGO.png" alt="" class="hero-watermark" aria-hidden="true" width="846" height="808" loading="eager">
+
+  <div class="hero-inner container">
+    <div class="hero-content reveal">
+      <h1 class="hero-title">VENHA SE TORNAR<br>UM JOGADOR DE ELITE.</h1>
+      <p class="hero-subtitle">Treinamento físico pensado para quem quer evoluir, se preparar melhor e estar mais pronto para o jogo.</p>
+
+      <div class="hero-actions">
+        <a href="#servicos" class="btn btn-primary" data-jde-contact data-modalidade="">Comece sua evolução</a>
+        <a href="#identidade" class="btn btn-ghost">Conheça a Jogador de Elite</a>
+      </div>
+    </div>
+
+    <div class="hero-figure reveal">
+      <div class="hero-figure-glow" aria-hidden="true"></div>
+      <img src="imagens/HENRIQUE POSE TREINADOR.png" alt="Henrique, fundador da Jogador de Elite" class="hero-photo" width="1024" height="1536" fetchpriority="high">
+      <div class="hero-figure-shadow" aria-hidden="true"></div>
+      <div class="hero-figure-overlay" aria-hidden="true"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 02. O JOGADOR ================= -->
+<section class="jogador" id="jogador">
+  <div class="container jogador-grid">
+    <div class="jogador-head reveal">
+      <p class="eyebrow">O Jogador</p>
+      <h2 class="section-title">VOCÊ ESTÁ TREINANDO<br>OU REALMENTE SE PREPARANDO PARA JOGAR?</h2>
+    </div>
+
+    <div class="jogador-content reveal">
+      <p class="jogador-kicker">Treinar por treinar não é o suficiente.</p>
+      <p>No futebol, cada detalhe conta: <span class="jogador-highlight-strong">força, velocidade, resistência, agilidade, mobilidade, estabilidade</span> e a capacidade de aplicar tudo isso <span class="text-blue">dentro do jogo</span>.</p>
+      <p>O problema é que muitos jogadores treinam sem saber exatamente <span class="text-blue">o que fazer e como fazer</span>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 03. A JOGADOR DE ELITE ================= -->
+<section class="identidade" id="identidade">
+  <img src="imagens/LOGO.png" alt="" class="identidade-watermark" aria-hidden="true" width="846" height="808" loading="lazy">
+
+  <div class="container identidade-inner">
+    <div class="identidade-abertura">
+      <div class="identidade-abertura-head reveal">
+        <p class="eyebrow">Jogador de Elite</p>
+        <h2 class="section-title">FOI POR ISSO QUE<br>A JOGADOR DE ELITE NASCEU.</h2>
+      </div>
+
+      <div class="identidade-perfil reveal">
+        <div class="identidade-perfil-content">
+          <p class="identidade-perfil-proposito">A Jogador de Elite nasceu com uma ideia simples: ajudar jogadores a treinarem de forma mais inteligente, direcionada e conectada com as exigências do futebol.</p>
+
+          <p class="identidade-perfil-proposito">Aqui, o treino não é escolhido simplesmente porque um exercício “parece bom”.</p>
+
+          <p class="identidade-perfil-fechamento">Existe um motivo por trás do que você faz, do volume, da intensidade e da forma como o planejamento é organizado.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 04. PERSONALIZAÇÃO ================= -->
+<section class="construir" id="construir">
+  <img src="imagens/LOGO.png" alt="" class="construir-watermark" aria-hidden="true" width="846" height="808" loading="lazy">
+
+  <div class="container construir-inner">
+    <h2 class="construir-title reveal">SEU TREINO PRECISA<br>FAZER <span class="construir-title-accent">SENTIDO PARA VOCÊ.</span></h2>
+
+    <div class="construir-carousel" id="construir-carousel">
+    <div class="construir-counter" aria-hidden="true"><span class="construir-counter-num" id="construir-counter-num">01</span><span class="construir-counter-total"> / 03</span></div>
+    <div class="construir-progress" aria-hidden="true"><span class="construir-progress-bar" id="construir-progress-bar"></span></div>
+    <div class="construir-stage">
+    <div class="construir-steps" id="construir-steps">
+    <div class="construir-grid">
+      <div class="identidade-grupo construir-col construir-card reveal">
+        <h3 class="identidade-grupo-title text-blue">Contexto do Jogador</h3>
+        <p class="identidade-grupo-item">Idade</p>
+        <p class="identidade-grupo-item">Posição</p>
+        <p class="identidade-grupo-item">Rotina</p>
+        <p class="identidade-grupo-item">Nível de treinamento</p>
+      </div>
+
+      <div class="construir-media reveal">
+        <div class="construir-media-glow" aria-hidden="true"></div>
+        <img src="imagens/henrique conversando.webp" alt="Henrique conversando com um atleta em campo" class="construir-photo" width="1024" height="1536" loading="lazy">
+      </div>
+
+      <div class="identidade-grupo construir-col construir-card reveal">
+        <h3 class="identidade-grupo-title">Necessidades</h3>
+        <p class="identidade-grupo-item">Histórico</p>
+        <p class="identidade-grupo-item">Objetivos</p>
+        <p class="identidade-grupo-item">Necessidades físicas</p>
+        <p class="identidade-grupo-item">Estrutura disponível</p>
+      </div>
+    </div>
+
+    <div class="identidade-grupo construir-continuo construir-card reveal">
+      <h3 class="identidade-grupo-title text-blue">Planejamento Individual</h3>
+      <p class="identidade-grupo-item">Seu treino é construído para aquilo que você precisa desenvolver.</p>
+    </div>
+    </div>
+    <button type="button" class="construir-arrow construir-arrow--prev" id="construir-prev" aria-label="Etapa anterior" disabled>←</button>
+    <button type="button" class="construir-arrow construir-arrow--next" id="construir-next" aria-label="Próxima etapa">→</button>
+    </div>
+    <div class="construir-dots" id="construir-dots">
+      <button type="button" class="construir-dot is-active" data-step="0" aria-label="Ver etapa 1" aria-current="true"></button>
+      <button type="button" class="construir-dot" data-step="1" aria-label="Ver etapa 2"></button>
+      <button type="button" class="construir-dot" data-step="2" aria-label="Ver etapa 3"></button>
+    </div>
+    </div>
+
+    <div class="construir-final reveal">
+      <h3 class="construir-final-title">NÃO EXISTE JOGADOR IGUAL.<br><span class="text-blue">ENTÃO POR QUE O TREINO DEVERIA SER?</span></h3>
+      <a href="#servicos" class="btn btn-primary construir-final-cta" data-jde-contact data-modalidade="">Quero fazer parte da elite</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 05. COMO FUNCIONA ================= -->
+<section class="metodo" id="metodo">
+  <div class="container">
+    <div class="metodo-intro">
+      <div class="section-header metodo-header reveal">
+        <h2 class="section-title">DO SEU OBJETIVO<br>AO SEU PRÓXIMO TREINO.</h2>
+        <p class="metodo-support">O processo começa entendendo o jogador e continua acompanhando sua evolução.</p>
+      </div>
+    </div>
+
+    <div class="timeline" id="timeline">
+      <div class="timeline-track"></div>
+
+      <div class="timeline-step reveal">
+        <span class="timeline-index">01</span>
+        <h3 class="timeline-name">Conhecemos você</h3>
+        <p class="timeline-desc">Entendemos sua rotina, histórico, objetivos e realidade dentro do futebol.</p>
+      </div>
+      <div class="timeline-step reveal">
+        <span class="timeline-index">02</span>
+        <h3 class="timeline-name">Avaliamos</h3>
+        <p class="timeline-desc">Identificamos os principais pontos que precisam ser trabalhados para direcionar melhor o planejamento.</p>
+      </div>
+      <div class="timeline-step reveal">
+        <span class="timeline-index">03</span>
+        <h3 class="timeline-name">Planejamos</h3>
+        <p class="timeline-desc">Seu treino é estruturado de acordo com seu momento, seus objetivos e aquilo que você precisa desenvolver.</p>
+      </div>
+      <div class="timeline-step reveal">
+        <span class="timeline-index">04</span>
+        <h3 class="timeline-name">Acompanhamos</h3>
+        <p class="timeline-desc">A evolução faz parte do processo. Conforme você evolui, o planejamento também pode evoluir.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 06. COMO TREINAR COM A JDE ================= -->
+<section class="servicos" id="servicos">
+  <div class="container">
+    <div class="section-header servicos-header reveal">
+      <h2 class="section-title">COMO VOCÊ QUER<br>TREINAR COM A JDE?</h2>
+      <p class="section-subtitle">Escolha a forma de acompanhamento que mais combina com o seu momento.</p>
+    </div>
+
+    <div class="caminhos-wrap" id="caminhos-wrap">
+    <div class="caminhos" id="caminhos">
+      <a href="#contato" class="caminho caminho--consultoria is-active reveal" data-jde-contact data-modalidade="consultoria">
+        <div class="caminho-body">
+          <span class="caminho-tag">Consultoria para atletas</span>
+          <h3 class="caminho-title">SEU DESENVOLVIMENTO NÃO TERMINA <br>QUANDO O TREINO ACABA.</h3>
+          <p class="caminho-text">Acompanhamento para atletas que querem estruturar melhor sua evolução e buscar espaço no futebol.</p>
+          <span class="caminho-cta">Quero saber sobre a consultoria <span class="caminho-cta-arrow" aria-hidden="true">→</span></span>
+        </div>
+      </a>
+
+      <a href="#contato" class="caminho caminho--presencial reveal" data-jde-contact data-modalidade="presencial">
+        <div class="caminho-body">
+          <span class="caminho-tag">Treinamento presencial</span>
+          <h3 class="caminho-title">ENTRE EM CAMPO. <br>O TRABALHO COMEÇA AQUI.</h3>
+          <p class="caminho-text">Treinamento presencial para atletas de Criciúma e região.</p>
+          <span class="caminho-cta">Quero treinar com o Henrique <span class="caminho-cta-arrow" aria-hidden="true">→</span></span>
+        </div>
+      </a>
+    </div>
+    <div class="caminhos-fade" aria-hidden="true"></div>
+    </div>
+
+    <div class="caminhos-hint" id="caminhos-hint" aria-hidden="true">Arraste para ver mais <span class="caminhos-hint-arrow">→</span></div>
+    <div class="caminhos-progress" aria-hidden="true"><span class="caminhos-progress-bar" id="caminhos-progress-bar"></span></div>
+  </div>
+</section>
+
+<!-- ================= 07. TREINO EM AÇÃO — VÍDEOS ================= -->
+<!-- VÍDEOS: 2 vídeos reais (Caravaggio), em MP4 otimizado. Adicionar novos blocos aqui conforme mais material for fornecido. -->
+<section class="videos" id="videos">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="eyebrow">Na Prática</p>
+      <h2 class="section-title">NÃO PRECISA ACREDITAR<br>SÓ NO QUE EU ESTOU DIZENDO.</h2>
+      <p class="videos-highlight text-blue">VEJA A JOGADOR DE ELITE NA PRÁTICA.</p>
+      <p class="section-subtitle">Treinos, exercícios, bastidores, planejamentos, análises, avaliações e momentos do trabalho realizado dentro e fora de campo.</p>
+    </div>
+
+    <div class="video-grid">
+      <button type="button" class="video-card reveal" data-video-src="Vídeos/treino-velocidade-caravaggio.mp4" data-video-title="Velocidade" aria-label="Assistir vídeo: Velocidade">
+        <span class="video-thumb">
+          <video class="video-thumb-media" src="Vídeos/treino-velocidade-caravaggio.mp4" preload="metadata" muted playsinline aria-hidden="true"></video>
+          <span class="video-play"></span>
+        </span>
+        <span class="video-info">
+          <span class="video-category">Velocidade</span>
+          <span class="video-desc">Trabalho de velocidade realizado no Caravaggio.</span>
+        </span>
+      </button>
+
+      <button type="button" class="video-card reveal" data-video-src="Vídeos/treino-forca-caravaggio.mp4" data-video-title="Força" aria-label="Assistir vídeo: Força">
+        <span class="video-thumb">
+          <video class="video-thumb-media" src="Vídeos/treino-forca-caravaggio.mp4" preload="metadata" muted playsinline aria-hidden="true"></video>
+          <span class="video-play"></span>
+        </span>
+        <span class="video-info">
+          <span class="video-category">Força</span>
+          <span class="video-desc">Trabalho de força realizado no Caravaggio.</span>
+        </span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<div class="video-modal" id="video-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Vídeo em destaque">
+  <div class="video-modal-backdrop" data-close-modal></div>
+  <div class="video-modal-panel">
+    <button type="button" class="video-modal-close" data-close-modal aria-label="Fechar vídeo">&times;</button>
+    <div class="video-modal-body" id="video-modal-body"></div>
+  </div>
+</div>
+
+<!-- ================= 08. FEEDBACKS E RESULTADOS ================= -->
+<section class="depoimentos" id="depoimentos">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="eyebrow">Feedbacks e Resultados</p>
+      <h2 class="section-title">A EVOLUÇÃO DE UM JOGADOR<br>NÃO FICA SÓ NO PAPEL.</h2>
+      <p class="section-subtitle">Cada jogador tem uma realidade e um objetivo diferente. E cada processo de evolução também é diferente. Aqui você pode conhecer alguns relatos de jogadores que já passaram pela JDE e acompanhar, na prática, suas experiências com o treinamento.</p>
+    </div>
+
+    <div class="depoimentos-slider reveal" id="depoimentos-slider" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Depoimentos de jogadores">
+      <div class="depoimentos-viewport">
+        <ul class="depoimentos-list" id="depoimentos-list" role="presentation">
+
+          <li class="depoimento-slide is-active" id="depoimento-painel-0" role="group" aria-roledescription="slide">
+            <div class="depoimento-media">
+              <img src="imagens/guri 1.webp" alt="Davi, atleta acompanhado pela Jogador de Elite" class="depoimento-photo" width="1024" height="1536" loading="lazy">
+            </div>
+            <blockquote class="depoimento-quote">
+              <p>Com a rotina da consultoria consegui <span class="text-blue">evoluir bastante fisicamente</span> e também mentalmente. Hoje entro nos jogos me sentindo <span class="text-blue">pronto para render no meu melhor nível</span>.</p>
+              <cite class="depoimento-nome">Davi</cite>
+            </blockquote>
+          </li>
+
+          <li class="depoimento-slide" id="depoimento-painel-1" role="group" aria-roledescription="slide">
+            <div class="depoimento-media">
+              <img src="imagens/guri 3.webp" alt="Leonardo, atleta acompanhado pela Jogador de Elite" class="depoimento-photo" width="1024" height="1536" loading="lazy">
+            </div>
+            <blockquote class="depoimento-quote">
+              <p>Depois dos treinos senti muita diferença no meu jogo. Estou <span class="text-blue">mais rápido, forte e confiante</span> dentro de campo. Minha resistência melhorou muito e hoje consigo <span class="text-blue">manter intensidade até o final</span>.</p>
+              <cite class="depoimento-nome">Leonardo</cite>
+            </blockquote>
+          </li>
+
+          <li class="depoimento-slide" id="depoimento-painel-2" role="group" aria-roledescription="slide">
+            <div class="depoimento-media">
+              <img src="imagens/guri 2.webp" alt="Antônio, atleta acompanhado pela Jogador de Elite" class="depoimento-photo" width="1024" height="1536" loading="lazy">
+            </div>
+            <blockquote class="depoimento-quote">
+              <p>Os treinos me ajudaram demais na <span class="text-blue">resistência, explosão e movimentação</span>. Dentro do jogo percebi evolução rápida. Estou me sentindo <span class="text-blue">cada vez mais preparado</span>.</p>
+              <cite class="depoimento-nome">Antônio</cite>
+            </blockquote>
+          </li>
+
+          <li class="depoimento-slide" id="depoimento-painel-3" role="group" aria-roledescription="slide">
+            <div class="depoimento-media">
+              <img src="imagens/guri 4.webp" alt="Kauã, atleta acompanhado pela Jogador de Elite" class="depoimento-photo" width="1024" height="1536" loading="lazy">
+            </div>
+            <blockquote class="depoimento-quote">
+              <p>Depois que comecei a consultoria consegui <span class="text-blue">evoluir muito fisicamente</span>. Hoje me sinto <span class="text-blue">mais forte, mais rápido e com mais confiança</span> dentro de campo. Os treinos fizeram diferença no meu desempenho.</p>
+              <cite class="depoimento-nome">Kauã</cite>
+            </blockquote>
+          </li>
+
+        </ul>
+      </div>
+
+      <div class="depoimentos-controls-row">
+        <div class="depoimentos-controls">
+          <button type="button" class="depoimentos-arrow" data-dir="-1" aria-label="Depoimento anterior">←</button>
+          <div class="depoimentos-dots" id="depoimentos-dots" role="group" aria-label="Selecionar depoimento">
+            <button type="button" id="depoimento-tab-0" class="depoimentos-dot is-active" aria-current="true" data-index="0" aria-label="Ver depoimento de Davi"></button>
+            <button type="button" id="depoimento-tab-1" class="depoimentos-dot" data-index="1" aria-label="Ver depoimento de Leonardo"></button>
+            <button type="button" id="depoimento-tab-2" class="depoimentos-dot" data-index="2" aria-label="Ver depoimento de Antônio"></button>
+            <button type="button" id="depoimento-tab-3" class="depoimentos-dot" data-index="3" aria-label="Ver depoimento de Kauã"></button>
+          </div>
+          <button type="button" class="depoimentos-arrow" data-dir="1" aria-label="Próximo depoimento">→</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 09. SOBRE MIM ================= -->
+<section class="sobre" id="sobre">
+  <div class="sobre-media reveal">
+    <img src="imagens/foto henrique de costas.webp" alt="Henrique de costas, segurando a bola, vestindo a camisa Jogador de Elite" class="sobre-photo" width="1024" height="1536" loading="lazy">
+  </div>
+
+  <div class="sobre-content">
+    <p class="eyebrow reveal">Sobre mim</p>
+    <h2 class="section-title reveal">QUEM ESTÁ POR TRÁS<br>DA <span class="text-blue">JOGADOR DE ELITE?</span></h2>
+
+    <div class="sobre-story">
+      <p class="sobre-text reveal">Minha relação com o futebol começou <span class="sobre-highlight-strong">muito antes da Jogador de Elite</span>.</p>
+      <p class="sobre-text reveal">Foram <span class="sobre-highlight-blue">10 anos da minha vida jogando futebol</span>, vivendo a rotina de treinos, jogos, cobranças, lesões, preparação e, principalmente, tentando realizar o <span class="sobre-highlight-strong">sonho de me tornar um jogador profissional</span>.</p>
+      <p class="sobre-text reveal">Eu <span class="sobre-highlight-blue">vivi na prática</span> muitas das dificuldades que um jogador enfrenta durante esse caminho.</p>
+      <p class="sobre-text reveal">Hoje, essa experiência se juntou ao estudo e à minha atuação dentro do futebol, trabalhando com <span class="sobre-highlight-blue">treinamento e preparação física nas categorias de base</span>.</p>
+      <p class="sobre-text reveal">Foi dessa união entre <span class="sobre-highlight-strong">vivência, estudo e prática</span> que nasceu a Jogador de Elite: uma forma de compartilhar conhecimento e <span class="sobre-highlight-blue">ajudar outros jogadores a se prepararem melhor</span> para aquilo que o futebol exige.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 10. TRAJETÓRIA / CLUBES ================= -->
+<section class="trajetoria" id="experiencia">
+  <div class="container">
+    <p class="eyebrow">Experiência</p>
+    <h2 class="section-title reveal">UMA TRAJETÓRIA CONSTRUÍDA<br>DENTRO DAS QUATRO LINHAS.</h2>
+
+    <div class="trajetoria-media reveal">
+      <div class="trajetoria-media-glow" aria-hidden="true"></div>
+      <div class="trajetoria-media-frame">
+        <img src="imagens/henrique treinador.webp" alt="Henrique orientando um grupo de atletas em campo" class="trajetoria-photo" width="1365" height="2048" loading="lazy">
+      </div>
+    </div>
+
+    <div class="timeline-trajetoria" id="trajetoria-timeline">
+      <div class="trajetoria-item reveal">
+        <span class="trajetoria-escudo"><img src="imagens/otimizadas/ARECUJA ESCUDO-otimizado.png" alt="Escudo do Arecuja" width="286" height="320" loading="lazy"></span>
+        <span class="trajetoria-clube">Arecuja</span>
+        <span class="trajetoria-item-accent" aria-hidden="true"></span>
+      </div>
+      <div class="trajetoria-item reveal">
+        <span class="trajetoria-escudo"><img src="imagens/otimizadas/BOTAFOGO ESCUDO-otimizado.png" alt="Escudo do Botafogo" width="284" height="320" loading="lazy"></span>
+        <span class="trajetoria-clube">Botafogo</span>
+        <span class="trajetoria-item-accent" aria-hidden="true"></span>
+      </div>
+      <div class="trajetoria-item reveal">
+        <span class="trajetoria-escudo"><img src="imagens/otimizadas/GREMIO ESCUDO-otimizado.png" alt="Escudo do Grêmio" width="268" height="320" loading="lazy"></span>
+        <span class="trajetoria-clube">Grêmio</span>
+        <span class="trajetoria-item-accent" aria-hidden="true"></span>
+      </div>
+      <div class="trajetoria-item trajetoria-item--current reveal">
+        <span class="trajetoria-escudo"><img src="imagens/otimizadas/CARAVAGGIO ESCUDO-otimizado.png" alt="Escudo do Caravaggio" width="320" height="298" loading="lazy"></span>
+        <span class="trajetoria-clube">Caravaggio</span>
+        <span class="trajetoria-clube-current">Clube atual</span>
+        <span class="trajetoria-item-accent" aria-hidden="true"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 11. REDES SOCIAIS / CONTEÚDO ================= -->
+<section class="social" id="redes">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="eyebrow">Comunidade</p>
+      <h2 class="section-title">MILHARES DE PESSOAS<br>JÁ ACOMPANHAM A JOGADOR DE ELITE.</h2>
+      <p class="section-subtitle">A Jogador de Elite também compartilha conteúdo diariamente nas redes sociais, levando treinamento, preparação física e futebol para jogadores que querem entender melhor como evoluir.</p>
+      <p class="section-subtitle">Mais do que números, cada pessoa que acompanha a JDE representa uma oportunidade de levar conhecimento sobre preparação física para quem quer evoluir dentro do futebol.</p>
+    </div>
+
+    <div class="social-grid">
+      <a href="https://www.instagram.com/jogadordeelite_/" target="_blank" rel="noopener noreferrer" class="social-card social-card--instagram reveal">
+        <div class="social-card-top">
+          <span class="social-card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4.3" stroke="currentColor" stroke-width="1.6"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor"/></svg>
+          </span>
+          <span class="social-card-heading">
+            <span class="social-card-platform">Instagram</span>
+            <span class="social-card-handle">@jogadordeelite_</span>
+          </span>
+        </div>
+
+        <p class="social-card-text">Treinos, bastidores, rotina e evolução de atletas no dia a dia.</p>
+
+        <div class="social-card-stats">
+          <span class="social-stat">
+            <span class="social-stat-value">1.312</span>
+            <span class="social-stat-label">Seguidores</span>
+          </span>
+          <span class="social-stat">
+            <span class="social-stat-value">59</span>
+            <span class="social-stat-label">Publicações</span>
+          </span>
+        </div>
+
+        <span class="social-card-cta">Acompanhar no Instagram <span class="social-card-cta-arrow" aria-hidden="true">→</span></span>
+      </a>
+
+      <a href="https://www.youtube.com/@Jogadordeelitee" target="_blank" rel="noopener noreferrer" class="social-card social-card--youtube reveal">
+        <div class="social-card-top">
+          <span class="social-card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="5.5" width="20" height="13" rx="4" stroke="currentColor" stroke-width="1.6"/><path d="M10.3 9.3L15 12l-4.7 2.7V9.3Z" fill="currentColor"/></svg>
+          </span>
+          <span class="social-card-heading">
+            <span class="social-card-platform">YouTube</span>
+            <span class="social-card-handle">Jogador de elite</span>
+          </span>
+        </div>
+
+        <p class="social-card-text">Treinos, rotina, preparação física e conteúdos mais completos sobre futebol.</p>
+
+        <div class="social-card-stats">
+          <span class="social-stat">
+            <span class="social-stat-value">5,26 mil</span>
+            <span class="social-stat-label">Inscritos</span>
+          </span>
+          <span class="social-stat">
+            <span class="social-stat-value">313 mil+</span>
+            <span class="social-stat-label">Visualizações</span>
+          </span>
+        </div>
+
+        <span class="social-card-cta">Ver canal no YouTube <span class="social-card-cta-arrow" aria-hidden="true">→</span></span>
+      </a>
+
+      <a href="https://www.tiktok.com/@jogadordeelite05" target="_blank" rel="noopener noreferrer" class="social-card social-card--tiktok reveal">
+        <div class="social-card-top">
+          <span class="social-card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16.5 3c.3 1.9 1.6 3.4 3.5 3.8v2.7c-1.3-.1-2.5-.5-3.5-1.2v6.6c0 3-2.4 5.4-5.4 5.4S5.7 18 5.7 15s2.4-5.4 5.4-5.4c.3 0 .6 0 .9.1v2.8a2.6 2.6 0 1 0 1.8 2.5V3h2.7Z" fill="currentColor"/></svg>
+          </span>
+          <span class="social-card-heading">
+            <span class="social-card-platform">TikTok</span>
+            <span class="social-card-handle">Henrique - Jogador de elite<span class="social-card-handle-sub">@jogadordeelite05</span></span>
+          </span>
+        </div>
+
+        <p class="social-card-text">Treinos, dicas de futebol, rotina e conteúdo rápido para quem quer evoluir dentro de campo.</p>
+
+        <div class="social-card-stats">
+          <span class="social-stat">
+            <span class="social-stat-value">29,8 mil</span>
+            <span class="social-stat-label">Seguidores</span>
+          </span>
+          <span class="social-stat">
+            <span class="social-stat-value">575,1 mil</span>
+            <span class="social-stat-label">Curtidas</span>
+          </span>
+        </div>
+
+        <span class="social-card-cta">Acompanhar no TikTok <span class="social-card-cta-arrow" aria-hidden="true">→</span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 12. PARA QUEM É A JDE ================= -->
+<section class="para-quem" id="para-quem">
+  <!-- FOTO FUTURA: HERO PARA QUEM É (remover o atributo hidden e aplicar background-image em .para-quem-hero-media) -->
+  <div class="para-quem-hero-media" aria-hidden="true" hidden></div>
+
+  <div class="container para-quem-inner">
+    <div class="para-quem-intro">
+    <p class="eyebrow">Para quem é</p>
+    <h2 class="section-title reveal">TALVEZ A JDE<br><span class="para-quem-title-accent">SEJA PARA VOCÊ.</span></h2>
+    <!-- Foto de fundo (<1280px): presa a este cabeçalho (overflow hidden), nunca vaza para outras seções -->
+    <div class="para-quem-photo-bg" aria-hidden="true"><img src="imagens/JDE HEAD.webp" alt="" width="1254" height="1254" loading="lazy"></div>
+    </div>
+
+    <div class="para-quem-photo">
+      <img src="imagens/JDE HEAD.webp" alt="Henrique, fundador da Jogador de Elite" width="1254" height="1254" loading="lazy">
+    </div>
+
+    <div class="para-quem-list" id="para-quem-list">
+      <div class="para-quem-item reveal">
+        <span class="para-quem-num">01</span>
+        <div class="para-quem-body">
+          <h3 id="para-quem-title-1">Está em um clube</h3>
+          <button type="button" class="para-quem-toggle" aria-expanded="false" aria-controls="para-quem-panel-1" aria-labelledby="para-quem-title-1"></button>
+          <div class="para-quem-panel" id="para-quem-panel-1" role="region" aria-labelledby="para-quem-title-1">
+            <div class="para-quem-panel-inner">
+              <p>Quer chegar mais preparado para treinos e jogos.</p>
+              <!-- FOTO FUTURA: PERFIL 01 (remover hidden e inserir <img> ou background) -->
+              <div class="para-quem-item-media" hidden></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="para-quem-item reveal">
+        <span class="para-quem-num">02</span>
+        <div class="para-quem-body">
+          <h3 id="para-quem-title-2">Está sem clube</h3>
+          <button type="button" class="para-quem-toggle" aria-expanded="false" aria-controls="para-quem-panel-2" aria-labelledby="para-quem-title-2"></button>
+          <div class="para-quem-panel" id="para-quem-panel-2" role="region" aria-labelledby="para-quem-title-2">
+            <div class="para-quem-panel-inner">
+              <p>Quer continuar evoluindo enquanto busca uma oportunidade.</p>
+              <!-- FOTO FUTURA: PERFIL 02 -->
+              <div class="para-quem-item-media" hidden></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="para-quem-item reveal">
+        <span class="para-quem-num">03</span>
+        <div class="para-quem-body">
+          <h3 id="para-quem-title-3">É atleta de base</h3>
+          <button type="button" class="para-quem-toggle" aria-expanded="false" aria-controls="para-quem-panel-3" aria-labelledby="para-quem-title-3"></button>
+          <div class="para-quem-panel" id="para-quem-panel-3" role="region" aria-labelledby="para-quem-title-3">
+            <div class="para-quem-panel-inner">
+              <p>Quer construir uma preparação mais organizada.</p>
+              <!-- FOTO FUTURA: PERFIL 03 -->
+              <div class="para-quem-item-media" hidden></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="para-quem-item reveal">
+        <span class="para-quem-num">04</span>
+        <div class="para-quem-body">
+          <h3 id="para-quem-title-4">Quer levar o físico mais a sério</h3>
+          <button type="button" class="para-quem-toggle" aria-expanded="false" aria-controls="para-quem-panel-4" aria-labelledby="para-quem-title-4"></button>
+          <div class="para-quem-panel" id="para-quem-panel-4" role="region" aria-labelledby="para-quem-title-4">
+            <div class="para-quem-panel-inner">
+              <p>Quer evoluir seu desenvolvimento dentro do futebol.</p>
+              <!-- FOTO FUTURA: PERFIL 04 -->
+              <div class="para-quem-item-media" hidden></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="para-quem-closing reveal">SE VOCÊ QUER EVOLUIR COMO JOGADOR,<br><span class="text-blue">EXISTE UM PRÓXIMO PASSO.</span></p>
+  </div>
+</section>
+
+<!-- ================= 13. CTA FINAL ================= -->
+<section class="cta-final" id="contato">
+  <img src="imagens/LOGO COM ESCRITA EM CIMA.png" alt="" class="cta-watermark" aria-hidden="true" width="846" height="1178" loading="lazy">
+  <div class="cta-glow" aria-hidden="true"></div>
+
+  <div class="container cta-inner">
+    <p class="eyebrow">O próximo passo é seu.</p>
+    <h2 class="cta-title reveal">O JOGADOR QUE VOCÊ QUER SER<br>COMEÇA COM O QUE VOCÊ FAZ HOJE.</h2>
+    <p class="cta-highlight text-blue reveal">NÃO EXISTE ATALHO PARA SE TORNAR UM JOGADOR MELHOR.</p>
+    <p class="cta-subtext reveal">Existe treinamento, consistência, acompanhamento e tempo. A JDE está aqui para ajudar você a transformar tudo isso em um processo mais organizado, direcionado e conectado com aquilo que o futebol realmente exige.</p>
+
+    <div class="cta-actions reveal">
+      <!-- CTAs abrem a experiência de contato (data-jde-contact); número do WhatsApp centralizado em script.js -->
+      <a href="#contato" class="btn btn-primary btn-large" data-jde-contact data-modalidade="consultoria">Quero a consultoria</a>
+      <a href="#contato" class="btn btn-ghost btn-large" data-jde-contact data-modalidade="presencial">Quero treinar presencialmente</a>
+    </div>
+
+    <p class="cta-footer-text reveal">Criciúma e região • Consultoria para atletas</p>
+  </div>
+</section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <img src="imagens/LOGO COM ESCRITA DO LADO.png" alt="Jogador de Elite" class="footer-logo" width="1558" height="458" loading="lazy">
+
+    <nav class="footer-nav" aria-label="Links do rodapé">
+      <a href="#inicio">Início</a>
+      <a href="#metodo">Como Funciona</a>
+      <a href="#servicos">Treinar</a>
+      <a href="#depoimentos">Resultados</a>
+      <a href="#sobre">Sobre</a>
+      <a href="https://www.instagram.com/jogadordeelite_/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="https://www.youtube.com/@Jogadordeelitee" target="_blank" rel="noopener noreferrer">YouTube</a>
+      <a href="https://www.tiktok.com/@jogadordeelite05" target="_blank" rel="noopener noreferrer">TikTok</a>
+    </nav>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Jogador de Elite. Todos os direitos reservados.</p>
+      <p class="footer-credit">
+        Desenvolvido por
+        <a href="https://roqueads.com.br" target="_blank" rel="noopener noreferrer" class="footer-credit-logo-wrap" aria-label="Roque Ads (abre em nova aba)">
+          <img src="imagens/LOGO ROQUE ADS.png" alt="Roque Ads" class="footer-credit-logo" width="2172" height="724" loading="lazy">
+        </a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= BOTÃO FLUTUANTE — WHATSAPP ================= -->
+<!-- Número e mensagem centralizados em script.js (bloco "CONFIGURAÇÃO — WHATSAPP") -->
+<a href="#" class="whatsapp-float" data-whatsapp="flutuante" aria-label="Falar com a Jogador de Elite pelo WhatsApp">
+  <span class="whatsapp-float-tooltip">Fale com o Henrique</span>
+  <span class="whatsapp-float-icon" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.29.173-1.413-.074-.124-.272-.198-.57-.347Z" fill="currentColor"/>
+      <path d="M12.004 2C6.484 2 2 6.477 2 11.99c0 2.113.552 4.099 1.518 5.82L2 22l4.33-1.494a10.02 10.02 0 0 0 5.674 1.757h.005c5.52 0 10.003-4.477 10.003-9.99C22 6.762 17.523 2 12.004 2Zm0 18.06h-.004a8.06 8.06 0 0 1-4.104-1.126l-.294-.175-3.05 1.052 1.01-2.968-.192-.305a8.04 8.04 0 0 1-1.244-4.348C4.126 7.54 7.66 4 12.005 4c4.345 0 7.87 3.541 7.87 7.99 0 4.448-3.525 7.99-7.87 7.99Z" fill="currentColor"/>
+    </svg>
+  </span>
+</a>
+
+<!-- ================= EXPERIÊNCIA DE CONTATO (seleção 01/02 + formulário 02/02) ================= -->
+<div class="jde-modal" id="jde-modal" role="dialog" aria-modal="true" aria-labelledby="jde-title-1" aria-hidden="true">
+  <div class="jde-panel" id="jde-panel" tabindex="-1">
+    <div class="jde-top">
+      <div class="jde-progress">
+        <span class="jde-progress-label" id="jde-step-label">01 / 02</span>
+        <span class="jde-progress-track" aria-hidden="true"><span class="jde-progress-bar" id="jde-step-bar"></span></span>
+      </div>
+      <button type="button" class="jde-close" id="jde-close" aria-label="Fechar">&times;</button>
+    </div>
+
+    <div class="jde-inner">
+      <!-- ETAPA 01 — ESCOLHA DE MODALIDADE -->
+      <section class="jde-step is-active" id="jde-step-1">
+        <p class="jde-eyebrow">Escolha seu caminho</p>
+        <h2 class="jde-title" id="jde-title-1" tabindex="-1">COMO VOCÊ QUER<br>TREINAR COM A JDE?</h2>
+        <p class="jde-sub">Escolha a modalidade que mais combina com o seu momento.</p>
+
+        <div class="jde-modes" id="jde-modes" role="group" aria-label="Modalidade de treino">
+          <button type="button" class="jde-mode jde-mode--consultoria" data-mode="consultoria" aria-pressed="false">
+            <img class="jde-mode-photo" src="imagens/foto henrique de costas.webp" alt="" width="1024" height="1536" loading="lazy">
+            <span class="jde-mode-shade" aria-hidden="true"></span>
+            <span class="jde-mode-content">
+              <span class="jde-mode-tag" aria-hidden="true">Selecionado</span>
+              <span class="jde-mode-name">CONSULTORIA<br>COM HENRIQUE</span>
+              <span class="jde-mode-desc">Acompanhamento individual para organizar e desenvolver sua preparação.</span>
+            </span>
+          </button>
+          <button type="button" class="jde-mode jde-mode--presencial" data-mode="presencial" aria-pressed="false">
+            <img class="jde-mode-photo" src="imagens/henrique conversando.webp" alt="" width="1024" height="1536" loading="lazy">
+            <span class="jde-mode-shade" aria-hidden="true"></span>
+            <span class="jde-mode-content">
+              <span class="jde-mode-tag" aria-hidden="true">Selecionado</span>
+              <span class="jde-mode-name">TREINE<br>PRESENCIAL<br>COM HENRIQUE</span>
+              <span class="jde-mode-desc">Preparação física acompanhada de perto, dentro da rotina do atleta.</span>
+            </span>
+          </button>
+        </div>
+
+        <div class="jde-continue" id="jde-continue-wrap">
+          <button type="button" class="btn btn-primary btn-large" id="jde-continue">Continuar com consultoria →</button>
+        </div>
+      </section>
+
+      <!-- ETAPA 02 — FORMULÁRIO -->
+      <section class="jde-step" id="jde-step-2">
+        <p class="jde-eyebrow">Último passo</p>
+        <h2 class="jde-title" id="jde-title-2" tabindex="-1">CONTE UM POUCO<br>SOBRE VOCÊ.</h2>
+        <p class="jde-sub">Preencha as informações abaixo e continue a conversa diretamente com o Henrique.</p>
+
+        <div class="jde-summary">
+          <div class="jde-summary-text">
+            <span class="jde-summary-label">Modalidade escolhida</span>
+            <strong class="jde-summary-name" id="jde-summary-name">CONSULTORIA COM HENRIQUE</strong>
+          </div>
+          <button type="button" class="jde-change" id="jde-change">Alterar</button>
+        </div>
+
+        <form class="jde-form" id="jde-form" novalidate>
+          <div class="jde-field">
+            <label for="jde-nome">Nome</label>
+            <input type="text" id="jde-nome" name="nome" placeholder="Seu nome" autocomplete="given-name" aria-describedby="jde-err-nome">
+            <p class="jde-error" id="jde-err-nome"></p>
+          </div>
+          <div class="jde-field">
+            <label for="jde-idade">Idade</label>
+            <input type="number" id="jde-idade" name="idade" inputmode="numeric" min="8" max="60" step="1" placeholder="Ex.: 17" aria-describedby="jde-err-idade">
+            <p class="jde-error" id="jde-err-idade"></p>
+          </div>
+          <div class="jde-field">
+            <label for="jde-cidade">Cidade / Estado</label>
+            <input type="text" id="jde-cidade" name="cidade" placeholder="Ex.: Criciúma / SC" autocomplete="address-level2" aria-describedby="jde-err-cidade">
+            <p class="jde-error" id="jde-err-cidade"></p>
+          </div>
+          <div class="jde-field">
+            <label for="jde-situacao">Situação atual</label>
+            <select id="jde-situacao" name="situacao" aria-describedby="jde-err-situacao">
+              <option value="">Selecione</option>
+              <option value="Estou em um clube">Estou em um clube</option>
+              <option value="Estou sem clube">Estou sem clube</option>
+              <option value="Sou atleta de base">Sou atleta de base</option>
+              <option value="Outro">Outro</option>
+            </select>
+            <p class="jde-error" id="jde-err-situacao"></p>
+          </div>
+          <div class="jde-field jde-field--full">
+            <label for="jde-objetivo">Principal objetivo</label>
+            <textarea id="jde-objetivo" name="objetivo" rows="3" maxlength="400" placeholder="Conte brevemente o que você quer desenvolver no futebol." aria-describedby="jde-err-objetivo"></textarea>
+            <p class="jde-error" id="jde-err-objetivo"></p>
+          </div>
+          <div class="jde-field jde-field--full">
+            <button type="submit" class="btn btn-primary btn-large jde-submit">Falar com Henrique no WhatsApp →</button>
+          </div>
+        </form>
+      </section>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

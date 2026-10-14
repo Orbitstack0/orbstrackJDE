@@ -1,0 +1,4616 @@
+/* ==========================================================================
+   JOGADOR DE ELITE — STYLES
+   Índice (acompanha a ordem das seções em index.html):
+   0. Reset, variáveis, tipografia base, utilitários
+   HEADER
+   HERO
+   O JOGADOR
+   SERVIÇOS (como treinar com a JDE)
+   MANIFESTO (identidade — a Jogador de Elite)
+   CONSTRUIR (personalização)
+   TRAJETÓRIA
+   MÉTODO (como funciona)
+   SOBRE (sobre mim)
+   VÍDEOS (a JDE na prática)
+   DEPOIMENTOS (feedbacks e resultados)
+   REDES SOCIAIS / CONTEÚDO
+   PARA QUEM É A JDE
+   CTA FINAL
+   BOTÃO FLUTUANTE — WHATSAPP
+   FOOTER
+   Animações (reveal)
+   RESPONSIVE
+   ========================================================================== */
+
+/* ==========================================================================
+   0. RESET & VARIÁVEIS
+   ========================================================================== */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; margin: 0; padding: 0; }
+button { font: inherit; background: none; border: none; cursor: pointer; color: inherit; }
+h1, h2, h3, p, blockquote { margin: 0; }
+blockquote { padding: 0; }
+
+:root {
+  --bg: #060708;
+  --bg-secondary: #0c0e11;
+  --bg-tertiary: #12151a;
+  --text: #f4f6f8;
+  --muted: #939aa6;
+  --muted-dark: #5c626c;
+  --blue: #1f6feb;
+  --blue-bright: #4da3ff;
+  --border: rgba(255, 255, 255, 0.09);
+  --border-strong: rgba(255, 255, 255, 0.16);
+
+  --font-display: "Bebas Neue", sans-serif;
+  --font-body: "Inter", sans-serif;
+
+  --header-h: 84px;
+  --container-w: 1240px;
+
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-h);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+body.modal-open { overflow: hidden; }
+
+:focus-visible {
+  outline: 2px solid var(--blue-bright);
+  outline-offset: 3px;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-w);
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 2.5rem);
+}
+
+.text-blue { color: var(--blue-bright); }
+
+.section-title {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  font-size: clamp(2.1rem, 4.2vw, 3.4rem);
+  line-height: 1.05;
+  color: var(--text);
+}
+
+.section-header { max-width: 640px; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
+
+.section-subtitle {
+  margin-top: 1.1rem;
+  color: var(--muted);
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
+  max-width: 520px;
+}
+
+.eyebrow {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 1.4rem;
+}
+
+/* Botões */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.95rem 1.9rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  border-radius: 3px;
+  white-space: nowrap;
+  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease), background 0.35s var(--ease), border-color 0.35s var(--ease), color 0.35s var(--ease);
+}
+
+.btn-primary {
+  background: var(--blue);
+  color: #fff;
+  box-shadow: 0 0 0 0 rgba(31, 111, 235, 0.5);
+}
+.btn-primary:hover {
+  background: var(--blue-bright);
+  box-shadow: 0 8px 30px -6px rgba(31, 111, 235, 0.65);
+  transform: translateY(-2px);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border-strong);
+}
+.btn-ghost:hover {
+  border-color: var(--blue-bright);
+  color: var(--blue-bright);
+  transform: translateY(-2px);
+}
+
+.btn-large { padding: 1.25rem 2.6rem; font-size: 0.9rem; }
+
+/* ==========================================================================
+   HEADER
+   ========================================================================== */
+.site-header {
+  position: fixed;
+  inset-inline: 0;
+  top: 0;
+  z-index: 100;
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  background: linear-gradient(to bottom, rgba(6, 7, 8, 0.55), rgba(6, 7, 8, 0));
+  transition: background 0.4s var(--ease), backdrop-filter 0.4s var(--ease), border-color 0.4s var(--ease), height 0.3s var(--ease);
+  border-bottom: 1px solid transparent;
+}
+
+.site-header.scrolled {
+  background: rgba(8, 11, 17, 0.82);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border-bottom-color: var(--border);
+  height: 72px;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  width: 100%;
+  min-width: 0;
+}
+
+.brand { display: flex; align-items: center; flex-shrink: 0; }
+.brand-logo { height: 34px; width: auto; object-fit: contain; }
+
+.main-nav ul { display: flex; align-items: center; gap: clamp(1.4rem, 2.2vw, 2.4rem); }
+
+.nav-link {
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+  position: relative;
+  padding-bottom: 4px;
+  transition: color 0.25s var(--ease);
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 100%; bottom: 0;
+  height: 1px;
+  background: var(--blue-bright);
+  transition: right 0.3s var(--ease);
+}
+.nav-link:hover { color: var(--text); }
+.nav-link:hover::after { right: 0; }
+
+.btn-header { flex-shrink: 0; }
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+}
+.menu-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--text);
+  margin-inline: auto;
+  transition: transform 0.35s var(--ease), opacity 0.25s var(--ease);
+}
+.menu-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.menu-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.menu-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.mobile-nav {
+  position: fixed;
+  top: var(--header-h);
+  left: 0; right: 0;
+  background: rgba(8, 9, 11, 0.98);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  padding: 1.5rem clamp(1.25rem, 4vw, 2.5rem) 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  transform: translateY(-8px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s var(--ease), transform 0.3s var(--ease), visibility 0.3s;
+  max-height: calc(100dvh - var(--header-h));
+  overflow-y: auto;
+}
+.mobile-nav.open { opacity: 1; transform: translateY(0); visibility: visible; }
+.mobile-nav ul { display: flex; flex-direction: column; gap: 1.35rem; }
+.mobile-nav .nav-link { font-size: 1.05rem; }
+.btn-mobile-cta { width: 100%; }
+
+/* ==========================================================================
+   HERO
+   ========================================================================== */
+.hero {
+  position: relative;
+  min-height: 100dvh;
+  display: flex;
+  align-items: flex-end;
+  padding-top: calc(var(--header-h) + 1.5rem);
+  padding-bottom: 3rem;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.hero-bg { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+
+.hero-glow {
+  position: absolute;
+  top: auto;
+  bottom: -14%;
+  left: -12%;
+  width: 48%;
+  aspect-ratio: 1;
+  background: radial-gradient(circle, rgba(31, 111, 235, 0.13), transparent 75%);
+  filter: blur(90px);
+}
+
+/* Watermark isolada — não usada no mobile/tablet (a logo já está dentro da
+   imagem de fundo nesses breakpoints, ver @media max-width:980px). Fica oculta
+   também no desktop, que mantém a composição original aprovada. */
+.hero-watermark { display: none; }
+
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.92fr);
+  align-items: center;
+  gap: clamp(2rem, 4vw, 4rem);
+  width: 100%;
+  min-width: 0;
+}
+
+.hero-content { min-width: 0; max-width: 620px; }
+
+/* Henrique à direita, contido (não full-bleed) — layout original de 2 colunas. */
+.hero-figure {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.hero-figure-glow {
+  position: absolute;
+  z-index: 0;
+  right: 6%;
+  bottom: 8%;
+  width: 70%;
+  aspect-ratio: 1;
+  background: radial-gradient(circle, rgba(31, 111, 235, 0.18), transparent 72%);
+  filter: blur(70px);
+  pointer-events: none;
+}
+
+.hero-photo {
+  position: relative;
+  z-index: 1;
+  height: min(92dvh, 1000px);
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  object-position: bottom;
+}
+
+.hero-figure-shadow {
+  position: absolute;
+  z-index: 0;
+  bottom: 2%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 40px;
+  background: radial-gradient(ellipse, rgba(0, 0, 0, 0.5), transparent 75%);
+  filter: blur(8px);
+  pointer-events: none;
+}
+
+/* Overlay de integração foto/fundo — não usado no desktop nem no mobile/tablet
+   atual (substituído pelo gradiente embutido no background-image em ≤980px). */
+.hero-figure-overlay { display: none; }
+
+.hero-title {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-size: clamp(2.9rem, 6vw, 5.8rem);
+  line-height: 0.95;
+  letter-spacing: 0.008em;
+  margin-bottom: 1.4rem;
+  max-width: 640px;
+  text-shadow: 0 4px 28px rgba(0, 0, 0, 0.4);
+}
+
+.hero-subtitle {
+  font-size: clamp(1.02rem, 1.35vw, 1.2rem);
+  line-height: 1.65;
+  color: var(--muted);
+  max-width: 460px;
+  margin-bottom: 2.5rem;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 1rem;
+}
+
+.hero-actions .btn {
+  border: 1px solid transparent;
+  border-radius: 6px;
+  padding: 1.15rem 2rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  width: 290px;
+  text-align: center;
+}
+
+.hero-actions .btn-primary {
+  box-shadow: 0 12px 32px -10px rgba(31, 111, 235, 0.5);
+}
+
+.hero-actions .btn-ghost {
+  border-color: var(--border-strong);
+  background: rgba(6, 7, 8, 0.35);
+  backdrop-filter: blur(6px);
+}
+.hero-actions .btn-ghost:hover {
+  background: rgba(77, 163, 255, 0.12);
+  border-color: var(--blue-bright);
+  box-shadow: 0 8px 24px -10px rgba(77, 163, 255, 0.4);
+}
+
+/* Telas grandes (1600px+): o container padrão (1240px) sobra demais no hero
+   em monitores wide — abre só o hero para dar mais presença ao conjunto. */
+@media (min-width: 1600px) {
+  .hero .container { max-width: 1440px; }
+}
+
+/* ==========================================================================
+   O JOGADOR — identificação com o problema, antes da solução
+   ========================================================================== */
+.jogador {
+  position: relative;
+  padding-block: clamp(4rem, 7.5vw, 6rem);
+  background: radial-gradient(70% 60% at 85% 15%, rgba(31, 111, 235, 0.05), transparent 70%), var(--bg);
+  border-top: 1px solid var(--border);
+}
+
+.jogador-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.05fr);
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 3.25rem);
+}
+
+.jogador-head .eyebrow { margin-bottom: 0.7rem; }
+.jogador-head .section-title { margin: 0; }
+
+/* Divisória sutil separando as duas colunas — reforço editorial, sem card */
+.jogador-content {
+  max-width: 540px;
+  padding-left: clamp(1.1rem, 2vw, 1.4rem);
+  border-left: 1px solid var(--border);
+}
+.jogador-content p.jogador-kicker {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-size: clamp(1.35rem, 2.1vw, 1.9rem);
+  line-height: 1.2;
+  color: var(--text);
+  margin-bottom: clamp(1.4rem, 2.75vw, 1.9rem);
+}
+.jogador-content p {
+  color: var(--muted);
+  font-size: clamp(0.96rem, 1.1vw, 1.05rem);
+  line-height: 1.65;
+  margin-bottom: 1rem;
+}
+.jogador-content p:last-child { margin-bottom: 0; }
+
+/* Destaque neutro por padrão (mesma cor/peso do texto ao redor) — só ganha
+   presença no mobile/tablet, ver @media max-width:1279px. Desktop fica
+   pixel-idêntico ao estado aprovado. */
+.jogador-highlight-strong { color: inherit; font-weight: inherit; }
+
+/* ==========================================================================
+   SERVIÇOS (duas formas de evoluir)
+   ========================================================================== */
+.servicos {
+  padding-block: clamp(4.5rem, 8vw, 6.5rem);
+  background: radial-gradient(110% 90% at 90% 0%, rgba(31, 111, 235, 0.05), transparent 55%), var(--bg);
+  border-top: 1px solid var(--border);
+}
+
+.servicos-header { margin-bottom: clamp(2.25rem, 4vw, 3.25rem); }
+
+.caminhos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+/* Painel premium sem imagem — fundo dark com leve profundidade azul/preto */
+.caminho {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  min-height: clamp(300px, 24vw, 340px);
+  background:
+    radial-gradient(120% 140% at 0% 0%, rgba(31, 111, 235, 0.05), transparent 55%),
+    linear-gradient(155deg, #0e1013 0%, var(--bg-secondary) 55%, #0a0c10 100%);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 18px;
+  overflow: hidden;
+  transition: opacity 0.8s var(--ease), transform 0.35s var(--ease), border-color 0.35s var(--ease), box-shadow 0.35s var(--ease);
+}
+
+.caminho-body {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding: clamp(2.25rem, 3.4vw, 3rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.caminho-tag {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+  color: var(--blue-bright);
+  margin-bottom: 1.4rem;
+}
+
+.caminho-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: clamp(1.6rem, 2.15vw, 2.05rem);
+  line-height: 1.14;
+  letter-spacing: 0.01em;
+  color: var(--text);
+  max-width: 460px;
+  margin-bottom: 1.3rem;
+}
+
+.caminho-text {
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.68;
+  max-width: 420px;
+  margin-bottom: 2rem;
+}
+
+/* CTA branco + seta, linha azul curta que cresce no hover */
+.caminho-cta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding-bottom: 0.6rem;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.055em;
+  text-transform: uppercase;
+  color: var(--text);
+  white-space: nowrap;
+  transition: color 0.4s var(--ease);
+}
+.caminho-cta::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 1px;
+  width: 32px;
+  background: var(--blue-bright);
+  transition: width 0.5s var(--ease);
+}
+.caminho-cta-arrow {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+  color: var(--blue-bright);
+  transition: transform 0.4s var(--ease);
+}
+
+/* Hover — suave e premium, sem exagero */
+.caminho:hover {
+  border-color: rgba(77, 163, 255, 0.28);
+  box-shadow: 0 20px 45px -26px rgba(31, 111, 235, 0.4);
+  transform: translateY(-3px);
+}
+.caminho:hover .caminho-cta { color: var(--blue-bright); }
+.caminho:hover .caminho-cta::after { width: 100%; }
+.caminho:hover .caminho-cta-arrow { transform: translateX(4px); }
+.caminho:focus-visible { outline: 1px solid var(--blue-bright); outline-offset: 4px; }
+
+/* ==========================================================================
+   MANIFESTO (identidade — "Mais do que treino, uma ambição")
+   ========================================================================== */
+.identidade {
+  position: relative;
+  padding-block: clamp(3rem, 5.5vw, 4.25rem);
+  background:
+    radial-gradient(85% 90% at 100% 28%, rgba(31, 111, 235, 0.13), transparent 64%),
+    radial-gradient(65% 70% at 96% 88%, rgba(10, 26, 64, 0.46), transparent 72%),
+    var(--bg-secondary);
+  border-top: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.identidade-watermark {
+  position: absolute;
+  top: 50%;
+  right: -38%;
+  width: min(80vw, 1100px);
+  transform: translateY(-50%);
+  opacity: 0.012;
+  filter: brightness(0) invert(1);
+  pointer-events: none;
+  user-select: none;
+}
+
+.identidade-inner { position: relative; z-index: 1; }
+
+/* IDENTIDADE - ABERTURA (label + headline à esquerda, perfil editorial à direita) */
+.identidade-abertura {
+  display: grid;
+  grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.05fr);
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 3.25rem);
+}
+
+.identidade-abertura-head .eyebrow { margin-bottom: 0.7rem; }
+.identidade-abertura-head .section-title { margin: 0; }
+
+/* Perfil editorial — coluna direita, só a watermark do site ao fundo */
+.identidade-perfil { position: relative; }
+
+.identidade-perfil-content {
+  position: relative;
+  z-index: 1;
+  max-width: 500px;
+}
+
+.identidade-perfil-proposito {
+  color: var(--text);
+  font-size: clamp(1.02rem, 1.25vw, 1.15rem);
+  line-height: 1.6;
+  max-width: 480px;
+  margin-bottom: clamp(1.1rem, 2.1vw, 1.5rem);
+}
+
+.identidade-perfil-fechamento {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-size: clamp(1.35rem, 2.1vw, 1.75rem);
+  line-height: 1.25;
+  letter-spacing: 0.005em;
+  color: var(--text);
+  max-width: 460px;
+}
+
+/* ==========================================================================
+   CONSTRUIR — "É sobre construir atletas mais completos" (com henrique conversando.webp)
+   ========================================================================== */
+.construir {
+  position: relative;
+  padding-block: clamp(3rem, 5.5vw, 4.75rem);
+  margin-top: clamp(1rem, 2vw, 1.5rem);
+  background: radial-gradient(90% 70% at 50% 38%, rgba(31, 111, 235, 0.05), transparent 62%), var(--bg);
+  overflow: hidden;
+}
+
+.construir-watermark {
+  position: absolute;
+  top: 50%;
+  right: -34%;
+  width: min(70vw, 950px);
+  transform: translateY(-50%);
+  opacity: 0.012;
+  filter: brightness(0) invert(1);
+  pointer-events: none;
+  user-select: none;
+}
+
+.construir-inner { position: relative; z-index: 1; }
+
+.construir-title {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  text-align: center;
+  font-size: clamp(2rem, 3.8vw, 3.1rem);
+  line-height: 1.1;
+  letter-spacing: 0.005em;
+  color: var(--text);
+  max-width: 780px;
+  margin: 0 auto clamp(1.75rem, 3.25vw, 2.5rem);
+}
+
+/* Miolo: coluna de texto | imagem central | coluna de texto */
+.construir-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.6fr) minmax(0, 1.3fr) minmax(0, 0.6fr);
+  align-items: center;
+  gap: clamp(1rem, 2.25vw, 1.75rem);
+}
+
+.construir-col { margin-bottom: clamp(0.5rem, 1.5vw, 1rem); }
+
+/* Performance e Mentalidade e Preparação — mesmo par: largura, altura e alinhamento idênticos */
+.construir-col.construir-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+  min-height: clamp(150px, 15vw, 196px);
+}
+
+/* Cards editoriais leves — Performance / Mentalidade e Preparação / Desenvolvimento Contínuo */
+.construir-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: clamp(1.3rem, 2.2vw, 1.75rem) clamp(1.25rem, 2vw, 1.6rem);
+  transition: border-color 0.3s var(--ease), background 0.3s var(--ease), transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+}
+.construir-card:hover {
+  border-color: rgba(77, 163, 255, 0.4);
+  background: rgba(31, 111, 235, 0.07);
+  box-shadow: 0 14px 32px -18px rgba(31, 111, 235, 0.55);
+  transform: translateY(-3px);
+}
+.construir-card:hover .identidade-grupo-title {
+  color: var(--blue-bright);
+}
+.construir-card:hover .identidade-grupo-item {
+  color: var(--text);
+}
+
+.identidade-grupo-title {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  font-size: clamp(1.25rem, 1.7vw, 1.45rem);
+  line-height: 1.12;
+  margin-bottom: 0.75rem;
+  color: var(--text);
+  transition: color 0.3s var(--ease);
+}
+
+.identidade-grupo-item {
+  font-size: clamp(0.95rem, 1vw, 1rem);
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 0.4rem;
+  transition: color 0.3s var(--ease);
+}
+.identidade-grupo-item:last-child { margin-bottom: 0; }
+
+.construir-media {
+  position: relative;
+  min-width: 0;
+  height: clamp(360px, 33vw, 520px);
+}
+.construir-media-glow {
+  position: absolute;
+  z-index: 0;
+  inset: -16% -10% -6%;
+  background: radial-gradient(ellipse 80% 75% at 50% 38%, rgba(31, 111, 235, 0.22), transparent 70%);
+  filter: blur(65px);
+}
+.construir-photo {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 4%;
+  filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.4));
+  -webkit-mask-image: linear-gradient(to bottom, #000 85%, transparent);
+  mask-image: linear-gradient(to bottom, #000 85%, transparent);
+}
+
+/* Desenvolvimento Contínuo — logo abaixo do miolo, base da composição */
+.construir-continuo {
+  text-align: center;
+  max-width: 560px;
+  margin: clamp(0.5rem, 1.5vw, 1rem) auto 0;
+}
+
+/* Fechamento + CTA — frase de impacto centralizada, colada ao bloco acima */
+.construir-final {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: clamp(1.4rem, 2.75vw, 1.9rem);
+  max-width: 820px;
+  margin: clamp(1.75rem, 3.5vw, 2.5rem) auto 0;
+}
+
+.construir-final-title {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-size: clamp(1.7rem, 2.9vw, 2.4rem);
+  line-height: 1.16;
+  color: var(--text);
+}
+
+/* ==========================================================================
+   TRAJETÓRIA
+   ========================================================================== */
+.trajetoria {
+  padding-block: clamp(4.5rem, 8.5vw, 7rem);
+  background: radial-gradient(110% 90% at 88% 100%, rgba(31, 111, 235, 0.045), transparent 55%), var(--bg);
+}
+
+.trajetoria .section-title { margin-top: 0.4rem; margin-bottom: clamp(1.5rem, 3vw, 1.75rem); }
+
+/* Foto editorial — larga, cinematográfica, com glow azul discreto integrando ao fundo */
+.trajetoria-media {
+  position: relative;
+  width: 100%;
+  margin-bottom: clamp(1.75rem, 3.25vw, 2.1rem);
+}
+.trajetoria-media-glow {
+  position: absolute;
+  z-index: 0;
+  inset: -10% -4%;
+  background: radial-gradient(ellipse 75% 70% at 50% 45%, rgba(31, 111, 235, 0.16), transparent 70%);
+  filter: blur(60px);
+}
+.trajetoria-media-frame {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  aspect-ratio: 21 / 9;
+  border-radius: 16px;
+  overflow: hidden;
+}
+.trajetoria-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  filter: brightness(0.92);
+}
+.trajetoria-media-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(6, 7, 8, 0.15) 0%, transparent 30%, rgba(6, 7, 8, 0.55) 100%);
+  pointer-events: none;
+}
+
+/* Faixa de trajetória — vitrine leve dos clubes, sem cards pesados */
+.timeline-trajetoria {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.trajetoria-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+  padding: clamp(1.1rem, 1.8vw, 1.5rem) 1rem;
+  border-left: 1px solid var(--border);
+  transition: transform 0.3s var(--ease);
+}
+.trajetoria-item:first-child { border-left: none; }
+
+.trajetoria-item:hover { transform: translateY(-3px); }
+
+.trajetoria-escudo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(64px, 6.7vw, 84px);
+  height: clamp(64px, 6.7vw, 84px);
+  filter: brightness(0.9) saturate(0.85);
+  transition: filter 0.3s var(--ease), transform 0.3s var(--ease);
+}
+.trajetoria-item:hover .trajetoria-escudo {
+  filter: brightness(1.05) saturate(1);
+  transform: scale(1.06);
+}
+.trajetoria-escudo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.trajetoria-clube {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  letter-spacing: 0.03em;
+  color: var(--muted);
+  text-align: center;
+  transition: color 0.3s var(--ease);
+}
+.trajetoria-item:hover .trajetoria-clube { color: var(--text); }
+
+.trajetoria-item-accent {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: var(--blue-bright);
+  opacity: 0.45;
+  transition: width 0.3s var(--ease), opacity 0.3s var(--ease);
+}
+.trajetoria-item:hover .trajetoria-item-accent { width: 30px; opacity: 1; }
+
+/* "Clube atual" (Caravaggio) — oculto por padrão; só aparece no carrossel
+   mobile/tablet (ver @media max-width:1279px). Mantém o desktop idêntico. */
+.trajetoria-clube-current { display: none; }
+
+/* ==========================================================================
+   MÉTODO
+   ========================================================================== */
+.metodo {
+  padding-block: clamp(5rem, 10vw, 8rem);
+  background: radial-gradient(120% 100% at 12% 0%, rgba(31, 111, 235, 0.05), transparent 55%), var(--bg-secondary);
+  border-top: 1px solid var(--border);
+}
+
+.metodo-intro { max-width: 700px; }
+.metodo-header { margin-bottom: 0; }
+
+.metodo-support {
+  margin-top: 1.1rem;
+  color: #a9b0ba;
+  font-size: clamp(0.96rem, 1.1vw, 1.05rem);
+  line-height: 1.6;
+  max-width: 610px;
+}
+
+/* Timeline horizontal premium — 4 passos, sem imagem */
+.timeline {
+  --timeline-gap: clamp(0.9rem, 1.8vw, 1.5rem);
+  position: relative;
+  margin-top: clamp(3.25rem, 6.5vw, 4.75rem);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--timeline-gap);
+}
+
+/* A linha vai do centro do 1º marcador ao centro do último (3/4 dos trilhos + 3/4 dos gaps),
+   nunca ocupando a largura toda — sem sobra depois do 4º ponto. */
+.timeline-track {
+  position: absolute;
+  top: 4px;
+  left: 4.5px;
+  width: calc(75% + (0.75 * var(--timeline-gap)));
+  height: 1px;
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.timeline-step {
+  position: relative;
+  padding-top: clamp(2.5rem, 4vw, 3.25rem);
+  min-width: 0;
+  transition: transform 0.3s var(--ease);
+}
+.timeline-step::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--bg-secondary);
+  border: 2px solid var(--blue-bright);
+  box-shadow: 0 0 5px rgba(77, 163, 255, 0.22);
+  transition: box-shadow 0.3s var(--ease), background 0.3s var(--ease);
+}
+
+.timeline-step:hover { transform: translateY(-3px); }
+.timeline-step:hover::before {
+  background: var(--blue-bright);
+  box-shadow: 0 0 20px rgba(77, 163, 255, 0.65);
+}
+.timeline-step:hover .timeline-index {
+  color: var(--blue-bright);
+  opacity: 1;
+  text-shadow: 0 0 20px rgba(77, 163, 255, 0.55);
+}
+.timeline-step:hover .timeline-name {
+  color: var(--blue-bright);
+}
+
+.timeline-index {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3vw, 2.75rem);
+  line-height: 1;
+  color: var(--blue-bright);
+  opacity: 0.9;
+  margin-bottom: 0.75rem;
+  transition: color 0.3s var(--ease), opacity 0.3s var(--ease), text-shadow 0.3s var(--ease);
+}
+.timeline-name {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-size: clamp(1.15rem, 1.75vw, 1.5rem);
+  margin-bottom: 0.35rem;
+  transition: color 0.3s var(--ease);
+}
+.timeline-desc { color: #b3b9c2; font-size: clamp(0.82rem, 0.95vw, 0.9rem); line-height: 1.5; }
+
+/* ==========================================================================
+   SOBRE
+   ========================================================================== */
+.sobre {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  min-height: 100vh;
+  background: #000;
+}
+
+.sobre-media {
+  position: relative;
+  overflow: hidden;
+  min-width: 0;
+  background: #000;
+}
+.sobre-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center center;
+}
+.sobre-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, transparent 65%, #000 100%);
+  pointer-events: none;
+}
+
+.sobre-content {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(3rem, 6vw, 6rem);
+}
+.sobre-content .eyebrow { margin-bottom: 0.7rem; }
+.sobre-content .section-title { margin-bottom: 1.6rem; }
+.sobre-text {
+  color: var(--muted);
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
+  line-height: 1.65;
+  max-width: 460px;
+  margin-bottom: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+/* Narrativa pessoal — coluna um pouco mais larga e mais compacta entre parágrafos,
+   para não virar um paredão de texto com 5 parágrafos corridos */
+.sobre-story { display: flex; flex-direction: column; max-width: 540px; }
+.sobre-story .sobre-text {
+  max-width: none;
+  line-height: 1.58;
+  margin-bottom: 0.9rem;
+}
+.sobre-story .sobre-text:last-child { margin-bottom: 0; }
+
+/* Destaques dentro dos parágrafos — neutros por padrão (mesma cor do texto
+   ao redor), só ganham cor/peso no mobile/tablet (ver @media max-width:1279px).
+   Isso mantém o desktop pixel-idêntico ao estado aprovado. */
+.sobre-highlight-blue,
+.sobre-highlight-strong { color: inherit; font-weight: inherit; }
+
+/* ==========================================================================
+   VÍDEOS
+   ========================================================================== */
+.videos {
+  padding-block: clamp(4.5rem, 8.5vw, 7rem);
+  background: radial-gradient(110% 90% at 10% 100%, rgba(31, 111, 235, 0.045), transparent 55%), var(--bg);
+}
+
+.videos .section-header { margin-bottom: clamp(1.75rem, 3.25vw, 2.5rem); }
+
+.videos-highlight {
+  margin-top: 0.75rem;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  letter-spacing: 0.01em;
+}
+
+.videos .section-subtitle { margin-top: 0.85rem; }
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.5rem, 2.75vw, 2.25rem);
+}
+
+.video-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+.video-thumb {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: 16px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(31, 111, 235, 0.18), transparent 55%),
+    linear-gradient(160deg, var(--bg-tertiary), var(--bg) 70%);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.3s var(--ease), box-shadow 0.3s var(--ease);
+}
+.video-card:hover .video-thumb {
+  border-color: rgba(77, 163, 255, 0.4);
+  box-shadow: 0 16px 40px -22px rgba(31, 111, 235, 0.55);
+}
+
+.video-thumb-media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  transition: transform 0.6s var(--ease);
+}
+.video-card:hover .video-thumb-media { transform: scale(1.02); }
+
+.video-thumb::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(160deg, rgba(31, 111, 235, 0.1), rgba(6, 7, 8, 0.3));
+  opacity: 0;
+  transition: opacity 0.3s var(--ease);
+  pointer-events: none;
+}
+.video-card:hover .video-thumb::before { opacity: 1; }
+
+.video-play {
+  position: relative;
+  z-index: 2;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(31, 111, 235, 0.85);
+  box-shadow: 0 10px 26px -8px rgba(31, 111, 235, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s var(--ease), border-color 0.3s var(--ease), box-shadow 0.3s var(--ease), transform 0.3s var(--ease);
+}
+.video-play::before {
+  content: "";
+  border-style: solid;
+  border-width: 8px 0 8px 13px;
+  border-color: transparent transparent transparent #fff;
+  margin-left: 3px;
+}
+.video-card:hover .video-play {
+  background: var(--blue-bright);
+  border-color: rgba(255, 255, 255, 0.45);
+  box-shadow: 0 12px 32px -6px rgba(77, 163, 255, 0.75);
+  transform: scale(1.06);
+}
+
+.video-info { position: relative; display: flex; flex-direction: column; gap: 0.3rem; padding-bottom: 0.7rem; }
+.video-info::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 1px;
+  width: 0;
+  background: var(--blue-bright);
+  transition: width 0.5s var(--ease);
+}
+.video-card:hover .video-info::after { width: 32px; }
+
+.video-category {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 1.75vw, 1.5rem);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--text);
+  transition: color 0.3s var(--ease);
+}
+.video-card:hover .video-category { color: var(--blue-bright); }
+
+.video-desc { font-size: 0.9rem; color: #b3b9c2; }
+
+/* Modal de vídeo */
+.video-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(1rem, 4vw, 2rem);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s var(--ease), visibility 0.3s;
+}
+.video-modal.open { opacity: 1; visibility: visible; }
+
+.video-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(4, 5, 6, 0.92);
+  backdrop-filter: blur(6px);
+}
+
+.video-modal-panel {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 960px);
+  aspect-ratio: 16 / 9;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-strong);
+  border-radius: 6px;
+  overflow: hidden;
+  transform: translateY(16px) scale(0.98);
+  opacity: 0;
+  transition: transform 0.4s var(--ease), opacity 0.4s var(--ease);
+}
+.video-modal.open .video-modal-panel { transform: translateY(0) scale(1); opacity: 1; }
+
+.video-modal-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 2;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(6, 7, 8, 0.6);
+  color: var(--text);
+  font-size: 1.5rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s var(--ease);
+}
+.video-modal-close:hover { background: var(--blue); }
+
+.video-modal-body {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.video-modal-body video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #000;
+}
+.video-modal-fallback {
+  color: var(--muted);
+  font-size: 1rem;
+  text-align: center;
+  padding: 2rem;
+  max-width: 420px;
+}
+
+/* ==========================================================================
+   DEPOIMENTOS
+   ========================================================================== */
+.depoimentos {
+  padding-block: clamp(4rem, 7.5vw, 6rem);
+  background: radial-gradient(120% 95% at 92% 0%, rgba(31, 111, 235, 0.055), transparent 55%), var(--bg-secondary);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.depoimentos .section-header { max-width: 640px; }
+.depoimentos .section-subtitle { margin-top: 1.3rem; }
+
+/* Slider — 1 depoimento em destaque por vez */
+.depoimentos-slider { margin-top: clamp(2rem, 3.5vw, 2.75rem); }
+
+.depoimentos-viewport { overflow: hidden; }
+
+.depoimentos-list {
+  display: flex;
+  transition: transform 0.6s var(--ease);
+}
+
+.depoimento-slide {
+  flex: 0 0 100%;
+  min-width: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(1.75rem, 4vw, 3.5rem);
+}
+
+.depoimento-media {
+  position: relative;
+  height: clamp(350px, 36vw, 480px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.depoimento-media::before {
+  content: "";
+  position: absolute;
+  inset: 8% 10%;
+  background: radial-gradient(ellipse at 50% 55%, rgba(31, 111, 235, 0.18), transparent 70%);
+  filter: blur(2px);
+}
+.depoimento-photo {
+  position: relative;
+  max-width: 100%;
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+  object-position: center bottom;
+  -webkit-mask-image: radial-gradient(ellipse 68% 78% at 50% 46%, #000 58%, transparent 100%);
+  mask-image: radial-gradient(ellipse 68% 78% at 50% 46%, #000 58%, transparent 100%);
+}
+
+.depoimento-quote {
+  position: relative;
+  background: rgba(255, 255, 255, 0.015);
+  border-radius: 14px;
+  padding: clamp(1.4rem, 2.25vw, 1.85rem) clamp(1.4rem, 2.25vw, 1.85rem) clamp(1.4rem, 2.25vw, 1.85rem) clamp(1.9rem, 3vw, 2.4rem);
+}
+.depoimento-quote::before {
+  content: "";
+  position: absolute;
+  top: clamp(1.4rem, 2.25vw, 1.85rem);
+  bottom: clamp(1.4rem, 2.25vw, 1.85rem);
+  left: 0;
+  width: 2px;
+  border-radius: 2px;
+  background: linear-gradient(180deg, var(--blue-bright), rgba(77, 163, 255, 0.1));
+}
+.depoimento-quote p {
+  color: var(--text);
+  font-size: clamp(1.15rem, 1.75vw, 1.42rem);
+  font-weight: 400;
+  line-height: 1.5;
+  max-width: 42ch;
+}
+.depoimento-quote p::before { content: "\201C"; }
+.depoimento-quote p::after { content: "\201D"; }
+
+.depoimento-nome {
+  display: block;
+  margin-top: clamp(1rem, 2vw, 1.4rem);
+  font-style: normal;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-size: clamp(1.35rem, 2.1vw, 1.8rem);
+  letter-spacing: 0.02em;
+  color: var(--text);
+}
+
+/* Controles — alinhados com a coluna do relato, não centralizados na seção toda */
+.depoimentos-controls-row {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr);
+  gap: clamp(1.75rem, 4vw, 3.5rem);
+  margin-top: clamp(1.5rem, 2.75vw, 2.1rem);
+}
+
+.depoimentos-controls {
+  grid-column: 2;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: clamp(1.25rem, 2.5vw, 1.75rem);
+}
+
+.depoimentos-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid var(--border-strong);
+  color: var(--text);
+  font-size: 1rem;
+  transition: border-color 0.35s var(--ease), color 0.35s var(--ease), transform 0.35s var(--ease);
+}
+.depoimentos-arrow:hover { border-color: var(--blue-bright); color: var(--blue-bright); }
+.depoimentos-arrow:active { transform: scale(0.94); }
+
+.depoimentos-dots { display: flex; align-items: center; gap: 0.6rem; }
+.depoimentos-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--muted-dark);
+  transition: background 0.35s var(--ease), transform 0.35s var(--ease);
+}
+.depoimentos-dot:hover { background: var(--muted); }
+.depoimentos-dot.is-active { background: var(--blue-bright); transform: scale(1.25); }
+
+/* ==========================================================================
+   REDES SOCIAIS / CONTEÚDO
+   ========================================================================== */
+.social {
+  padding-block: clamp(4.5rem, 8vw, 6.5rem);
+  background: radial-gradient(110% 90% at 8% 0%, rgba(31, 111, 235, 0.045), transparent 55%), var(--bg);
+}
+
+.social .section-header { max-width: 640px; }
+
+.social-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.1rem, 2vw, 1.75rem);
+}
+
+.social-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.65rem;
+  height: 100%;
+  padding: clamp(1.5rem, 2.1vw, 1.9rem);
+  background: linear-gradient(155deg, #0e1013 0%, var(--bg-secondary) 55%, #0a0c10 100%);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 18px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.3s var(--ease), border-color 0.3s var(--ease), box-shadow 0.3s var(--ease);
+}
+.social-card:hover { transform: translateY(-3px); }
+.social-card:focus-visible { outline: 1px solid var(--blue-bright); outline-offset: 4px; }
+
+.social-card::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  width: 60%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  filter: blur(50px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s var(--ease);
+}
+
+.social-card-top,
+.social-card-text,
+.social-card-stats,
+.social-card-cta {
+  position: relative;
+  z-index: 1;
+}
+
+.social-card-top { display: flex; align-items: center; gap: 0.9rem; }
+
+.social-card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: var(--text);
+  transition: border-color 0.3s var(--ease), color 0.3s var(--ease);
+}
+.social-card-icon svg { width: 20px; height: 20px; }
+
+.social-card-heading { display: flex; flex-direction: column; min-width: 0; }
+
+.social-card-platform {
+  display: block;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-size: clamp(1.2rem, 1.6vw, 1.4rem);
+  letter-spacing: 0.02em;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.social-card-handle {
+  display: block;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 0.01em;
+  text-decoration: none;
+}
+.social-card-handle-sub {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--muted-dark);
+  margin-top: 0.1rem;
+  text-decoration: none;
+}
+
+.social-card-text {
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  text-decoration: none;
+}
+
+/* Métricas — números reais como peça de autoridade, atualizáveis isoladamente */
+.social-card-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(1.1rem, 1.8vw, 1.6rem);
+  padding-top: 0.6rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.social-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding-left: clamp(1.1rem, 1.8vw, 1.6rem);
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+}
+.social-stat:first-child { padding-left: 0; border-left: none; }
+
+.social-stat-value {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-size: clamp(1.35rem, 1.7vw, 1.6rem);
+  line-height: 1;
+  letter-spacing: 0.01em;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.social-stat-label {
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted-dark);
+  text-decoration: none;
+}
+
+.social-card-cta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: auto;
+  padding-top: 0.3rem;
+  padding-bottom: 0.4rem;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.3s var(--ease);
+}
+.social-card-cta::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 1px;
+  width: 28px;
+  background: currentColor;
+  opacity: 0.4;
+  transition: width 0.3s var(--ease), opacity 0.3s var(--ease);
+}
+.social-card:hover .social-card-cta::after { width: 40px; opacity: 1; }
+.social-card-cta-arrow { display: inline-flex; transition: transform 0.3s var(--ease); }
+.social-card:hover .social-card-cta-arrow { transform: translateX(4px); }
+
+/* Instagram — detalhe rosa/roxo/laranja só no glow e no hover */
+.social-card--instagram::before {
+  top: -18%;
+  right: -14%;
+  background: radial-gradient(circle, rgba(221, 42, 123, 0.22), rgba(247, 119, 55, 0.12) 55%, transparent 75%);
+}
+.social-card--instagram:hover::before { opacity: 1; }
+.social-card--instagram:hover {
+  border-color: rgba(214, 88, 159, 0.35);
+  box-shadow: 0 18px 40px -24px rgba(193, 53, 132, 0.45);
+}
+.social-card--instagram:hover .social-card-icon { border-color: rgba(214, 102, 163, 0.55); color: #e0a6c4; }
+.social-card--instagram:hover .social-card-cta { color: #e08bb8; }
+
+/* YouTube — detalhe vermelho só no glow e no hover */
+.social-card--youtube::before {
+  top: -18%;
+  left: -14%;
+  background: radial-gradient(circle, rgba(255, 0, 0, 0.2), transparent 72%);
+}
+.social-card--youtube:hover::before { opacity: 1; }
+.social-card--youtube:hover {
+  border-color: rgba(255, 90, 90, 0.35);
+  box-shadow: 0 18px 40px -24px rgba(255, 40, 40, 0.4);
+}
+.social-card--youtube:hover .social-card-icon { border-color: rgba(255, 90, 90, 0.5); color: #ff8080; }
+.social-card--youtube:hover .social-card-cta { color: #ff7a7a; }
+
+/* TikTok — pequena referência ciano/vermelho só no glow e no hover */
+.social-card--tiktok::before {
+  top: -18%;
+  right: -10%;
+  background:
+    radial-gradient(circle at 32% 32%, rgba(37, 244, 238, 0.18), transparent 60%),
+    radial-gradient(circle at 66% 62%, rgba(254, 44, 85, 0.15), transparent 62%);
+}
+.social-card--tiktok:hover::before { opacity: 1; }
+.social-card--tiktok:hover {
+  border-color: rgba(37, 244, 238, 0.32);
+  box-shadow: 0 18px 40px -24px rgba(254, 44, 85, 0.35);
+}
+.social-card--tiktok:hover .social-card-icon { border-color: rgba(37, 244, 238, 0.5); color: #7be8e4; }
+.social-card--tiktok:hover .social-card-cta { color: #7be8e4; }
+
+/* Redes sociais — mobile/tablet (<1280px). Sem hover real no touch, então o
+   estado de cor de cada card fica permanentemente visível, numa versão suave
+   (~30-40% da intensidade do hover desktop, mesmas cores, sem translateY).
+   Bloco novo e isolado; desktop (≥1280px) mantém o :hover exatamente como
+   está, inalterado. */
+@media (max-width: 1279px) {
+  .social-card--instagram::before { opacity: 0.34; }
+  .social-card--instagram {
+    border-color: rgba(214, 88, 159, 0.135);
+    box-shadow: 0 10px 24px -18px rgba(193, 53, 132, 0.18);
+  }
+  .social-card--instagram .social-card-icon { border-color: rgba(214, 102, 163, 0.21); color: #e097bb; }
+  .social-card--instagram .social-card-cta { color: #e07fb1; }
+
+  .social-card--youtube::before { opacity: 0.3; }
+  .social-card--youtube {
+    border-color: rgba(255, 90, 90, 0.12);
+    box-shadow: 0 10px 24px -18px rgba(255, 40, 40, 0.14);
+  }
+  .social-card--youtube .social-card-icon { border-color: rgba(255, 90, 90, 0.18); color: #ff8080; }
+  .social-card--youtube .social-card-cta { color: #ff7a7a; }
+
+  .social-card--tiktok::before { opacity: 0.3; }
+  .social-card--tiktok {
+    border-color: rgba(37, 244, 238, 0.11);
+    box-shadow: 0 10px 24px -18px rgba(254, 44, 85, 0.12);
+  }
+  .social-card--tiktok .social-card-icon { border-color: rgba(37, 244, 238, 0.18); color: #7be8e4; }
+  .social-card--tiktok .social-card-cta { color: #7be8e4; }
+}
+
+/* ==========================================================================
+   PARA QUEM É A JDE
+   ========================================================================== */
+.para-quem {
+  padding-block: clamp(4rem, 7.5vw, 6rem);
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border);
+}
+
+.para-quem-list {
+  max-width: 760px;
+  margin-top: clamp(2rem, 4vw, 3rem);
+}
+
+.para-quem-item {
+  display: flex;
+  align-items: baseline;
+  gap: clamp(1.25rem, 3vw, 2rem);
+  padding-block: clamp(1.1rem, 2vw, 1.5rem);
+  border-top: 1px solid var(--border);
+}
+.para-quem-item:first-child { border-top: none; padding-top: 0; }
+
+.para-quem-num {
+  flex-shrink: 0;
+  width: 2.5ch;
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2vw, 1.7rem);
+  color: var(--blue-bright);
+}
+
+.para-quem-body h3 {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+  color: var(--text);
+  margin-bottom: 0.3rem;
+}
+.para-quem-body p { color: var(--muted); font-size: 0.92rem; line-height: 1.55; }
+
+.para-quem-closing {
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-size: clamp(1.4rem, 2.2vw, 1.9rem);
+  line-height: 1.25;
+  color: var(--text);
+  max-width: 640px;
+}
+
+/* PARA QUEM É A JDE — mobile e tablet (<1280px). Bloco novo e isolado: só
+   refina espaçamento/proporção dos itens já aprovados (sem redesenho, sem
+   centralizar texto, sem cards). Não toca em .section-title (compartilhada
+   com outras seções) nem em nenhuma regra fora deste escopo. */
+@media (max-width: 1279px) {
+  .para-quem { padding-block: clamp(3.25rem, 8vw, 5rem); }
+
+  .para-quem-list { margin-top: clamp(1.75rem, 3.5vw, 2.5rem); }
+
+  .para-quem-item {
+    gap: clamp(0.85rem, 2.5vw, 1.25rem);
+    padding-block: clamp(0.85rem, 1.6vw, 1.15rem);
+  }
+
+  .para-quem-body { max-width: 440px; }
+
+  .para-quem-closing { margin-top: clamp(3rem, 6vw, 4rem); }
+}
+
+/* PARA QUEM É A JDE — faixa tablet (768–1279px): centraliza o bloco da lista
+   dentro da seção, mantendo cada item alinhado à esquerda internamente. */
+@media (min-width: 768px) and (max-width: 1279px) {
+  .para-quem-list { max-width: 620px; margin-inline: auto; }
+}
+
+/* ==========================================================================
+   CTA FINAL
+   ========================================================================== */
+.cta-final {
+  position: relative;
+  padding-block: clamp(5.5rem, 12vw, 9rem);
+  text-align: center;
+  overflow: hidden;
+  background: radial-gradient(140% 80% at 50% 100%, rgba(31, 111, 235, 0.08), transparent 62%), #000;
+}
+
+.cta-watermark {
+  position: absolute;
+  inset: 9% 13%;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  margin: auto;
+  object-fit: contain;
+  opacity: 0.05;
+  filter: brightness(0) invert(1);
+  pointer-events: none;
+  user-select: none;
+}
+
+.cta-glow {
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  aspect-ratio: 1;
+  background: radial-gradient(circle, rgba(31, 111, 235, 0.24), transparent 70%);
+  filter: blur(30px);
+  pointer-events: none;
+}
+
+.cta-inner { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; }
+.cta-inner .eyebrow { text-align: center; }
+
+.cta-title {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-size: clamp(2.4rem, 5.5vw, 4.4rem);
+  line-height: 1.02;
+  margin-bottom: 0.9rem;
+}
+
+.cta-highlight {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-size: clamp(1.1rem, 1.9vw, 1.5rem);
+  opacity: 0.9;
+  margin-bottom: 1rem;
+}
+
+.cta-subtext {
+  color: var(--muted);
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
+  line-height: 1.65;
+  max-width: 580px;
+  margin: 0 auto clamp(2rem, 4vw, 3rem);
+}
+
+.cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+.cta-actions .btn {
+  width: 380px;
+  max-width: 100%;
+}
+
+.cta-footer-text {
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted-dark);
+}
+
+/* CTA final — mobile e tablet (<1280px). Bloco novo e isolado: reduz o
+   respiro vertical excessivo, recentraliza a watermark (sem depender de
+   inset, que cortava a logo em proporções estreitas) e contém a largura de
+   título/textos/botões para a seção parecer pensada para telas menores, não
+   um desktop encolhido. Não modifica nenhuma regra de desktop (≥1280px). */
+@media (max-width: 1279px) {
+  .cta-final { padding-block: clamp(3.25rem, 9vw, 5rem); }
+
+  .cta-watermark {
+    inset: auto;
+    top: 50%;
+    left: 50%;
+    width: 78%;
+    max-width: 420px;
+    height: auto;
+    margin: 0;
+    transform: translate(-50%, -50%);
+  }
+
+  .cta-inner { text-align: center; }
+
+  .cta-title { max-width: 540px; margin-inline: auto; }
+
+  .cta-highlight { max-width: 460px; margin-inline: auto; }
+
+  .cta-subtext { max-width: 420px; margin-inline: auto; }
+
+  .cta-actions { flex-direction: column; align-items: center; }
+  .cta-actions .btn { width: 100%; max-width: 420px; }
+
+  .cta-footer-text { max-width: 320px; margin-inline: auto; }
+}
+
+/* CTA final — faixa tablet (768–1279px): mesma lógica, watermark um pouco
+   maior e botões com um teto de largura levemente superior ao mobile. */
+@media (min-width: 768px) and (max-width: 1279px) {
+  .cta-watermark { width: 60%; max-width: 620px; }
+  .cta-actions .btn { max-width: 480px; }
+}
+
+/* ==========================================================================
+   BOTÃO FLUTUANTE — WHATSAPP
+   ========================================================================== */
+.whatsapp-float {
+  position: fixed;
+  right: clamp(18px, 2.5vw, 28px);
+  bottom: clamp(18px, 2.5vw, 28px);
+  z-index: 150;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: #25d366;
+  color: #fff;
+  box-shadow: 0 10px 24px -8px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transform: translateY(16px);
+  animation: whatsappFloatIn 0.6s var(--ease) 0.5s forwards;
+  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+}
+.whatsapp-float:hover,
+.whatsapp-float:focus-visible {
+  transform: scale(1.05);
+  box-shadow: 0 14px 30px -8px rgba(0, 0, 0, 0.55);
+}
+.whatsapp-float:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+
+.whatsapp-float-icon { display: flex; width: 28px; height: 28px; }
+.whatsapp-float-icon svg { width: 100%; height: 100%; }
+
+.whatsapp-float-tooltip {
+  position: absolute;
+  right: calc(100% + 12px);
+  top: 50%;
+  transform: translateY(-50%) translateX(6px);
+  white-space: nowrap;
+  background: rgba(10, 12, 15, 0.95);
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  padding: 0.55rem 0.9rem;
+  border-radius: 8px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s var(--ease), transform 0.25s var(--ease);
+}
+.whatsapp-float:hover .whatsapp-float-tooltip,
+.whatsapp-float:focus-visible .whatsapp-float-tooltip {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+@keyframes whatsappFloatIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .whatsapp-float { animation: none; opacity: 1; transform: none; }
+}
+
+@media (max-width: 560px) {
+  .whatsapp-float { width: 54px; height: 54px; }
+  .whatsapp-float-tooltip { display: none; }
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+.site-footer { padding-block: clamp(2.5rem, 5vw, 3.5rem); border-top: 1px solid var(--border); }
+
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+.footer-logo { height: 28px; width: auto; object-fit: contain; }
+
+.footer-nav { display: flex; flex-wrap: wrap; gap: clamp(1.2rem, 2vw, 2rem); }
+.footer-nav a {
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: color 0.25s var(--ease);
+}
+.footer-nav a:hover { color: var(--blue-bright); }
+
+.footer-bottom {
+  width: 100%;
+  border-top: 1px solid var(--border);
+  margin-top: 0.5rem;
+  padding-top: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.6rem;
+  color: var(--muted-dark);
+  font-size: 0.78rem;
+}
+.footer-credit {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  color: var(--muted-dark);
+}
+
+.footer-credit-logo-wrap {
+  display: inline-flex;
+  align-items: center;
+  line-height: 0;
+  transition: opacity 0.25s var(--ease), filter 0.25s var(--ease), transform 0.25s var(--ease);
+}
+.footer-credit-logo-wrap:hover { opacity: 0.85; filter: brightness(1.15); transform: scale(1.03); }
+.footer-credit-logo-wrap:focus-visible { outline: 1px solid var(--blue-bright); outline-offset: 2px; }
+
+.footer-credit-logo { display: block; height: clamp(28px, 2.2vw, 34px); width: auto; object-fit: contain; }
+
+/* ==========================================================================
+   ANIMAÇÕES (reveal)
+   ========================================================================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+}
+.reveal.in-view { opacity: 1; transform: translateY(0); }
+
+.hero-content.reveal { transition-delay: 0.05s; }
+.hero-figure.reveal { transition-delay: 0.15s; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+  .reveal { opacity: 1; transform: none; }
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
+/* ==========================================================================
+   FAIXA NOTEBOOK (1280–1440px de largura)
+   Reduz proporção/espaçamento para caber em 100% de zoom em notebooks HD
+   (1366x768, 1360x768, 1280x720, 1440x900), sem afetar telas maiores.
+   ========================================================================== */
+@media (max-width: 1440px) {
+  :root {
+    --container-w: 1140px;
+    --header-h: 70px;
+  }
+
+  /* Header */
+  .brand-logo { height: 30px; }
+  .main-nav ul { gap: clamp(1.1rem, 1.8vw, 1.9rem); }
+  .btn-header { padding: 0.8rem 1.6rem; font-size: 0.78rem; }
+
+  /* Identidade / manifesto */
+  .identidade { padding-block: clamp(2.5rem, 5vw, 3.6rem); }
+
+  /* Construir — É sobre construir atletas mais completos */
+  .construir { padding-block: clamp(3.5rem, 6vw, 5.5rem); }
+
+  /* Serviços */
+  .servicos { padding-block: clamp(3.25rem, 6vw, 4.75rem); }
+  .caminho { min-height: clamp(250px, 22vw, 290px); }
+  .caminho-title { font-size: clamp(1.6rem, 2.7vw, 2.5rem); }
+
+  /* Trajetória */
+  .trajetoria { padding-block: clamp(3.5rem, 7vw, 5.75rem); }
+  .trajetoria-escudo { width: clamp(58px, 6.1vw, 76px); height: clamp(58px, 6.1vw, 76px); }
+  .trajetoria-item { padding: clamp(1.5rem, 2.2vw, 1.9rem) 1.1rem; }
+
+  /* Método */
+  .metodo { padding-block: clamp(3.5rem, 7vw, 5.75rem); }
+  .timeline { margin-top: clamp(1.75rem, 3.6vw, 2.6rem); }
+
+  /* Vídeos */
+  .videos { padding-block: clamp(3.5rem, 7vw, 5.75rem); }
+  .video-thumb { aspect-ratio: 16 / 8.5; }
+
+  /* Depoimentos — reduzida com prioridade, é a mais desproporcional hoje */
+  .depoimentos { padding-block: clamp(3.25rem, 6vw, 4.75rem); }
+  .depoimentos-slider { margin-top: clamp(1.75rem, 3.6vw, 2.6rem); }
+  .depoimento-media { height: clamp(230px, 22vw, 300px); }
+  .depoimento-quote p { font-size: clamp(1rem, 1.35vw, 1.15rem); }
+  .depoimento-nome { font-size: clamp(1.15rem, 1.6vw, 1.4rem); margin-top: clamp(1rem, 1.8vw, 1.3rem); }
+  .depoimentos-controls-row { margin-top: clamp(1.4rem, 2.6vw, 2rem); }
+
+  /* Footer */
+  .site-footer { padding-block: clamp(2rem, 3.75vw, 2.75rem); }
+}
+
+/* Faixa notebook + telas baixas (altura curta): squeeze extra nas seções de viewport cheia */
+@media (max-width: 1440px) and (max-height: 900px) {
+  .hero { min-height: 88vh; padding-top: calc(var(--header-h) + 1rem); padding-bottom: 2rem; }
+  .hero-title { font-size: clamp(2rem, 4.5vw, 3.6rem); margin-bottom: 1rem; }
+  .hero-subtitle { margin-bottom: 1.6rem; }
+  .hero-photo { height: min(86dvh, 680px); }
+
+  .sobre { min-height: 82vh; }
+  .sobre-content { padding: clamp(2.5rem, 5vw, 3.5rem); }
+
+  .cta-final { padding-block: clamp(3.5rem, 7vw, 5.5rem); }
+  .cta-title { font-size: clamp(2rem, 4vw, 3.4rem); }
+}
+
+@media (max-width: 1100px) {
+  .sobre { grid-template-columns: minmax(0, 1fr); min-height: auto; }
+  .sobre-media { height: 52vh; min-height: 360px; }
+  .sobre-media::after { background: linear-gradient(to bottom, transparent 70%, #000 100%); }
+  .sobre-content { padding-block: clamp(3rem, 8vw, 4.5rem); }
+
+  .caminhos { grid-template-columns: minmax(0, 1fr); max-width: 720px; }
+
+  .social-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+  .construir-grid { display: flex; flex-direction: column; gap: clamp(1.75rem, 4vw, 2.5rem); }
+  .construir-col { margin-bottom: 0; text-align: center; }
+  .construir-media { order: -1; height: clamp(340px, 60vw, 460px); margin-bottom: 0.5rem; }
+
+}
+
+@media (max-width: 980px) {
+  .main-nav { display: none; }
+  .btn-header { display: none; }
+  .menu-toggle { display: flex; }
+
+  /* Hero mobile/tablet — usa a imagem de fundo pronta (Henrique + watermark já
+     integrados), substituindo a composição por camadas do desktop. O PNG
+     separado do Henrique (.hero-figure) e a watermark isolada (.hero-watermark)
+     ficam ocultos aqui: a logo já está dentro de "imagem de fundo do papai.webp". */
+  .hero {
+    min-height: 100dvh;
+    align-items: flex-end;
+    padding-top: calc(var(--header-h) + 1rem);
+    padding-bottom: 3.1rem;
+    /* Zoom no plano da imagem (2a camada) para dar mais presença ao rosto do
+       Henrique na primeira dobra — o gradiente (1a camada) continua cobrindo
+       a seção inteira normalmente. Ancorado no topo para não cortar cabeça/cabelo. */
+    background-image:
+      linear-gradient(to bottom, rgba(6, 7, 8, 0.05) 14%, rgba(6, 7, 8, 0.32) 42%, rgba(6, 7, 8, 0.88) 64%, var(--bg) 84%),
+      url("imagens/imagem de fundo do papai.webp");
+    background-size: 100% 100%, auto 100%;
+    background-position: center top, 60% top;
+    background-repeat: no-repeat, no-repeat;
+  }
+
+  .hero-watermark,
+  .hero-figure {
+    display: none;
+  }
+
+  .hero-inner { position: static; display: block; }
+  .hero-content { position: relative; z-index: 2; text-align: center; max-width: 480px; margin-top: 0; margin-bottom: 0.75rem; }
+  .hero-title {
+    text-align: center;
+    max-width: 380px;
+    margin-inline: auto;
+    font-size: clamp(2.9rem, 8.4vw, 4.3rem);
+    line-height: 0.9;
+    margin-bottom: 0.5rem;
+  }
+  .hero-subtitle {
+    max-width: 380px;
+    margin-inline: auto;
+    font-size: clamp(1.08rem, 3.2vw, 1.26rem);
+    line-height: 1.5;
+    margin-bottom: 1.8rem;
+  }
+  .hero-actions { justify-content: center; }
+
+  .jogador-grid { grid-template-columns: minmax(0, 1fr); }
+  .jogador-content {
+    max-width: none;
+    padding-left: 0;
+    padding-top: clamp(1.1rem, 2vw, 1.4rem);
+    border-left: none;
+    border-top: 1px solid var(--border);
+    margin-top: clamp(1.25rem, 2.5vw, 1.75rem);
+  }
+
+  .identidade-abertura { grid-template-columns: minmax(0, 1fr); }
+  .identidade-perfil-content { max-width: none; }
+
+  .trajetoria-media-frame { aspect-ratio: 16 / 9; }
+
+  .timeline { --timeline-gap: clamp(0.6rem, 1.6vw, 1rem); gap: var(--timeline-gap); }
+  .timeline-trajetoria { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 1.75rem; }
+  .trajetoria-item { border-left: none; }
+}
+
+/* TABLET / FAIXA INTERMEDIÁRIA (768–1279px) — bloco novo e isolado. Aplica ao
+   hero a mesma lógica visual já aprovada no mobile (fundo com Henrique
+   integrado + logo embutida, texto centralizado abaixo), em vez do layout
+   desktop de 2 colunas, que não cabia bem nessa faixa. Não modifica nenhuma
+   regra existente de mobile (≤980px) nem de desktop grande (>1279px). */
+@media (min-width: 768px) and (max-width: 1279px) {
+  .main-nav { display: none; }
+  .btn-header { display: none; }
+  .menu-toggle { display: flex; }
+
+  .hero {
+    min-height: 100dvh;
+    align-items: flex-end;
+    padding-top: calc(var(--header-h) + 1rem);
+    padding-bottom: 3.1rem;
+    background-image:
+      linear-gradient(to bottom, rgba(6, 7, 8, 0.05) 14%, rgba(6, 7, 8, 0.32) 42%, rgba(6, 7, 8, 0.88) 64%, var(--bg) 84%),
+      url("imagens/imagem de fundo do papai.webp");
+    background-size: 100% 100%, cover;
+    background-position: center top, center top;
+    background-repeat: no-repeat, no-repeat;
+  }
+
+  .hero-watermark,
+  .hero-figure {
+    display: none;
+  }
+
+  .hero-inner { position: static; display: block; }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 480px;
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    margin-inline: auto;
+  }
+  .hero-title {
+    text-align: center;
+    max-width: 380px;
+    margin-inline: auto;
+    font-size: clamp(2.9rem, 8.4vw, 4.3rem);
+    line-height: 0.9;
+    margin-bottom: 0.5rem;
+  }
+  .hero-subtitle {
+    max-width: 380px;
+    margin-inline: auto;
+    font-size: clamp(1.08rem, 3.2vw, 1.26rem);
+    line-height: 1.5;
+    margin-bottom: 1.8rem;
+  }
+  .hero-actions { flex-direction: column; justify-content: center; }
+  .hero-actions .btn { width: 100%; }
+}
+
+@media (max-width: 860px) {
+  .depoimento-slide { grid-template-columns: minmax(0, 1fr); text-align: center; }
+  .depoimento-media { height: clamp(260px, 60vw, 340px); }
+  .depoimento-quote { padding-left: clamp(1.4rem, 2.25vw, 1.85rem); }
+  .depoimento-quote::before { display: none; }
+  .depoimento-quote p { max-width: none; margin-inline: auto; }
+
+  .depoimentos-controls-row { grid-template-columns: minmax(0, 1fr); }
+  .depoimentos-controls { grid-column: 1; justify-content: center; }
+}
+
+@media (max-width: 760px) {
+  .timeline { grid-template-columns: minmax(0, 1fr); row-gap: 2rem; }
+  .timeline-track { display: none; }
+  .timeline-step { padding-top: 0; padding-left: 1.5rem; }
+  .timeline-step::before { top: 0.4rem; }
+}
+
+@media (max-width: 700px) {
+  .video-grid { grid-template-columns: minmax(0, 1fr); }
+  .video-thumb { aspect-ratio: 16 / 9; }
+
+  .social-grid { grid-template-columns: minmax(0, 1fr); max-width: 460px; margin-inline: auto; }
+}
+
+@media (max-width: 560px) {
+  :root { --header-h: 68px; }
+  .brand-logo { height: 26px; }
+
+  .hero-actions { flex-direction: column; }
+  .hero-actions .btn { width: 100%; }
+
+  .timeline-trajetoria { grid-template-columns: minmax(0, 1fr); }
+
+  .caminho { min-height: 0; }
+  .caminho-body { padding: 1.75rem 1.5rem 2rem; }
+  .caminho-title { text-wrap: balance; }
+  .caminho-title br { display: none; }
+  .caminho-cta { padding-block: 0.6rem 0.7rem; }
+
+  .cta-actions { flex-direction: column; width: 100%; }
+  .cta-actions .btn { width: 100%; }
+
+  .footer-inner { flex-direction: column; align-items: flex-start; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; }
+
+  .cta-inner { text-align: center; }
+
+  .para-quem-item { flex-direction: column; gap: 0.4rem; }
+}
+
+/* EXPERIÊNCIA — mobile e tablet (<1280px). Substitui a versão anterior (foto
+   em caixa própria + carrossel separado por uma linha divisória — ficou
+   com cara de blocos soltos). Agora a foto "henrique treinador.webp" é o
+   fundo contínuo de toda a seção (reaproveitada via background-image, sem
+   trocar arquivo), e o carrossel fica integrado na parte inferior dessa
+   mesma área, sem borda nem espaço vazio entre os dois. .trajetoria-media
+   (a caixa do desktop) fica oculta aqui e volta normalmente em ≥1280px,
+   intocado. */
+@media (max-width: 1279px) {
+  .trajetoria {
+    position: relative;
+    display: flex;
+    min-height: clamp(620px, 88vh, 820px);
+    padding-block: clamp(3.5rem, 8vw, 5.5rem);
+    background-image:
+      linear-gradient(180deg, rgba(6, 7, 8, 0.6) 0%, rgba(6, 7, 8, 0.32) 28%, rgba(6, 7, 8, 0.58) 62%, rgba(6, 7, 8, 0.92) 100%),
+      radial-gradient(120% 90% at 50% 22%, transparent 30%, rgba(6, 7, 8, 0.6) 100%),
+      url("imagens/henrique treinador.webp");
+    background-size: 100% 100%, 100% 100%, cover;
+    background-position: center, center, center 22%;
+    background-repeat: no-repeat, no-repeat, no-repeat;
+  }
+
+  .trajetoria-media { display: none; }
+
+  .trajetoria > .container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .trajetoria .section-title { margin-bottom: 0; }
+
+  /* Faixa do carrossel — empurrada para o rodapé da própria área da foto
+     (margin-top: auto preenche o espaço disponível sem borda/linha nem
+     espaço vazio "perdido" no meio: é a mesma composição, só distribuída). */
+  .timeline-trajetoria {
+    display: flex;
+    grid-template-columns: none;
+    gap: 0.75rem;
+    margin-top: auto;
+    padding-top: clamp(1.5rem, 4vw, 2.5rem);
+    overflow: hidden;
+  }
+
+  /* Fallback estático (reduced-motion, ou antes do JS envolver os itens em
+     .trajetoria-track): fileira simples, arrastável à mão. */
+  .timeline-trajetoria:not(.is-marquee) {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .timeline-trajetoria:not(.is-marquee)::-webkit-scrollbar { display: none; }
+
+  /* Trilha interna — criada pelo JS, que move os 4 itens originais para
+     dentro dela e acrescenta uma cópia logo depois. Ter `width: max-content`
+     é o que torna a matemática do loop correta: antes a animação de -50%
+     era calculada sobre a largura da CAIXA visível (recortada por
+     overflow:hidden), não sobre a largura real dos 8 itens — por isso só
+     "andava" o equivalente a ~2 clubes e parecia travado/incompleto. Agora
+     -50% é metade da largura real da trilha (os 4 originais), então o loop
+     percorre os 4 clubes por completo antes de repetir, sem salto. */
+  .trajetoria-track {
+    display: flex;
+    align-items: flex-start;
+    flex-shrink: 0;
+    width: max-content;
+    gap: 0.75rem;
+  }
+  /* --trajetoria-loop-distance é medida em px pelo JS (offsetLeft do
+     primeiro item clonado) e aplicada via inline style no .timeline-
+     trajetoria. Usar a distância real em vez de -50% evita o erro de
+     meio-gap que antes causava um pulo perceptível no reinício do loop
+     (o -50% da caixa não coincidia exatamente com a largura do conjunto
+     original, por causa do gap extra entre o último item e o clone). O
+     fallback 50% só vale no instante antes do JS medir. */
+  .timeline-trajetoria.is-marquee .trajetoria-track {
+    animation: trajetoria-marquee 24s linear infinite;
+  }
+
+  /* Carrossel puramente visual enquanto o marquee está ativo: sem clique,
+     toque, arraste, seleção ou scroll manual — a animação automática é a
+     única forma de movimento, e nada do usuário pode pausá-la ou controlá-
+     la. (O fallback .timeline-trajetoria:not(.is-marquee), usado só com
+     prefers-reduced-motion, continua arrastável/acessível normalmente.) */
+  .timeline-trajetoria.is-marquee {
+    overflow-x: hidden;
+    touch-action: none;
+  }
+  .timeline-trajetoria.is-marquee .trajetoria-track,
+  .timeline-trajetoria.is-marquee .trajetoria-item {
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
+  }
+
+  .trajetoria-item {
+    flex: 0 0 auto;
+    width: clamp(128px, 33vw, 176px);
+    gap: 0.5rem;
+    padding-block: 0.5rem;
+    border-left: none;
+  }
+
+  /* Caixa do escudo com altura/largura uniformes em TODOS os itens — é o que
+     garante que escudo, nome e "clube atual" fiquem no mesmo eixo mesmo o
+     Caravaggio sendo maior: o ícone em si varia de tamanho (via
+     .trajetoria-escudo img abaixo), mas a caixa que o contém é sempre igual,
+     então o nome sempre começa na mesma altura em todos os clubes. */
+  .trajetoria-escudo {
+    width: clamp(69px, 14.6vw, 85px);
+    height: clamp(69px, 14.6vw, 85px);
+  }
+  .trajetoria-escudo img {
+    width: auto;
+    height: auto;
+    max-width: clamp(56px, 12vw, 70px);
+    max-height: clamp(56px, 12vw, 70px);
+  }
+  .trajetoria-item--current .trajetoria-escudo img {
+    max-width: clamp(69px, 14.6vw, 85px);
+    max-height: clamp(69px, 14.6vw, 85px);
+  }
+
+  /* Outros clubes ligeiramente mais discretos que o atual. */
+  .trajetoria-item:not(.trajetoria-item--current) { opacity: 0.85; }
+
+  /* Escudo limpo: sem círculo, badge, glow ou borda ao redor — inclusive no
+     :hover "preso" do toque (herdado do desktop). Sem variação de destaque
+     por item além do Caravaggio: estável e sem risco de travar o loop. */
+  .trajetoria-item .trajetoria-escudo,
+  .trajetoria-item:hover .trajetoria-escudo {
+    filter: brightness(0.95) saturate(0.9);
+    transform: none;
+    box-shadow: none;
+    border-radius: 0;
+    background: none;
+  }
+
+  /* Linha decorativa azul removida por completo. */
+  .trajetoria-item-accent { display: none; }
+
+  /* Nome do clube: toque sutil e permanente da cor principal de cada clube,
+     sem depender de estado ativo/hover (ordem fixa: 1 Arecuja, 2 Botafogo,
+     3 Grêmio, 4 Caravaggio). */
+  .trajetoria-item:hover .trajetoria-clube { color: var(--text); }
+  .trajetoria-item:nth-child(1) .trajetoria-clube { color: #c77971; }
+  .trajetoria-item:nth-child(2) .trajetoria-clube { color: #c3c7cc; }
+  .trajetoria-item:nth-child(3) .trajetoria-clube { color: #7fa8d9; }
+  .trajetoria-item:nth-child(4) .trajetoria-clube { color: #5f78ad; }
+
+  /* Nome do Caravaggio com um pouco mais de destaque que os demais. */
+  .trajetoria-item--current .trajetoria-clube { font-size: 1.22rem; }
+
+  /* "Clube atual" — texto discreto abaixo do nome, só no Caravaggio. */
+  .trajetoria-clube-current {
+    display: block;
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-align: center;
+    color: var(--blue-bright);
+    margin-top: -0.17rem;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1279px) {
+  .trajetoria-item { width: clamp(165px, 19vw, 205px); }
+}
+
+@keyframes trajetoria-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(calc(-1 * var(--trajetoria-loop-distance, 50%))); }
+}
+
+@media (max-width: 1279px) and (prefers-reduced-motion: reduce) {
+  .timeline-trajetoria.is-marquee { animation: none; }
+}
+
+/* SOBRE MIM — mobile e tablet (<1280px). A foto ("foto henrique de costas.webp",
+   mesmo arquivo, sem edição) deixa de ser uma coluna separada (.sobre-media,
+   oculta aqui) e passa a ser o fundo contínuo de toda a seção, com overlay
+   escuro para leitura — mesmo princípio já usado em #experiencia. Conteúdo
+   permanece alinhado à esquerda, por cima, com z-index. Bloco novo e
+   isolado: sobrescreve (sem editar) as regras antigas de ≤1100px para essa
+   seção. Desktop (≥1280px) continua com o grid de 2 colunas original,
+   inalterado. */
+@media (max-width: 1279px) {
+  .sobre {
+    display: block;
+    grid-template-columns: none;
+    min-height: clamp(580px, 92vh, 840px);
+    position: relative;
+    background-image:
+      linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.28) 30%, rgba(0, 0, 0, 0.62) 65%, rgba(0, 0, 0, 0.93) 100%),
+      linear-gradient(to right, rgba(0, 0, 0, 0.93) 0%, rgba(0, 0, 0, 0.8) 36%, rgba(0, 0, 0, 0.38) 68%, rgba(0, 0, 0, 0.05) 100%),
+      linear-gradient(rgba(0, 0, 0, 0.24), rgba(0, 0, 0, 0.24)),
+      radial-gradient(120% 90% at 50% 25%, transparent 32%, rgba(0, 0, 0, 0.6) 100%),
+      url("imagens/foto henrique de costas.webp");
+    background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, cover;
+    background-position: center, center, center, center, 82% top;
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+  }
+
+  .sobre-media { display: none; }
+
+  .sobre-content {
+    position: relative;
+    z-index: 1;
+    min-height: clamp(580px, 92vh, 840px);
+    padding: clamp(3rem, 8vw, 4.5rem) clamp(1.5rem, 6vw, 2.75rem);
+  }
+
+  .sobre-story { max-width: 480px; }
+  .sobre-story .sobre-text {
+    color: #a7adb7;
+    line-height: 1.68;
+    margin-bottom: 1.35rem;
+  }
+
+  /* Hierarquia editorial — trechos em azul da identidade ou branco mais
+     forte, só aqui (desktop permanece neutro, ver regra base). */
+  .sobre-highlight-blue { color: var(--blue-bright); font-weight: 600; }
+  .sobre-highlight-strong { color: var(--text); font-weight: 600; }
+}
+
+/* FEEDBACKS E RESULTADOS — mobile e tablet (<1280px). Bloco novo e isolado,
+   adicionado ao final do arquivo para vencer a cascata sobre as regras
+   antigas de ≤1440px (que também valem para notebook ≥1280px, por isso não
+   podem ser editadas) e de ≤860px (mantidas, apenas sobrepostas aqui).
+   Objetivo: aproximar jogador + card num bloco único, reduzindo os vãos
+   entre introdução → jogador → relato → controles. Desktop (≥1280px) e o
+   JS do carrossel (autoplay, swipe, teclado, dots) não são tocados. */
+@media (max-width: 1279px) {
+  .depoimentos-slider { margin-top: clamp(1.25rem, 3vw, 1.75rem); }
+
+  .depoimento-slide { grid-template-columns: minmax(0, 1fr); text-align: center; gap: 0; }
+
+  .depoimento-media { height: clamp(300px, 58vw, 400px); }
+
+  /* Card logo abaixo do jogador, com um respiro curto (~16px): sem
+     sobreposição — os pés ficam fora do card. */
+  .depoimento-quote {
+    margin-top: 1rem;
+    padding-left: clamp(1.4rem, 2.25vw, 1.85rem);
+    max-width: 480px;
+    margin-inline: auto;
+  }
+  .depoimento-quote::before { display: none; }
+  .depoimento-quote p { max-width: none; margin-inline: auto; }
+
+  .depoimento-nome { margin-top: clamp(0.6rem, 1.4vw, 0.9rem); }
+
+  .depoimentos-controls-row {
+    grid-template-columns: minmax(0, 1fr);
+    margin-top: clamp(0.85rem, 2vw, 1.15rem);
+  }
+  .depoimentos-controls { grid-column: 1; justify-content: center; }
+}
+
+@media (min-width: 768px) and (max-width: 1279px) {
+  .depoimento-media { height: clamp(360px, 34vw, 460px); }
+  .depoimento-quote { max-width: 560px; }
+}
+
+/* O JOGADOR — mobile e tablet (<1280px). Só respiro/tipografia; a estrutura
+   (grid 2 colunas acima de 980px, empilhado com divisor abaixo disso) não é
+   tocada — apenas os espaçamentos dela e o peso de alguns trechos. Bloco
+   novo, no final do arquivo, para vencer a cascata sem editar as regras
+   antigas. Desktop (≥1280px) não é tocado. */
+@media (max-width: 1279px) {
+  /* Espaço abaixo da headline (antes do divisor, quando empilhado ≤980px). */
+  .jogador-head .section-title { margin-bottom: clamp(0.25rem, 1vw, 0.5rem); }
+
+  /* Divisor: nem colado na headline, nem distante do conteúdo. */
+  .jogador-content {
+    margin-top: clamp(1.5rem, 3vw, 2rem);
+    padding-top: clamp(1.3rem, 2.4vw, 1.6rem);
+  }
+
+  /* Frase de impacto com um pouco mais de presença e respiro. */
+  .jogador-content p.jogador-kicker {
+    font-weight: 600;
+    letter-spacing: 0.015em;
+    margin-bottom: clamp(1.7rem, 3.2vw, 2.2rem);
+  }
+
+  /* Parágrafos: leitura mais clara e respirada. */
+  .jogador-content p {
+    color: #a7adb7;
+    line-height: 1.7;
+    margin-bottom: 1.3rem;
+  }
+  .jogador-content p:last-child { margin-bottom: 0; }
+
+  /* "força, velocidade..." — branco mais forte, sem usar azul. */
+  .jogador-highlight-strong { color: var(--text); font-weight: 600; }
+}
+
+/* A JOGADOR DE ELITE — mobile e tablet (<1280px). Microajustes: watermark
+   com proporção garantida explicitamente (aspect-ratio + height:auto, em
+   vez de depender só dos atributos width/height do <img>) e reposicionada;
+   respiro adicional antes da frase final. Nada de estrutura, copy, headline,
+   parágrafos ou cores de texto é tocado. Desktop (≥1280px) não é tocado. */
+@media (max-width: 1279px) {
+  .identidade-watermark {
+    width: min(80vw, 620px);
+    height: auto;
+    aspect-ratio: 846 / 808;
+    right: -46%;
+    opacity: 0.016;
+  }
+
+  .identidade-perfil-fechamento { margin-top: 0.75rem; }
+}
+
+/* SEU TREINO PRECISA FAZER SENTIDO PARA VOCÊ — mobile e tablet (<1280px).
+   A foto "henrique conversando.webp" (mesmo arquivo, sem edição) deixa de ser
+   um bloco isolado no topo (.construir-media, oculta aqui) e passa a ser o
+   fundo de toda a seção, com overlay escuro — mesmo princípio já usado em
+   #experiencia e #sobre. Ordem dos elementos (headline → cards → frase final
+   → botão) não muda, só fica tudo integrado visualmente sobre o mesmo fundo.
+   Bloco reescrito nesta rodada (substitui a versão anterior, que só
+   redimensionava a imagem como bloco separado). Desktop (≥1280px) não é
+   tocado. */
+@media (max-width: 1279px) {
+  .construir {
+    position: relative;
+    padding-block: clamp(2.25rem, 5.5vw, 3.5rem);
+    background-image:
+      linear-gradient(180deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.5) 32%, rgba(0, 0, 0, 0.72) 72%, rgba(0, 0, 0, 0.92) 100%),
+      radial-gradient(115% 85% at 72% 12%, transparent 20%, rgba(0, 0, 0, 0.66) 100%),
+      url("imagens/henrique conversando.webp");
+    background-size: 100% 100%, 100% 100%, cover;
+    background-position: center, center, 78% top;
+    background-repeat: no-repeat, no-repeat, no-repeat;
+  }
+
+  .construir-media { display: none; }
+
+  .construir-title { margin: 0 auto clamp(1rem, 2.5vw, 1.5rem); }
+
+  .construir-grid { gap: clamp(1rem, 2.5vw, 1.5rem); }
+
+  /* Cards compactos e com contraste reforçado para ler bem sobre a foto. */
+  .construir-col.construir-card { min-height: clamp(110px, 13vw, 150px); }
+  .construir-card {
+    padding: clamp(0.9rem, 1.8vw, 1.25rem) clamp(1.1rem, 1.8vw, 1.4rem);
+    background: rgba(6, 7, 8, 0.52);
+    border-color: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+
+  /* Título do card com um pouco mais de peso/presença (mesma cor/tipografia). */
+  .identidade-grupo-title { font-weight: 600; }
+
+  .construir-grid .construir-col:last-child { margin-bottom: 0.15rem; }
+  .construir-continuo { margin-top: 0.3rem; }
+
+  /* Frase final mais próxima dos cards, mantendo o respiro até o botão já
+     ajustado numa rodada anterior. */
+  .construir-final { margin-top: clamp(1rem, 2.25vw, 1.5rem); }
+}
+
+/* SEU TREINO PRECISA FAZER SENTIDO PARA VOCÊ — correção pontual da watermark
+   (mobile/tablet). Mesma trava defensiva de proporção usada em #identidade:
+   height:auto + aspect-ratio, em vez de depender só dos atributos width/
+   height do <img>. Reposicionada mais ao centro, atrás dos cards (ordem no
+   DOM já garante isso). Nada mais da seção é tocado. Desktop (≥1280px) não
+   é tocado. */
+@media (max-width: 1279px) {
+  .construir-watermark {
+    width: min(75vw, 560px);
+    height: auto;
+    aspect-ratio: 846 / 808;
+    right: -12%;
+    opacity: 0.011;
+  }
+}
+
+/* DO SEU OBJETIVO AO SEU PRÓXIMO TREINO (timeline 01→04) — mobile e tablet
+   (<1280px). Sobrescreve (sem editar) a regra antiga de ≤760px, estendendo
+   o layout empilhado até 1279px. Marcador/design não muda; só espaçamento
+   entre etapas, peso do título, e uma trilha vertical de 2 camadas (base +
+   progresso animado por scroll, ver script.js) conectando os 4 marcadores.
+   Desktop (≥1280px) continua com a timeline horizontal original, inalterada. */
+@media (max-width: 1279px) {
+  .timeline {
+    --timeline-stack-gap: 1.375rem;
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: var(--timeline-stack-gap);
+  }
+  .timeline-step { padding-top: 0; padding-left: 1.5rem; }
+  .timeline-step::before { top: 0.4rem; z-index: 1; }
+
+  /* Trilha base (camada A): discreta, sempre visível, do 1º ao 4º marcador.
+     top/height são medidos em px pelo JS (posição real dos marcadores, não
+     um cálculo aproximado), então a trilha nunca passa do último ponto. */
+  .timeline-track {
+    display: block;
+    position: absolute;
+    z-index: 0;
+    left: 6px;
+    width: 1px;
+    top: var(--timeline-track-top, 0px);
+    height: var(--timeline-track-height, 0px);
+    background: rgba(77, 163, 255, 0.18);
+  }
+
+  /* Progresso (camada B): cresce de cima para baixo conforme o scroll
+     (altura em px, definida pelo JS a cada frame). */
+  .timeline-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background: var(--blue-bright);
+    opacity: 0.85;
+    transition: height 0.15s linear;
+  }
+
+  /* Destaque sutil no marcador/número quando a etapa entra em evidência
+     (classe .is-active alternada pelo JS conforme o progresso avança). */
+  .timeline-step.is-active::before {
+    background: var(--blue-bright);
+    box-shadow: 0 0 10px rgba(77, 163, 255, 0.4);
+  }
+  .timeline-step.is-active .timeline-index { opacity: 1; }
+
+  /* Título da etapa com um pouco mais de presença (mesma fonte/tamanho/cor). */
+  .timeline-name { font-weight: 600; }
+}
+
+/* COMO VOCÊ QUER TREINAR COM A JDE? (#servicos) — mobile e tablet (<1280px).
+   Só CSS, sem JS. Bloco no fim do arquivo para vencer (sem editar) as
+   regras antigas de ≤1100px (empilhava os cards) e ≤560px. Desktop
+   (≥1280px) não é tocado. */
+@media (max-width: 1279px) {
+  /* Consultoria com destaque visual sutil (só cor/profundidade, sem texto novo). */
+  .caminho--consultoria {
+    border-color: rgba(77, 163, 255, 0.3);
+    background:
+      radial-gradient(120% 140% at 0% 0%, rgba(31, 111, 235, 0.12), transparent 58%),
+      linear-gradient(155deg, #0e1013 0%, var(--bg-secondary) 55%, #0a0c10 100%);
+    box-shadow: 0 14px 34px -24px rgba(31, 111, 235, 0.35);
+  }
+
+  /* CTA sempre na base do card (alturas iguais pelo stretch do flex/grid). */
+  .caminho-body { justify-content: flex-start; }
+  .caminho-text { margin-bottom: 1.25rem; }
+  .caminho-cta { margin-top: auto; align-self: flex-start; white-space: normal; }
+  .caminho-title { text-wrap: balance; }
+}
+
+/* Tablet: 2 cards lado a lado (sobrepõe o empilhamento antigo de ≤1100px). */
+@media (min-width: 768px) and (max-width: 1279px) {
+  .caminhos {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: none;
+    gap: clamp(1rem, 2vw, 1.5rem);
+  }
+  .caminho-body { padding: clamp(1.5rem, 2.6vw, 2rem); }
+}
+
+/* Mobile: carrossel horizontal MANUAL (scroll-snap nativo, sem autoplay, sem loop). */
+/* Elementos de apoio do carrossel mobile — ocultos por padrão (desktop/tablet). */
+.caminhos-fade,
+.caminhos-hint,
+.caminhos-progress { display: none; }
+
+@media (max-width: 1279px) {
+  .caminhos-wrap {
+    --servicos-pad: clamp(1.25rem, 4vw, 2.5rem);
+    position: relative;
+  }
+
+  .caminhos {
+    display: flex;
+    grid-template-columns: none;
+    max-width: none;
+    gap: 0.85rem;
+    margin-inline: calc(-1 * var(--servicos-pad));
+    padding-inline: var(--servicos-pad);
+    scroll-padding-inline: var(--servicos-pad);
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .caminhos::-webkit-scrollbar { display: none; }
+
+  /* ~88% da largura útil: o 2º card aparece parcialmente na lateral. */
+  .caminho {
+    flex: 0 0 88%;
+    min-width: 0;
+    scroll-snap-align: start;
+  }
+
+  /* O 2º card fica fora da área visível no início; sem isso o reveal por
+     IntersectionObserver poderia nunca disparar e deixá-lo invisível. */
+  .caminhos .caminho.reveal { opacity: 1; transform: none; }
+
+  /* Cards mais enxutos (só reduz o espaço interno em excesso). */
+  .caminho-body { padding: 1.4rem 1.25rem 1.5rem; }
+  .caminho-tag { margin-bottom: 1rem; }
+  .caminho-title { margin-bottom: 0.9rem; }
+
+  /* Sem a seta perdida no CTA (texto e linha decorativa permanecem). */
+  .caminho-cta-arrow { display: none; }
+
+  /* Micro scale durante o toque (rápido e discreto). */
+  .caminhos .caminho { transition: opacity 0.8s var(--ease), transform 0.18s ease-out, border-color 0.35s var(--ease), box-shadow 0.35s var(--ease); }
+  .caminhos .caminho:active { transform: scale(0.985); }
+
+  /* Card ativo (classe .is-active alternada pelo JS conforme o scroll):
+     reforço mínimo de borda/glow; o outro volta ao visual neutro. */
+  .caminhos .caminho.is-active {
+    border-color: rgba(77, 163, 255, 0.34);
+    box-shadow: 0 16px 36px -24px rgba(31, 111, 235, 0.42);
+  }
+  .caminhos .caminho:not(.is-active) {
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: none;
+  }
+
+  /* Fade sutil na lateral direita (continuidade); some ao chegar no fim. */
+  .caminhos-fade {
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: calc(-1 * var(--servicos-pad));
+    width: 40px;
+    background: linear-gradient(to right, transparent, rgba(6, 7, 8, 0.55));
+    pointer-events: none;
+    z-index: 2;
+    transition: opacity 0.35s var(--ease);
+  }
+  .caminhos-wrap.is-end .caminhos-fade { opacity: 0; }
+
+  /* "ARRASTE PARA VER MAIS →" — decorativo, some após o primeiro swipe. */
+  .caminhos-hint {
+    display: block;
+    margin-top: 0.65rem;
+    max-height: 1rem;
+    text-align: center;
+    font-size: 0.66rem;
+    line-height: 1.2;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #a7adb7;
+    pointer-events: none;
+    transition: opacity 0.45s var(--ease), visibility 0.45s, max-height 0.45s var(--ease), margin-top 0.45s var(--ease);
+  }
+  /* Ao sumir, o hint também colapsa (altura/margem → 0): não sobra buraco. */
+  .caminhos-hint.is-hidden { opacity: 0; visibility: hidden; max-height: 0; margin-top: 0; }
+  .caminhos-hint.is-hidden + .caminhos-progress { margin-top: 0.9rem; }
+  .caminhos-hint-arrow {
+    display: inline-block;
+    margin-left: 0.35rem;
+    color: var(--blue-bright);
+    animation: caminhos-hint-nudge 1.9s ease-in-out infinite alternate;
+  }
+
+  /* Linha de progresso: trilho discreto + barra azul que acompanha o scroll. */
+  .caminhos-progress {
+    display: block;
+    position: relative;
+    width: 64px;
+    height: 2px;
+    margin: 0.6rem auto 0;
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    pointer-events: none;
+    transition: margin-top 0.45s var(--ease);
+  }
+  .caminhos-progress-bar {
+    display: block;
+    width: 50%;
+    height: 100%;
+    background: var(--blue-bright);
+    border-radius: 2px;
+    transform: translateX(0);
+    will-change: transform;
+  }
+}
+
+@keyframes caminhos-hint-nudge {
+  from { transform: translateX(0); }
+  to { transform: translateX(8px); }
+}
+
+@media (max-width: 1279px) and (prefers-reduced-motion: reduce) {
+  .caminhos-hint-arrow { animation: none; }
+}
+
+/* NA PRÁTICA (#videos) — mobile e tablet (<1280px). Só CSS: vídeo 1 vira o
+   destaque, vídeo 2 é complementar; overlay cinematográfico e play mais
+   presente. Modal, JS, copy e desktop (≥1280px) não são tocados. */
+@media (max-width: 1279px) {
+  .videos .section-header { margin-bottom: clamp(1.25rem, 3vw, 1.75rem); }
+
+  /* Frame é o protagonista: borda discreta, sem sensação de card. */
+  .video-thumb { border-color: rgba(255, 255, 255, 0.06); }
+  .video-card { gap: 0.75rem; }
+
+  /* Overlay cinematográfico estático (preto/azulado), sob o play. */
+  .video-thumb::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+      linear-gradient(180deg, rgba(6, 7, 8, 0.12) 0%, rgba(6, 7, 8, 0.05) 40%, rgba(6, 7, 8, 0.5) 100%),
+      linear-gradient(135deg, rgba(31, 111, 235, 0.14), transparent 55%);
+    pointer-events: none;
+    transition: opacity 0.3s var(--ease);
+  }
+  .video-card:active .video-thumb::after { opacity: 0.6; }
+
+  /* Play: translúcido escuro, borda branca discreta e glow azul suave. */
+  .video-play {
+    width: 60px;
+    height: 60px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    background: rgba(6, 7, 8, 0.55);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    box-shadow: 0 0 22px -4px rgba(77, 163, 255, 0.5);
+  }
+  .video-card:active .video-play { box-shadow: 0 0 30px -2px rgba(77, 163, 255, 0.7); }
+
+  .video-category { font-size: clamp(1.45rem, 5.2vw, 1.9rem); }
+  .video-desc { font-size: 0.88rem; }
+}
+
+/* Hover real (mouse): escala bem leve no play; mobile não depende disso. */
+@media (max-width: 1279px) and (hover: hover) {
+  .video-card:hover .video-play {
+    background: rgba(6, 7, 8, 0.6);
+    transform: scale(1.05);
+    box-shadow: 0 0 32px -2px rgba(77, 163, 255, 0.7);
+  }
+  .video-card:hover .video-thumb::after { opacity: 0.6; }
+}
+
+/* Mobile e tablet: os dois vídeos com o mesmo padrão (largura total, 16:9); no tablet a largura é limitada (ver bloco TABLET no fim). */
+@media (max-width: 1279px) {
+  .video-grid { grid-template-columns: minmax(0, 1fr); gap: 1.75rem; }
+  .video-thumb { aspect-ratio: 16 / 9; height: auto; }
+}
+
+/* PERSONALIZAÇÃO EM 3 ETAPAS (#construir) — carrossel manual só no mobile
+   (<768px). Os 3 blocos viram slides de 100% da largura num scroller nativo
+   (scroll-snap, sem autoplay/loop/clones); a foto de fundo da seção e o
+   fechamento + CTA ficam fora do scroller, fixos. Controles auxiliares ficam
+   ocultos fora do mobile (tablet/desktop não são tocados). */
+.construir-counter,
+.construir-progress,
+.construir-arrow,
+.construir-dots { display: none; }
+
+@media (max-width: 1279px) {
+  /* Contador grande "01 / 03" + linha de progresso */
+  .construir-counter {
+    display: flex;
+    align-items: baseline;
+    margin: 0 0 0.6rem;
+    line-height: 1;
+  }
+  .construir-counter-num {
+    font-family: var(--font-display);
+    font-size: clamp(2.8rem, 12vw, 3.5rem);
+    color: var(--blue-bright);
+  }
+  .construir-counter-total {
+    margin-left: 0.4rem;
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    letter-spacing: 0.04em;
+    color: #8a919c;
+  }
+  .construir-progress {
+    display: block;
+    height: 3px;
+    margin-bottom: 1.25rem;
+    border-radius: 3px;
+    background: rgba(77, 163, 255, 0.14);
+    overflow: hidden;
+  }
+  .construir-progress-bar {
+    display: block;
+    width: 33.333%;
+    height: 100%;
+    border-radius: 3px;
+    background: var(--blue-bright);
+    transition: width 0.35s var(--ease);
+  }
+
+  /* Scroller: 1 slide por vez, swipe nativo + snap. */
+  .construir-stage { position: relative; }
+  .construir-steps {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .construir-steps::-webkit-scrollbar { display: none; }
+
+  /* O grid some como caixa: col1/col2 + "Planejamento" viram 3 slides irmãos
+     (mesma altura pelo stretch do flex — o mais alto define todos). */
+  .construir-carousel .construir-steps > .construir-grid { display: contents; }
+
+  .construir-carousel .construir-steps .construir-card {
+    flex: 0 0 100%;
+    min-width: 0;
+    min-height: 0;
+    margin: 0;
+    max-width: none;
+    padding: 0.25rem 3.1rem 0.5rem;
+    text-align: left;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    background: none;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    transform: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    opacity: 1;
+    justify-content: flex-start;
+  }
+
+  /* Conteúdo direto sobre a foto: título branco forte, itens legíveis. */
+  .construir-carousel .construir-steps .identidade-grupo-title {
+    font-size: clamp(1.7rem, 7vw, 2.1rem);
+    line-height: 1.05;
+    margin-bottom: 1rem;
+    color: var(--text);
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.7);
+  }
+  .construir-carousel .construir-steps .identidade-grupo-item {
+    font-size: 1.02rem;
+    line-height: 1.5;
+    margin-bottom: 0.6rem;
+    color: #c9ced6;
+    text-shadow: 0 1px 10px rgba(0, 0, 0, 0.75);
+  }
+  .construir-carousel .construir-steps .construir-continuo .identidade-grupo-item {
+    font-size: 1.2rem;
+    line-height: 1.45;
+    color: var(--text);
+  }
+
+  /* Setas laterais (sem loop: desabilitadas nas pontas) */
+  .construir-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    width: 40px;
+    height: 40px;
+    margin-top: -20px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    background: rgba(6, 7, 8, 0.6);
+    color: #fff;
+    font-size: 1rem;
+    box-shadow: 0 0 14px -4px rgba(77, 163, 255, 0.45);
+    transition: opacity 0.3s var(--ease), box-shadow 0.3s var(--ease);
+  }
+  .construir-arrow--prev { left: 0; }
+  .construir-arrow--next { right: 0; }
+  .construir-arrow:disabled {
+    opacity: 0.28;
+    box-shadow: none;
+    pointer-events: none;
+  }
+
+  /* Paginação ● ○ ○ */
+  .construir-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.15rem;
+    margin-top: 0.5rem;
+  }
+  .construir-dot {
+    width: 24px;
+    height: 24px;
+    padding: 8px;
+    background: var(--muted-dark);
+    background-clip: content-box;
+    border-radius: 50%;
+    transition: background-color 0.3s var(--ease);
+  }
+  .construir-dot.is-active { background-color: var(--blue-bright); }
+
+  /* Slides 2 e 3 ficam fora da tela: sem isso o reveal por IntersectionObserver
+     poderia nunca disparar e deixá-los invisíveis. */
+  .construir-steps .reveal { opacity: 1; transform: none; }
+}
+
+@media (max-width: 1279px) and (prefers-reduced-motion: reduce) {
+  .construir-progress-bar,
+  .construir-arrow,
+  .construir-dot { transition: none; }
+}
+
+/* #construir — composição mobile (<768px) fiel à referência: foto grande à
+   direita atrás do carrossel, lado esquerdo escuro, conteúdo alinhado à
+   esquerda, setas nas extremidades e fechamento separado por divisória.
+   Só layout (a funcionalidade do carrossel não muda). Tablet/desktop não são
+   tocados; o destaque azul do título é neutro fora do mobile. */
+.construir-title-accent { color: inherit; }
+
+@media (max-width: 1279px) {
+  /* A foto sai do fundo da seção inteira e vai para a área do carrossel. */
+  .construir {
+    background-image: none;
+    scroll-margin-top: var(--header-h);
+  }
+
+  .construir-title {
+    text-align: left;
+    margin: 0 0 1.25rem;
+    font-size: clamp(1.75rem, 8.2vw, 2.1rem);
+    line-height: 1.02;
+  }
+  .construir-title-accent { color: var(--blue-bright); }
+
+  /* Área do carrossel: espaçosa, com a foto fixa atrás (não desliza). */
+  .construir-carousel {
+    --cpad: clamp(1.25rem, 4vw, 2.5rem);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: clamp(500px, 138vw, 560px);
+    margin-inline: calc(-1 * var(--cpad));
+    padding: calc(1.6rem + 120px) var(--cpad) 0.9rem;
+    background-image:
+      linear-gradient(180deg, rgba(6, 7, 8, 1) 0%, rgba(6, 7, 8, 0) 16%, rgba(6, 7, 8, 0) 68%, rgba(6, 7, 8, 1) 100%),
+      linear-gradient(90deg, rgba(0, 0, 0, 0.94) 0%, rgba(0, 0, 0, 0.78) 38%, rgba(0, 0, 0, 0.3) 75%, rgba(0, 0, 0, 0.15) 100%),
+      url("imagens/henrique conversando.webp");
+    background-size: 100% 100%, 100% 100%, auto 135%;
+    background-position: center, center, 88% top;
+    background-repeat: no-repeat, no-repeat, no-repeat;
+  }
+
+  /* Numeração grande à esquerda + barra logo abaixo, alinhadas ao conteúdo. */
+  .construir-counter { margin: 0 0 0.45rem 3rem; }
+  .construir-counter-num { font-size: clamp(3rem, 13vw, 3.6rem); }
+  .construir-counter-total { font-size: 1.05rem; margin-left: 0.35rem; }
+  .construir-progress { width: 70%; margin: 0 0 1.5rem 3rem; }
+
+  .construir-stage { flex: 1; display: flex; flex-direction: column; }
+  .construir-steps { flex: 1; }
+
+  /* Coluna editorial à esquerda (deixa espaço para a seta esquerda). */
+  .construir-carousel .construir-steps .construir-card {
+    padding: 0.25rem 2.25rem 0.5rem 3rem;
+    text-align: left;
+  }
+  .construir-carousel .construir-steps .identidade-grupo-title {
+    font-size: clamp(1.65rem, 7.4vw, 1.9rem);
+    line-height: 1.05;
+    margin-bottom: 1.1rem;
+  }
+  .construir-carousel .construir-steps .identidade-grupo-item {
+    font-size: 1.1rem;
+    line-height: 1.45;
+    margin-bottom: 0.8rem;
+  }
+  .construir-carousel .construir-steps .construir-continuo .identidade-grupo-item {
+    max-width: 16.5rem;
+    font-size: 1.25rem;
+    line-height: 1.45;
+  }
+
+  /* Setas nas extremidades (≈16px da lateral da tela), logo abaixo da barra. */
+  .construir-arrow {
+    top: 0;
+    width: 44px;
+    height: 44px;
+    margin-top: 0;
+  }
+  .construir-arrow--prev { left: calc(16px - var(--cpad)); }
+  .construir-arrow--next { right: calc(16px - var(--cpad)); }
+
+  /* Dots no rodapé da área, com respiro do conteúdo. */
+  .construir-dots { margin-top: auto; padding-top: 1.25rem; }
+
+  /* Fechamento separado do carrossel por divisória discreta. */
+  .construir-final {
+    margin-top: 0;
+    padding-top: 1.75rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+}
+
+/* PARA QUEM É (#para-quem) — accordion esportivo SÓ no mobile (<768px).
+   Reaproveita o HTML existente (número + título + descrição): no mobile o
+   .para-quem-body some como caixa (display: contents) e vira grade de 3
+   colunas (número | título | +/−). Fora do mobile os elementos novos
+   (botão, slots de foto) ficam ocultos e nada muda. Slots de foto futuros:
+   .para-quem-hero-media (topo) e .para-quem-item-media (um por perfil),
+   ambos com o atributo hidden até as fotos existirem. */
+.para-quem-toggle { display: none; }
+.para-quem-title-accent { color: inherit; }
+
+@media (min-width: 0px) {
+  .para-quem { position: relative; }
+  .para-quem-inner { position: relative; z-index: 1; }
+
+  /* Slot da foto institucional do topo (hidden por enquanto). */
+  .para-quem-hero-media {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 22rem;
+    z-index: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    pointer-events: none;
+  }
+  .para-quem-hero-media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(6, 7, 8, 0.55) 0%, var(--bg-secondary) 100%);
+  }
+
+  .para-quem .eyebrow { color: #8a919c; }
+  .para-quem-title-accent { color: var(--blue-bright); }
+
+  .para-quem-list { border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+
+  .para-quem-item {
+    display: grid;
+    grid-template-columns: 3.9rem minmax(0, 1fr) 2.75rem;
+    align-items: center;
+    gap: 0;
+    padding: 0;
+    position: relative;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .para-quem-item:first-child { border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 0; }
+  .para-quem-body { display: contents; }
+
+  .para-quem-num {
+    grid-column: 1;
+    grid-row: 1;
+    width: auto;
+    padding-block: 0.8rem;
+    font-size: clamp(3rem, 13vw, 3.6rem);
+    line-height: 1;
+    color: rgba(77, 163, 255, 0.4);
+    transition: color 0.35s var(--ease);
+  }
+  .para-quem-item.is-open .para-quem-num { color: rgba(77, 163, 255, 0.9); }
+
+  .para-quem-body h3 {
+    grid-column: 2;
+    grid-row: 1;
+    margin: 0;
+    padding-right: 0.5rem;
+    font-size: clamp(1.3rem, 5.8vw, 1.5rem);
+    line-height: 1.1;
+    color: var(--text);
+  }
+
+  /* Botão real cobrindo a faixa inteira (toque em qualquer ponto abre). */
+  .para-quem-toggle {
+    display: block;
+    grid-column: 1 / -1;
+    grid-row: 1;
+    align-self: stretch;
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .para-quem-toggle::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    width: 40px;
+    height: 40px;
+    margin-top: -20px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background-color: rgba(6, 7, 8, 0.5);
+    background-image:
+      linear-gradient(#fff, #fff),
+      linear-gradient(#fff, #fff);
+    background-position: center, center;
+    background-repeat: no-repeat;
+    background-size: 14px 2px, 2px 14px;
+    transition: background-size 0.35s var(--ease), border-color 0.35s var(--ease), box-shadow 0.35s var(--ease);
+  }
+  .para-quem-item.is-open .para-quem-toggle::after {
+    background-size: 14px 2px, 2px 0;
+    border-color: var(--blue-bright);
+    box-shadow: 0 0 12px -4px rgba(77, 163, 255, 0.5);
+  }
+  .para-quem-toggle:focus-visible::after { outline: 2px solid var(--blue-bright); outline-offset: 3px; }
+
+  /* Linha vertical azul no item aberto. */
+  .para-quem-item::before {
+    content: "";
+    position: absolute;
+    left: -0.65rem;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--blue-bright);
+    opacity: 0;
+    transition: opacity 0.35s var(--ease);
+  }
+  .para-quem-item.is-open::before { opacity: 1; }
+
+  /* Painel: expande a altura (0fr → 1fr) com fade; fechado não ocupa espaço. */
+  .para-quem-panel {
+    grid-column: 2 / -1;
+    grid-row: 2;
+    display: grid;
+    grid-template-rows: 0fr;
+    visibility: hidden;
+    transition: grid-template-rows 0.4s var(--ease), visibility 0s linear 0.4s;
+  }
+  .para-quem-item.is-open .para-quem-panel {
+    grid-template-rows: 1fr;
+    visibility: visible;
+    transition: grid-template-rows 0.4s var(--ease), visibility 0s;
+  }
+  .para-quem-panel-inner {
+    min-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity 0.3s var(--ease);
+  }
+  .para-quem-item.is-open .para-quem-panel-inner { opacity: 1; transition-delay: 0.1s; }
+
+  .para-quem-panel-inner p {
+    max-width: 20rem;
+    margin: 0;
+    padding-bottom: 1.2rem;
+    font-size: 1.06rem;
+    line-height: 1.55;
+    color: #c3c8d0;
+  }
+
+  /* Slot de foto por perfil: some (hidden) até receber imagem; depois,
+     remover o hidden e usar img/background com object-fit: cover. */
+  .para-quem-item-media {
+    width: 100%;
+    aspect-ratio: 16 / 8;
+    margin: 0 0 1.2rem;
+    overflow: hidden;
+    border-radius: 10px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  /* Fechamento: centralizado, com divisória discreta acima. */
+  .para-quem-closing {
+    max-width: none;
+    margin: 2.25rem 0 0;
+    padding-top: 2rem;
+    border-top: 1px solid transparent;
+    text-align: center;
+    font-size: clamp(1.5rem, 6.6vw, 1.9rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .para-quem-num,
+  .para-quem-toggle::after,
+  .para-quem-item::before,
+  .para-quem-panel,
+  .para-quem-item.is-open .para-quem-panel,
+  .para-quem-panel-inner,
+  .para-quem-item.is-open .para-quem-panel-inner { transition: none; }
+}
+
+/* ==========================================================================
+   EXPERIÊNCIA DE CONTATO — overlay fullscreen: 01/02 escolha de modalidade
+   (dois painéis colados, o escolhido expande) → 02/02 formulário → WhatsApp.
+   Isolado: só existe dentro de #jde-modal; não altera nenhuma seção.
+   ========================================================================== */
+.jde-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  background:
+    radial-gradient(90% 70% at 85% 0%, rgba(31, 111, 235, 0.1), transparent 60%),
+    var(--bg);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s var(--ease), visibility 0s linear 0.35s;
+}
+.jde-modal.is-open { opacity: 1; visibility: visible; transition: opacity 0.35s var(--ease), visibility 0s; }
+
+.jde-panel {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  flex-direction: column;
+  outline: none;
+}
+
+.jde-top {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem clamp(1.25rem, 4vw, 2.5rem);
+  background: linear-gradient(180deg, var(--bg) 60%, transparent);
+}
+.jde-progress { display: flex; align-items: center; gap: 0.9rem; }
+.jde-progress-label {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  letter-spacing: 0.06em;
+  color: var(--text);
+}
+.jde-progress-track { width: 64px; height: 2px; border-radius: 2px; background: rgba(255, 255, 255, 0.12); overflow: hidden; }
+.jde-progress-bar { display: block; width: 50%; height: 100%; background: var(--blue-bright); transition: width 0.4s var(--ease); }
+
+.jde-close {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(6, 7, 8, 0.6);
+  color: #fff;
+  font-size: 1.6rem;
+  line-height: 1;
+  transition: border-color 0.3s var(--ease), color 0.3s var(--ease);
+}
+.jde-close:hover { border-color: var(--blue-bright); color: var(--blue-bright); }
+
+.jde-inner {
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0.5rem clamp(1.25rem, 4vw, 2.5rem) 2.5rem;
+  flex: 1;
+}
+
+.jde-step { display: none; }
+.jde-step.is-active { display: block; animation: jde-step-in 0.4s var(--ease); }
+@keyframes jde-step-in {
+  from { opacity: 0; transform: translateX(14px); }
+  to { opacity: 1; transform: none; }
+}
+
+.jde-eyebrow {
+  margin-bottom: 0.6rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+  color: var(--blue-bright);
+}
+.jde-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: clamp(2.1rem, 6.5vw, 3.8rem);
+  line-height: 1;
+  color: var(--text);
+  outline: none;
+}
+.jde-sub { margin-top: 0.8rem; max-width: 34rem; color: var(--muted); font-size: 1rem; line-height: 1.55; }
+
+/* ---- Etapa 01: dois painéis colados, 50/50; o escolhido expande ---- */
+.jde-modes {
+  display: flex;
+  height: clamp(300px, 50vh, 560px);
+  margin-top: clamp(1.4rem, 3vw, 2.25rem);
+  background: #000;
+  overflow: hidden;
+}
+.jde-mode {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  overflow: hidden;
+  padding: 0;
+  border: 0;
+  text-align: left;
+  color: var(--text);
+  cursor: pointer;
+  background: #000;
+  transition: flex-grow 0.42s var(--ease), box-shadow 0.42s var(--ease);
+  -webkit-tap-highlight-color: transparent;
+}
+.jde-mode + .jde-mode { border-left: 1px solid rgba(255, 255, 255, 0.14); }
+.jde-mode:focus-visible { outline: 2px solid var(--blue-bright); outline-offset: -2px; }
+
+.jde-mode-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  filter: brightness(0.55) saturate(0.8);
+  transition: filter 0.42s var(--ease), transform 0.6s var(--ease);
+}
+.jde-mode--consultoria .jde-mode-photo { object-position: 50% 18%; }
+.jde-mode--presencial .jde-mode-photo { object-position: 70% 12%; }
+
+.jde-mode-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(6, 7, 8, 0.1) 30%, rgba(6, 7, 8, 0.88) 100%);
+  transition: background 0.42s var(--ease);
+}
+.jde-mode-content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: clamp(0.9rem, 2.5vw, 2rem);
+}
+.jde-mode-tag {
+  align-self: flex-start;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--blue-bright);
+  opacity: 0;
+  max-height: 0;
+  transition: opacity 0.35s var(--ease), max-height 0.35s var(--ease);
+}
+.jde-mode-name {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-size: clamp(1.25rem, 4.6vw, 2.6rem);
+  line-height: 1.02;
+  letter-spacing: 0.01em;
+  transition: transform 0.42s var(--ease);
+}
+.jde-mode-desc {
+  max-width: 24rem;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(8px);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #c9ced6;
+  transition: opacity 0.4s var(--ease), transform 0.4s var(--ease), max-height 0.4s var(--ease);
+}
+
+/* Estado selecionado: expande, foto mais viva, linha/glow azul sutil. */
+.jde-mode.is-selected { flex-grow: 1.6; z-index: 1; box-shadow: inset 0 0 0 1px rgba(77, 163, 255, 0.45), 0 0 44px -12px rgba(31, 111, 235, 0.5); }
+.jde-mode.is-selected .jde-mode-photo { filter: brightness(0.82) saturate(1); }
+.jde-mode.is-selected .jde-mode-shade { background: linear-gradient(180deg, rgba(31, 111, 235, 0.08) 20%, rgba(6, 7, 8, 0.9) 100%); }
+.jde-mode.is-selected .jde-mode-tag { opacity: 1; max-height: 1rem; }
+.jde-mode.is-selected .jde-mode-name { transform: translateY(-2px); }
+.jde-mode.is-selected .jde-mode-desc { opacity: 1; max-height: 8em; transform: none; }
+.jde-modes.has-selection .jde-mode:not(.is-selected) .jde-mode-photo { filter: brightness(0.42) saturate(0.7); }
+@media (hover: hover) {
+  .jde-mode:not(.is-selected):hover .jde-mode-photo { filter: brightness(0.7) saturate(0.95); }
+}
+
+.jde-continue {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.4rem;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity 0.35s var(--ease), transform 0.35s var(--ease), visibility 0s linear 0.35s;
+}
+.jde-continue.is-visible { opacity: 1; visibility: visible; transform: none; transition: opacity 0.35s var(--ease), transform 0.35s var(--ease), visibility 0s; }
+.jde-continue .btn { width: min(100%, 26rem); text-align: center; }
+
+/* ---- Etapa 02: formulário ---- */
+#jde-step-2 { max-width: 760px; margin: 0 auto; }
+.jde-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding: 0.9rem 0 0.9rem 1rem;
+  border-left: 2px solid var(--blue-bright);
+}
+.jde-summary-label { display: block; font-size: 0.66rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+.jde-summary-name { font-family: var(--font-display); font-weight: 400; font-size: 1.4rem; letter-spacing: 0.02em; color: var(--text); }
+.jde-change {
+  padding: 0.6rem 0.9rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--blue-bright);
+  border-bottom: 1px solid rgba(77, 163, 255, 0.4);
+}
+
+.jde-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.1rem;
+  margin-top: 1.5rem;
+}
+.jde-field { min-width: 0; }
+.jde-field label {
+  display: block;
+  margin-bottom: 0.45rem;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #a7adb7;
+}
+.jde-field input,
+.jde-field select,
+.jde-field textarea {
+  width: 100%;
+  min-height: 52px;
+  padding: 0.85rem 1rem;
+  font: inherit;
+  font-size: 1rem;
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+  transition: border-color 0.3s var(--ease), background 0.3s var(--ease);
+}
+.jde-field textarea { min-height: 96px; resize: vertical; line-height: 1.5; }
+.jde-field input::placeholder,
+.jde-field textarea::placeholder { color: #6f7682; }
+.jde-field input:focus,
+.jde-field select:focus,
+.jde-field textarea:focus { outline: none; border-color: var(--blue-bright); background: rgba(77, 163, 255, 0.06); }
+.jde-field select {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 2.6rem;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='8' viewBox='0 0 14 8' fill='none'><path d='M1 1l6 6 6-6' stroke='%23ffffff' stroke-width='1.6'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+}
+.jde-field select option { background: #0e1013; color: #fff; }
+.jde-field.has-error input,
+.jde-field.has-error select,
+.jde-field.has-error textarea { border-color: #ff7a7a; }
+.jde-error { margin-top: 0.35rem; font-size: 0.8rem; color: #ff8a8a; }
+.jde-error:empty { display: none; }
+.jde-submit { width: 100%; text-align: center; }
+
+@media (min-width: 768px) {
+  .jde-form { grid-template-columns: 1fr 1fr; gap: 1.2rem 1.25rem; }
+  .jde-field--full { grid-column: 1 / -1; }
+  .jde-modes { height: clamp(420px, 56vh, 620px); }
+  .jde-mode.is-selected { flex-grow: 1.5; }
+  .jde-mode-name { font-size: clamp(1.8rem, 3.6vw, 3rem); }
+  .jde-mode-desc { font-size: 1rem; }
+  .jde-submit { width: auto; min-width: 22rem; }
+}
+/* Mobile: os dois painéis continuam lado a lado; o escolhido ocupa ~64%. */
+@media (max-width: 767px) {
+  .jde-mode.is-selected { flex-grow: 1.8; }
+  .jde-mode-desc { font-size: 0.8rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .jde-modal,
+  .jde-mode,
+  .jde-mode-photo,
+  .jde-mode-shade,
+  .jde-mode-tag,
+  .jde-mode-name,
+  .jde-mode-desc,
+  .jde-continue,
+  .jde-progress-bar { transition: none; }
+  .jde-step.is-active { animation: none; }
+  .jde-mode.is-selected .jde-mode-name { transform: none; }
+}
+
+/* Tela de seleção — enquadramento das fotos só no desktop: ancorar no topo
+   (0%) mantém a cabeça inteira em qualquer largura do card (neutro,
+   selecionado ou recolhido), pois o crop de `cover` só corta embaixo. */
+@media (min-width: 1280px) {
+  .jde-mode--consultoria .jde-mode-photo { object-position: 50% 0%; }
+  .jde-mode--presencial .jde-mode-photo { object-position: 70% 0%; }
+}
+
+/* Caret de texto: some em toda a interface não editável (caret é herdado),
+   e volta ao normal só nos campos onde o usuário realmente digita. Não
+   mexe em user-select (texto continua selecionável/copiável) nem em cursor. */
+html, body { caret-color: transparent; }
+input,
+textarea,
+[contenteditable="true"] { caret-color: auto; }
+
+
+
+/* TALVEZ A JDE SEJA PARA VOCÊ (#para-quem) — foto "JDE HEAD.webp" como
+   elemento de FUNDO editorial (sem faixa, sem moldura, sem ocupar altura).
+   <1280px: camada absoluta atrás do cabeçalho, deslocada para a direita, e
+   dissolvida por máscara (esquerda protege o título; embaixo some antes do
+   item 01). ≥1280px: mantém a coluna à direita da lista, só com bordas
+   dissolvidas por máscara elíptica. A foto não recebe cliques e fica atrás
+   do conteúdo (z-index -1 dentro do contexto de .para-quem-inner). */
+.para-quem-photo { pointer-events: none; }
+.para-quem-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.para-quem-photo-bg { display: none; }
+
+/* <1280px: o cabeçalho (.para-quem-intro) vira o contêiner da foto — full-bleed
+   horizontal, começando no topo da própria seção (o padding-top da seção foi
+   movido para dentro dele) e terminando junto à lista (a margem da lista foi
+   movida para o padding-bottom dele), então a altura total não muda. A foto é
+   absoluta DENTRO dele, com overflow hidden: nada pode vazar para a seção
+   anterior nem para a lista. */
+@media (max-width: 1279px) {
+  .para-quem { padding-top: 0; }
+  .para-quem-inner { position: relative; z-index: 1; --pq-pad: clamp(1.25rem, 4vw, 2.5rem); }
+
+  .para-quem-intro {
+    position: relative;
+    overflow: hidden;
+    margin-inline: calc(-1 * var(--pq-pad));
+    padding: clamp(3.25rem, 8vw, 5rem) var(--pq-pad) clamp(1.75rem, 3.5vw, 2.5rem);
+  }
+  .para-quem-intro .section-title { margin-bottom: 0; }
+  .para-quem-list { margin-top: 0; }
+
+  .para-quem-photo { display: none; }
+  .para-quem-photo-bg {
+    display: block;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    right: -1rem;
+    height: calc(100% - 0.9rem);
+    aspect-ratio: 1 / 1;
+    pointer-events: none;
+  }
+  .para-quem-photo-bg img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    -webkit-mask-image:
+      linear-gradient(to right, transparent 0%, #000 36%, #000 92%, transparent 100%),
+      linear-gradient(to bottom, transparent 0%, #000 7%, #000 58%, transparent 100%);
+    -webkit-mask-composite: source-in;
+    mask-image:
+      linear-gradient(to right, transparent 0%, #000 36%, #000 92%, transparent 100%),
+      linear-gradient(to bottom, transparent 0%, #000 7%, #000 58%, transparent 100%);
+    mask-composite: intersect;
+  }
+}
+
+
+/* Título do card Presencial: quebra controlada em "ENTRE EM CAMPO." / "O TRABALHO
+   COMEÇA AQUI." — a regra de ≤560px escondia o <br> sem deixar espaço, o que
+   colava "CAMPO.O". Aqui o <br> volta só neste título. */
+.caminho--presencial .caminho-title br { display: inline; }
+
+/* ==========================================================================
+   TABLET (768–1279px) — COMPOSIÇÃO PRÓPRIA (camada única e consolidada)
+   Mesma identidade e imagens do mobile aprovado; aqui o que muda é escala e
+   COMPOSIÇÃO (duas áreas, timeline larga, cards lado a lado). Nada fora desta
+   faixa é tocado: ≤767px (mobile) e ≥1280px (desktop) ficam como estão.
+   Sub-faixas, só onde há motivo: ≥900px (duas áreas / 2 colunas).
+   Escala em 1024px: h1 ≈71px, h2 ≈55px, h3 ≈33px, corpo ≈18px, eyebrow ≈13px,
+   container ≈90% da largura (os textos têm max-width próprio, para leitura).
+   ========================================================================== */
+@media (min-width: 768px) and (max-width: 1279px) {
+  :root {
+    --header-h: clamp(76px, 8vw, 92px);
+    --tb-pad: clamp(1.75rem, 5vw, 3.5rem);
+    --tb-h1: clamp(3.8rem, 6.9vw, 5.4rem);
+    --tb-h2: clamp(2.8rem, 5.4vw, 3.9rem);
+    --tb-h3: clamp(1.75rem, 3.2vw, 2.25rem);
+    --tb-body: clamp(1.05rem, 1.75vw, 1.2rem);
+    --tb-eyebrow: clamp(0.8rem, 1.3vw, 0.92rem);
+    --tb-btn: clamp(0.95rem, 1.5vw, 1.05rem);
+    --tb-section: clamp(4rem, 8vw, 6.5rem);
+  }
+
+  /* ---- Base ---- */
+  .container { padding-inline: var(--tb-pad); }
+  .section-title { font-size: var(--tb-h2); }
+  .section-header { max-width: 48rem; }
+  .section-subtitle { font-size: var(--tb-body); max-width: 40rem; }
+  .eyebrow { font-size: var(--tb-eyebrow); }
+  .btn { font-size: var(--tb-btn); padding: 1.1rem 2.2rem; }
+  .btn-large { font-size: calc(var(--tb-btn) + 0.05rem); padding: 1.35rem 3rem; }
+
+  /* ---- Header ---- */
+  .brand-logo { height: clamp(34px, 4.4vw, 44px); }
+  .site-header.scrolled { height: clamp(68px, 7vw, 78px); }
+  /* Menu acompanha a altura real do header rolado (sem gap); `top` entra na
+     transição existente (0.3s) para não saltar enquanto o header encolhe. */
+  .mobile-nav { transition: opacity 0.3s var(--ease), transform 0.3s var(--ease), visibility 0.3s, top 0.3s var(--ease); }
+  .site-header.scrolled .mobile-nav { top: clamp(68px, 7vw, 78px); }
+  .menu-toggle { width: 52px; height: 52px; }
+
+  /* ---- 01 Hero: bloco de conteúdo ~65% da largura, tipografia grande ---- */
+  .hero { padding-bottom: clamp(3.5rem, 7vw, 6rem); }
+  .hero-content { max-width: clamp(34rem, 70%, 50rem); margin-inline: auto; }
+  .hero-title { font-size: var(--tb-h1); max-width: none; line-height: 0.98; }
+  .hero-subtitle { font-size: var(--tb-body); max-width: 38rem; margin-inline: auto; }
+  .hero-actions { flex-direction: column; align-items: center; }
+  .hero-actions .btn { width: 100%; max-width: 30rem; padding: 1.35rem 2rem; font-size: var(--tb-btn); }
+
+  /* ---- 02 O Jogador (<900: empilhado; ≥900: duas áreas, ver abaixo) ---- */
+  .jogador { padding-block: var(--tb-section); }
+  .jogador-content p { font-size: var(--tb-body); line-height: 1.7; margin-bottom: 1.5rem; }
+  .jogador-content p:last-child { margin-bottom: 0; }
+  .jogador-content p.jogador-kicker { font-size: clamp(1.9rem, 3.6vw, 2.6rem); margin-bottom: 1.8rem; }
+
+  /* ---- 03 Identidade ---- */
+  .identidade { padding-block: var(--tb-section); }
+  .identidade-watermark { width: min(78vw, 860px); }
+  .identidade-perfil-content { max-width: none; }
+  .identidade-perfil-proposito { font-size: var(--tb-body); max-width: 40rem; }
+  .identidade-perfil-fechamento { font-size: clamp(2rem, 3.8vw, 2.8rem); max-width: 40rem; }
+
+  /* ---- 04 Personalização (3 etapas): composição ampla, foto grande à direita ---- */
+  .construir { padding-block: var(--tb-section); }
+  .construir-title { font-size: clamp(2.6rem, 5.4vw, 3.9rem); max-width: 48rem; }
+  .construir-carousel {
+    --cpad: var(--tb-pad);
+    min-height: clamp(680px, 72vw, 880px);
+    padding-top: calc(clamp(2rem, 4vw, 3rem) + 100px);
+    background-size: 100% 100%, 100% 100%, auto 112%;
+    background-position: center, center, 96% top;
+  }
+  .construir-counter { margin-left: clamp(3.5rem, 7vw, 5rem); }
+  .construir-counter-num { font-size: clamp(4rem, 7vw, 5.2rem); }
+  .construir-counter-total { font-size: clamp(1.3rem, 2.2vw, 1.7rem); }
+  .construir-progress { margin-left: clamp(3.5rem, 7vw, 5rem); width: 50%; }
+  .construir-carousel .construir-steps .construir-card { padding-left: clamp(3.5rem, 7vw, 5rem); padding-right: 42%; }
+  .construir-carousel .construir-steps .identidade-grupo-title { font-size: clamp(2.2rem, 4.2vw, 3rem); margin-bottom: 1.4rem; }
+  .construir-carousel .construir-steps .identidade-grupo-item { font-size: clamp(1.25rem, 2.2vw, 1.5rem); margin-bottom: 1rem; }
+  .construir-carousel .construir-steps .construir-continuo .identidade-grupo-item { font-size: clamp(1.5rem, 2.8vw, 2rem); max-width: 24rem; }
+  .construir-arrow { width: 54px; height: 54px; }
+  .construir-arrow--prev { left: calc(clamp(1rem, 2.5vw, 2rem) - var(--cpad)); }
+  .construir-arrow--next { right: calc(clamp(1rem, 2.5vw, 2rem) - var(--cpad)); }
+  .construir-final { padding-top: clamp(2.5rem, 4.5vw, 3.5rem); }
+  .construir-final-title { font-size: clamp(2.4rem, 5vw, 3.6rem); }
+
+  /* ---- 05 Método: timeline de largura total (números à esquerda da linha,
+          conteúdo à direita). A linha/marcadores usam --tl-x; o JS de
+          progresso continua medindo os mesmos elementos. ---- */
+  .metodo { padding-block: var(--tb-section); }
+  .metodo-intro { max-width: 52rem; }
+  .metodo-support { font-size: var(--tb-body); max-width: 40rem; }
+  .timeline {
+    --tl-x: clamp(7rem, 15%, 10rem);
+    --timeline-stack-gap: clamp(2.5rem, 5vw, 4rem);
+    max-width: none;
+  }
+  .timeline-track { left: var(--tl-x); }
+  .timeline-step {
+    display: grid;
+    grid-template-columns: var(--tl-x) minmax(0, 1fr);
+    padding-left: 0;
+  }
+  .timeline-step::before { left: calc(var(--tl-x) - 8.5px); }
+  .timeline-index {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    margin-bottom: 0;
+    padding-right: 0;
+    text-align: left;
+    font-size: clamp(3.4rem, 6vw, 4.8rem);
+  }
+  .timeline-name { grid-column: 2; padding-left: clamp(2rem, 4vw, 3rem); font-size: clamp(1.9rem, 3.5vw, 2.6rem); align-self: end; }
+  .timeline-desc { grid-column: 2; padding-left: clamp(2rem, 4vw, 3rem); max-width: 46rem; font-size: var(--tb-body); }
+
+  /* ---- 06 Serviços: <900 empilhado; ≥900 dois cards grandes lado a lado ---- */
+  .servicos { padding-block: var(--tb-section); }
+  .caminhos-wrap { --servicos-pad: 0px; }
+  .caminhos {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: clamp(1.25rem, 2.6vw, 2rem);
+    margin-inline: 0;
+    padding-inline: 0;
+    overflow: visible;
+    scroll-snap-type: none;
+  }
+  .caminho { flex: none; min-height: 0; }
+  .caminhos .caminho:not(.is-active) { border-color: rgba(255, 255, 255, 0.1); }
+  .caminho-body { padding: clamp(2.2rem, 4.4vw, 3.4rem); }
+  .caminho-tag { font-size: clamp(0.78rem, 1.2vw, 0.9rem); margin-bottom: 1.4rem; }
+  .caminho-title { font-size: clamp(2.2rem, 4vw, 3rem); max-width: none; margin-bottom: 1.3rem; }
+  .caminho-text { font-size: var(--tb-body); max-width: none; margin-bottom: 2rem; }
+  .caminho-cta { font-size: clamp(0.85rem, 1.4vw, 1rem); }
+  .caminhos-hint, .caminhos-progress, .caminhos-fade { display: none; }
+
+  /* ---- 07 Vídeos: empilhados, largura total do container ---- */
+  .videos { padding-block: var(--tb-section); }
+  .video-grid { max-width: none; gap: clamp(2rem, 4vw, 3rem); }
+  .video-play { width: 76px; height: 76px; }
+  .video-category { font-size: clamp(2.1rem, 4vw, 3rem); }
+  .video-desc { font-size: var(--tb-body); }
+
+  /* ---- 08 Feedbacks (<900: atleta grande + card; ≥900: duas áreas) ---- */
+  .depoimentos { padding-block: var(--tb-section); }
+  .depoimento-media { height: clamp(440px, 56vw, 640px); }
+  .depoimento-quote { max-width: 48rem; padding: clamp(1.8rem, 3.4vw, 2.6rem); }
+  .depoimento-quote p { font-size: clamp(1.4rem, 2.6vw, 1.95rem); }
+  .depoimento-nome { font-size: clamp(1.7rem, 3.2vw, 2.3rem); }
+  .depoimentos-arrow { width: 54px; height: 54px; }
+
+  /* ---- 09 Sobre: mesma composição do desktop — Henrique à esquerda (~43%),
+          conteúdo à direita (~57%), foto dissolvida no preto. Altura natural. ---- */
+  .sobre {
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    min-height: 0;
+    background-image: none;
+  }
+  .sobre-media { display: block; position: relative; height: auto; min-height: clamp(560px, 62vw, 760px); }
+  .sobre-photo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 38% 10%;
+  }
+  .sobre-media::after {
+    background:
+      linear-gradient(to right, transparent 52%, #000 100%),
+      linear-gradient(to top, #000 0%, transparent 24%);
+  }
+  .sobre-content {
+    min-height: 0;
+    justify-content: center;
+    padding: clamp(3.5rem, 7vw, 5.5rem) var(--tb-pad) clamp(3.5rem, 7vw, 5.5rem) clamp(0.75rem, 2.5vw, 2rem);
+  }
+  .sobre-story { max-width: 40rem; }
+  .sobre-story .sobre-text { font-size: var(--tb-body); line-height: 1.7; margin-bottom: 1.4rem; }
+
+  /* ---- 10 Experiência: mesma composição, escala maior ---- */
+  .trajetoria { min-height: clamp(680px, 80vh, 900px); padding-block: var(--tb-section); }
+  .timeline-trajetoria { gap: 1.25rem; }
+  .trajetoria-track { gap: 1.25rem; }
+  .trajetoria-item { width: clamp(230px, 25vw, 320px); }
+  .trajetoria-escudo { width: clamp(110px, 12vw, 148px); height: clamp(110px, 12vw, 148px); }
+  .trajetoria-escudo img { max-width: clamp(88px, 9.6vw, 118px); max-height: clamp(88px, 9.6vw, 118px); }
+  .trajetoria-item--current .trajetoria-escudo img { max-width: clamp(106px, 11.6vw, 144px); max-height: clamp(106px, 11.6vw, 144px); }
+  .trajetoria-clube { font-size: clamp(1.5rem, 2.8vw, 2rem); }
+  .trajetoria-item--current .trajetoria-clube { font-size: clamp(1.7rem, 3.2vw, 2.3rem); }
+  .trajetoria-clube-current { font-size: clamp(0.72rem, 1.2vw, 0.9rem); }
+
+  /* ---- 11 Redes: 3 cards iguais numa só linha ---- */
+  .social-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1rem, 2vw, 1.75rem); }
+  .social-grid > .social-card:last-child { grid-column: auto; }
+  .social-card { padding: clamp(1.25rem, 2.6vw, 2.1rem); }
+  .social-card-platform { font-size: clamp(1.3rem, 2.4vw, 1.9rem); }
+  .social-card-text { font-size: clamp(0.92rem, 1.45vw, 1.05rem); }
+  .social-stat-value { font-size: clamp(1.4rem, 2.6vw, 2rem); }
+
+  /* ---- 12 Para quem é: cabeçalho amplo + lista de largura total ---- */
+  .para-quem-inner { --pq-pad: var(--tb-pad); }
+  .para-quem-intro { min-height: clamp(18rem, 36vw, 26rem); }
+  .para-quem-list { max-width: none; margin-inline: 0; }
+  .para-quem-item { grid-template-columns: clamp(5rem, 9vw, 7rem) minmax(0, 1fr) 4rem; }
+  .para-quem-num { font-size: clamp(3.4rem, 6vw, 4.8rem); padding-block: 1.2rem; }
+  .para-quem-body h3 { font-size: clamp(1.75rem, 3.3vw, 2.4rem); }
+  .para-quem-toggle::after { width: 54px; height: 54px; margin-top: -27px; background-size: 18px 2px, 2px 18px; }
+  .para-quem-item.is-open .para-quem-toggle::after { background-size: 18px 2px, 2px 0; }
+  .para-quem-panel-inner p { font-size: clamp(1.15rem, 2vw, 1.4rem); max-width: 36rem; }
+  .para-quem-closing { font-size: clamp(2.1rem, 4.2vw, 3rem); margin-top: clamp(2.5rem, 5vw, 3.5rem); }
+
+  /* ---- 13 CTA final ---- */
+  .cta-final { padding-block: clamp(5rem, 10vw, 8rem); }
+  .cta-watermark { width: min(68vw, 760px); max-width: 780px; }
+  .cta-title { font-size: clamp(3rem, 6.4vw, 4.8rem); max-width: 54rem; }
+  .cta-highlight { font-size: clamp(1.5rem, 2.8vw, 2.1rem); max-width: 42rem; }
+  .cta-subtext { font-size: var(--tb-body); max-width: 44rem; }
+  .cta-actions .btn { max-width: 32rem; }
+  .cta-footer-text { font-size: clamp(0.85rem, 1.3vw, 1rem); max-width: 40rem; }
+}
+
+/* Tablet médio/amplo (≥900px): composições em DUAS ÁREAS. */
+@media (min-width: 900px) and (max-width: 1279px) {
+  /* O Jogador: título à esquerda (~42%), texto à direita (~58%) */
+  .jogador-grid { grid-template-columns: minmax(0, 0.42fr) minmax(0, 0.58fr); }
+  .jogador-content {
+    max-width: none;
+    margin-top: 0;
+    padding-top: 0;
+    padding-left: clamp(1.8rem, 3.4vw, 2.8rem);
+    border-top: none;
+    border-left: 1px solid var(--border);
+  }
+
+  /* Identidade: título à esquerda, perfil à direita */
+  .identidade-abertura { grid-template-columns: minmax(0, 0.42fr) minmax(0, 0.58fr); }
+
+  /* Serviços: 2 cards grandes lado a lado */
+  .caminhos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+  /* Feedbacks: atleta à esquerda, depoimento à direita */
+  .depoimento-slide {
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    align-items: center;
+    column-gap: clamp(2rem, 4vw, 3.5rem);
+    text-align: left;
+  }
+  .depoimento-media { height: clamp(500px, 52vw, 680px); }
+  .depoimento-quote { margin: 0; max-width: none; padding-left: clamp(2rem, 3.4vw, 2.8rem); }
+  .depoimento-quote::before { display: block; }
+  .depoimento-quote p { margin-inline: 0; max-width: 34ch; }
+  .depoimentos-controls-row {
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    column-gap: clamp(2rem, 4vw, 3.5rem);
+  }
+  .depoimentos-controls { grid-column: 2; justify-content: flex-start; padding-left: clamp(2rem, 3.4vw, 2.8rem); }
+}
+
+/* ==========================================================================
+   DESKTOP / NOTEBOOK (≥1280px) — CAMADA PRÓPRIA E ISOLADA
+   Mesma identidade do mobile/tablet (preto + azul elétrico, fotos integradas
+   ao fundo por fade, Bebas Neue + Inter), recomposta para a largura do
+   desktop. Tudo aqui está dentro de @media (min-width: 1280px): nada alcança
+   ≤1279px. Escala com clamp()/vw; sem zoom nem scale.
+   Notebook = 1280–1599px; desktop grande = ≥1600px (ajustes no fim).
+   ========================================================================== */
+@media (min-width: 1280px) {
+  :root { --header-h: clamp(70px, 4.6vw, 88px); }
+
+  /* ---- Transições: menos "cortes" entre seções (sem linhas divisórias) ---- */
+  .jogador,
+  .identidade,
+  .metodo,
+  .servicos,
+  .depoimentos,
+  .para-quem { border-top: 0; border-bottom: 0; }
+
+  /* ---- Header: escala/distribuição ---- */
+  .brand-logo { height: clamp(34px, 2.4vw, 46px); }
+  .nav-link { font-size: clamp(0.82rem, 0.9vw, 0.98rem); }
+  .site-header.scrolled { height: clamp(64px, 4.2vw, 76px); }
+
+  /* ---- 01 HERO: composição. Henrique grande à direita (ancorado no canto),
+          marca JDE gigante atrás dele, texto à esquerda sobre área limpa. ---- */
+  .hero { align-items: center; padding-bottom: clamp(3rem, 5vw, 5rem); min-height: 100dvh; }
+  .hero-inner { position: static; display: block; }
+  .hero-content { position: relative; z-index: 2; max-width: min(46vw, 44rem); }
+  .hero-title {
+    font-size: clamp(3.6rem, 5.4vw, 7rem);
+    max-width: none;
+    line-height: 0.96;
+  }
+  .hero-subtitle { font-size: clamp(1.1rem, 1.3vw, 1.4rem); max-width: 34rem; }
+
+  .hero-watermark {
+    display: block;
+    position: absolute;
+    z-index: 0;
+    right: clamp(1%, 4vw, 7%);
+    top: 50%;
+    transform: translateY(-50%);
+    width: min(50vw, 860px);
+    height: auto;
+    aspect-ratio: 846 / 808;
+    opacity: 0.055;
+    filter: brightness(0) invert(1);
+    pointer-events: none;
+    user-select: none;
+  }
+  .hero-figure {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: min(64vw, 1240px);
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    pointer-events: none;
+  }
+  .hero-figure-shadow { display: none; }
+  .hero-figure-glow { right: 10%; bottom: 8%; width: 60%; }
+  .hero-photo {
+    width: min(46vw, 920px);
+    max-width: none;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 0%;
+    -webkit-mask-image:
+      linear-gradient(to right, transparent 0%, #000 34%, #000 100%),
+      linear-gradient(to bottom, #000 78%, transparent 100%);
+    -webkit-mask-composite: source-in;
+    mask-image:
+      linear-gradient(to right, transparent 0%, #000 34%, #000 100%),
+      linear-gradient(to bottom, #000 78%, transparent 100%);
+    mask-composite: intersect;
+  }
+
+  /* ---- 02 O JOGADOR: editorial, título forte + texto largo ---- */
+  .jogador {
+    padding-block: clamp(5rem, 8vw, 8rem);
+    background:
+      radial-gradient(60% 70% at 88% 18%, rgba(31, 111, 235, 0.1), transparent 70%),
+      var(--bg);
+  }
+  .jogador-grid {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: clamp(3rem, 6vw, 6rem);
+    align-items: start;
+  }
+  .jogador-head .section-title { font-size: clamp(3.2rem, 4.8vw, 5.6rem); line-height: 1; }
+  .jogador-content { max-width: none; padding-left: clamp(2rem, 3vw, 3.5rem); }
+  .jogador-content p { font-size: clamp(1.05rem, 1.2vw, 1.3rem); line-height: 1.7; margin-bottom: 1.5rem; color: #a7adb7; }
+  .jogador-content p:last-child { margin-bottom: 0; }
+  .jogador-content p.jogador-kicker { font-size: clamp(2rem, 2.8vw, 3rem); line-height: 1.1; margin-bottom: 1.8rem; color: var(--text); }
+  .jogador-highlight-strong { color: var(--text); font-weight: 600; }
+
+  /* ---- 03 IDENTIDADE: marca JDE como elemento de composição ---- */
+  .identidade { padding-block: clamp(5rem, 8vw, 8rem); }
+  .identidade-watermark {
+    width: min(52vw, 900px);
+    height: auto;
+    aspect-ratio: 846 / 808;
+    right: -8%;
+    opacity: 0.045;
+  }
+  .identidade-abertura { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: clamp(3rem, 6vw, 6rem); }
+  .identidade-abertura-head .section-title { font-size: clamp(3rem, 4.6vw, 5.4rem); }
+  .identidade-perfil-content { max-width: 46rem; }
+  .identidade-perfil-proposito { font-size: clamp(1.15rem, 1.4vw, 1.5rem); max-width: none; }
+  .identidade-perfil-fechamento { font-size: clamp(2rem, 2.8vw, 3rem); max-width: none; }
+
+  /* ---- 04 PERSONALIZAÇÃO: foto de Henrique + atleta como centro da cena;
+          os blocos viram anotações com fio azul (sem caixas pesadas) ---- */
+  .construir {
+    padding-block: clamp(3rem, 4.6vw, 6rem);
+    background:
+      radial-gradient(70% 60% at 50% 42%, rgba(31, 111, 235, 0.12), transparent 66%),
+      var(--bg);
+  }
+  .construir-title { font-size: clamp(3rem, 4.6vw, 5.4rem); max-width: none; margin-bottom: clamp(1.25rem, 2vw, 2.5rem); }
+  .construir-title-accent { color: var(--blue-bright); }
+  .construir-grid {
+    grid-template-columns: minmax(0, 0.62fr) minmax(0, 1.5fr) minmax(0, 0.62fr);
+    gap: clamp(1.5rem, 3vw, 3rem);
+    align-items: center;
+  }
+  .construir-media { height: clamp(450px, 34vw, 720px); }
+  .construir-photo {
+    object-fit: cover;
+    object-position: center 6%;
+    -webkit-mask-image: radial-gradient(ellipse 68% 78% at 50% 44%, #000 56%, transparent 100%);
+    mask-image: radial-gradient(ellipse 68% 78% at 50% 44%, #000 56%, transparent 100%);
+  }
+  .construir-card,
+  .construir-col.construir-card {
+    min-height: 0;
+    padding: 0.25rem 0 0.25rem clamp(1.4rem, 1.8vw, 2rem);
+    background: none;
+    border: 0;
+    border-left: 2px solid rgba(77, 163, 255, 0.45);
+    border-radius: 0;
+    box-shadow: none;
+    transform: none;
+  }
+  .construir-card:hover { background: none; border-left-color: var(--blue-bright); box-shadow: none; transform: none; }
+  .identidade-grupo-title { font-size: clamp(1.8rem, 2.2vw, 2.6rem); margin-bottom: 1rem; }
+  .identidade-grupo-item { font-size: clamp(1.05rem, 1.2vw, 1.3rem); margin-bottom: 0.55rem; }
+  .construir-continuo { max-width: 34rem; margin: clamp(1.25rem, 2vw, 2.5rem) auto 0; text-align: left; }
+  .construir-final { margin-top: clamp(1.75rem, 3vw, 3.5rem); max-width: 56rem; gap: clamp(1.1rem, 1.6vw, 1.6rem); }
+  .construir-final-title { font-size: clamp(2.4rem, 3.4vw, 4rem); }
+
+  /* ---- 04 PERSONALIZAÇÃO — recomposição editorial (desktop ≥1280px) ----
+     Henrique vira ambiente: camada absoluta à direita da SEÇÃO inteira
+     (.construir é o contêiner posicionado), dissolvida por máscara. As três
+     etapas viram um processo numerado em linha única, sobre o fade da foto. */
+  .construir { padding-block: clamp(2.75rem, 3.6vw, 4.5rem); }
+  .construir-inner { position: static; }
+  .construir { scroll-margin-top: var(--header-h); }
+  /* Nenhum ancestral da foto é posicionado: o bloco de contenção dela é a
+     própria seção. O texto fica acima (position + z-index). */
+  .construir-title,
+  .construir-final { position: relative; z-index: 1; }
+  .construir-title { text-align: left; margin-bottom: clamp(2rem, 3vw, 3.5rem); }
+
+  .construir-media {
+    position: absolute;
+    z-index: 0;
+    top: 6%;
+    right: 0;
+    bottom: 0;
+    width: 33%;
+    height: auto;
+    pointer-events: none;
+  }
+  .construir-watermark { display: none; }
+  /* Ambiente atmosférico: azul muito escuro, difuso, sem forma visível. */
+  .construir-media-glow {
+    inset: -10% -15% 0 -10%;
+    background: radial-gradient(ellipse 62% 72% at 55% 62%, rgba(18, 56, 130, 0.2), rgba(18, 56, 130, 0.07) 48%, transparent 74%);
+    filter: none;
+    opacity: 1;
+  }
+  /* Personagens concentrados nos últimos ~25–30% da seção. O fade horizontal
+     é forte: a borda esquerda da camada (≈66% da largura) é preto limpo e a
+     foto só ganha corpo a partir de ~85%; a área dos textos (≤66%) nunca
+     recebe foto. Fade vertical dissolve a base. */
+  .construir-photo {
+    object-fit: contain;
+    object-position: 50% 100%;
+    filter: none;
+    -webkit-mask-image:
+      linear-gradient(to right, transparent 0%, #000 26%, #000 86%, transparent 100%),
+      linear-gradient(to bottom, transparent 0%, #000 12%, #000 100%);
+    -webkit-mask-composite: source-in;
+    mask-image:
+      linear-gradient(to right, transparent 0%, #000 26%, #000 86%, transparent 100%),
+      linear-gradient(to bottom, transparent 0%, #000 12%, #000 100%);
+    mask-composite: intersect;
+  }
+  /* Faixa de leitura: título, etapas e fechamento ficam na área limpa (≤66%). */
+  .construir-carousel { max-width: 66%; }
+
+  /* Processo: 01 → 02 → 03 em uma única linha, ligada por um fio sutil. */
+  .construir-steps {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 0;
+    counter-reset: etapa;
+  }
+  .construir-grid { display: contents; }
+  .construir-steps > .construir-continuo { grid-column: 3; }
+  .construir-steps .construir-card,
+  .construir-steps .construir-col.construir-card,
+  .construir-steps .construir-continuo {
+    position: relative;
+    counter-increment: etapa;
+    max-width: none;
+    margin: 0;
+    z-index: 1;
+    padding: clamp(1.4rem, 1.9vw, 2.1rem) clamp(2rem, 3.5vw, 4.5rem) 0 0;
+    border-left: 0;
+    text-align: left;
+    background: none;
+  }
+  .construir-steps .construir-card:hover,
+  .construir-steps .construir-col.construir-card:hover { background: none; }
+  .construir-steps .construir-card::before {
+    content: "0" counter(etapa);
+    display: block;
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 1.8vw, 2.1rem);
+    line-height: 1;
+    letter-spacing: 0.04em;
+    color: var(--blue-bright);
+    margin-bottom: 0.55rem;
+  }
+  .construir-steps .construir-card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: clamp(28px, 2.4vw, 40px);
+    height: 2px;
+    background: var(--blue-bright);
+  }
+  .construir-steps .construir-card:hover { border-left-color: transparent; }
+  .construir-steps .identidade-grupo-title,
+  .construir-steps .construir-card:hover .identidade-grupo-title {
+    color: var(--text);
+    font-size: clamp(1.45rem, 1.7vw, 2rem);
+    margin-bottom: 0.7rem;
+  }
+  .construir-steps .identidade-grupo-item {
+    font-size: clamp(0.95rem, 1.02vw, 1.1rem);
+    line-height: 1.5;
+    margin-bottom: 0.2rem;
+  }
+  .construir-steps .construir-continuo .identidade-grupo-item { max-width: 22rem; }
+
+  /* Fechamento: conclusão natural, alinhada à esquerda como a headline. */
+  .construir-final {
+    align-items: flex-start;
+    text-align: left;
+    max-width: none;
+    margin: clamp(1.25rem, 1.8vw, 2rem) 0 0;
+    gap: clamp(1rem, 1.3vw, 1.4rem);
+  }
+
+  /* ---- 05 MÉTODO: timeline HORIZONTAL com progressão por scroll (JS) ---- */
+  .metodo { padding-block: clamp(3.5rem, 4.8vw, 5rem); }
+  .metodo-header .section-title { font-size: clamp(2.6rem, 3.6vw, 4.4rem); }
+  .metodo-support { font-size: clamp(1.05rem, 1.15vw, 1.25rem); max-width: 40rem; margin-top: 0.9rem; }
+  /* Timeline horizontal contida e centralizada: linha, marcadores e etapas só
+     existem dentro dessa largura (a linha base usa % do próprio contêiner). */
+  .timeline { max-width: min(100%, 1080px); margin: clamp(2rem, 3vw, 3rem) auto 0; }
+  .timeline-track { top: 3.5px; height: 2px; background: rgba(255, 255, 255, 0.08); }
+  .timeline-step { padding-top: clamp(1.9rem, 2.6vw, 2.4rem); }
+  .timeline-step::before { width: 11px; height: 11px; top: -1px; left: -1px; box-shadow: none; }
+  /* Animação contínua (ciclo de 10s: 9s de preenchimento linear + 1s completo,
+     depois reset instantâneo). A linha azul é scaleX(0→1) sobre a linha base;
+     marcadores e títulos acendem nos instantes 0%, 30%, 60% e 90% do ciclo,
+     exatamente quando o preenchimento chega a cada ponto. O JS só liga/desliga
+     o play-state (--tl-play) conforme a seção está na tela. */
+  .timeline-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: var(--blue-bright);
+    transform: scaleX(0);
+    transform-origin: left center;
+    animation: tl-fill 10s linear infinite;
+    animation-play-state: var(--tl-play, paused);
+  }
+  .timeline.is-playing { --tl-play: running; }
+
+  .timeline-step:nth-child(2)::before { background: var(--blue-bright); border-color: var(--blue-bright); box-shadow: 0 0 8px rgba(77, 163, 255, 0.35); }
+  .timeline-step:nth-child(2) .timeline-name { color: var(--blue-bright); }
+  .timeline-step:nth-child(3)::before { animation: tl-m2 10s linear infinite; animation-play-state: var(--tl-play, paused); }
+  .timeline-step:nth-child(4)::before { animation: tl-m3 10s linear infinite; animation-play-state: var(--tl-play, paused); }
+  .timeline-step:nth-child(5)::before { animation: tl-m4 10s linear infinite; animation-play-state: var(--tl-play, paused); }
+  .timeline-step:nth-child(3) .timeline-name { animation: tl-n2 10s linear infinite; animation-play-state: var(--tl-play, paused); }
+  .timeline-step:nth-child(4) .timeline-name { animation: tl-n3 10s linear infinite; animation-play-state: var(--tl-play, paused); }
+  .timeline-step:nth-child(5) .timeline-name { animation: tl-n4 10s linear infinite; animation-play-state: var(--tl-play, paused); }
+  .timeline-index { font-size: clamp(2.6rem, 3.2vw, 3.5rem); margin-bottom: 0.5rem; }
+  .timeline-name { font-size: clamp(1.25rem, 1.5vw, 1.7rem); margin-bottom: 0.3rem; }
+  .timeline-desc { font-size: clamp(0.92rem, 1vw, 1.05rem); max-width: 17rem; }
+
+  /* ---- 06 SERVIÇOS: dois cards grandes, CTA na base, Consultoria em destaque ---- */
+  .servicos { padding-block: clamp(5rem, 8vw, 8rem); }
+  .caminhos { gap: clamp(1.5rem, 2.4vw, 2.5rem); }
+  .caminho { min-height: clamp(380px, 28vw, 500px); }
+  .caminho-body { padding: clamp(2.6rem, 3.8vw, 4.5rem); justify-content: flex-start; }
+  .caminho-title { font-size: clamp(2.2rem, 2.9vw, 3.4rem); max-width: none; }
+  .caminho-text { font-size: clamp(1.05rem, 1.15vw, 1.25rem); max-width: 30rem; }
+  .caminho-cta { margin-top: auto; align-self: flex-start; }
+  .caminho--consultoria {
+    border-color: rgba(77, 163, 255, 0.3);
+    background:
+      radial-gradient(120% 140% at 0% 0%, rgba(31, 111, 235, 0.12), transparent 58%),
+      linear-gradient(155deg, #0e1013 0%, var(--bg-secondary) 55%, #0a0c10 100%);
+    box-shadow: 0 14px 34px -24px rgba(31, 111, 235, 0.35);
+  }
+
+  /* ---- 07 VÍDEOS: duas peças grandes, overlay cinematográfico e play forte ---- */
+  .videos { padding-block: clamp(5rem, 8vw, 8rem); }
+  .video-grid { gap: clamp(2rem, 3vw, 3.5rem); }
+  .video-thumb { aspect-ratio: 16 / 9; border-radius: 18px; border-color: rgba(255, 255, 255, 0.06); }
+  .video-thumb::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+      linear-gradient(180deg, rgba(6, 7, 8, 0.12) 0%, rgba(6, 7, 8, 0.05) 40%, rgba(6, 7, 8, 0.5) 100%),
+      linear-gradient(135deg, rgba(31, 111, 235, 0.14), transparent 55%);
+    pointer-events: none;
+    transition: opacity 0.3s var(--ease);
+  }
+  .video-card:hover .video-thumb::after { opacity: 0.55; }
+  .video-play {
+    width: clamp(72px, 5vw, 92px);
+    height: clamp(72px, 5vw, 92px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    background: rgba(6, 7, 8, 0.55);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    box-shadow: 0 0 22px -4px rgba(77, 163, 255, 0.5);
+  }
+  .video-card:hover .video-play {
+    background: rgba(6, 7, 8, 0.6);
+    transform: scale(1.06);
+    box-shadow: 0 0 34px -2px rgba(77, 163, 255, 0.7);
+  }
+  .video-category { font-size: clamp(1.8rem, 2.4vw, 2.8rem); }
+  .video-desc { font-size: clamp(1rem, 1.1vw, 1.2rem); }
+
+  /* ---- 08 FEEDBACKS: atleta grande + depoimento ao lado, controles junto ---- */
+  .depoimentos {
+    padding-block: clamp(3.5rem, 5vw, 6rem);
+    background:
+      radial-gradient(90% 80% at 12% 60%, rgba(31, 111, 235, 0.07), transparent 65%),
+      var(--bg-secondary);
+  }
+  .depoimento-slide { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: clamp(3rem, 5vw, 6rem); }
+  .depoimento-media { height: clamp(440px, 33vw, 640px); }
+  .depoimentos .section-header { margin-bottom: clamp(0.75rem, 1.2vw, 1.5rem); }
+  .depoimentos-slider { margin-top: clamp(1rem, 1.6vw, 2rem); }
+  .depoimentos-controls-row { margin-top: clamp(0.9rem, 1.4vw, 1.5rem); }
+  .depoimento-quote p { font-size: clamp(1.5rem, 2.1vw, 2.3rem); max-width: 34ch; }
+  .depoimento-nome { font-size: clamp(1.8rem, 2.4vw, 2.8rem); }
+  .depoimentos-controls-row { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: clamp(3rem, 5vw, 6rem); }
+
+  /* ---- 09 SOBRE: Henrique grande à esquerda, fade para o preto, texto à direita ---- */
+  .sobre-photo { object-fit: cover; object-position: 38% 8%; }
+  .sobre-media::after {
+    background:
+      linear-gradient(to right, transparent 55%, #000 100%),
+      linear-gradient(to top, #000 0%, transparent 22%);
+  }
+  .sobre-content { padding: clamp(4rem, 7vw, 8rem); }
+  .sobre-content .section-title { font-size: clamp(3rem, 4.4vw, 5rem); }
+  .sobre-story { max-width: 44rem; }
+  .sobre-story .sobre-text { font-size: clamp(1.05rem, 1.2vw, 1.3rem); line-height: 1.7; margin-bottom: 1.2rem; color: #a7adb7; }
+  .sobre-highlight-blue { color: var(--blue-bright); font-weight: 600; }
+  .sobre-highlight-strong { color: var(--text); font-weight: 600; }
+
+  /* ---- 10 EXPERIÊNCIA: uma cena só — foto de fundo, título e os 4 clubes
+          distribuídos; Caravaggio destacado como clube atual ---- */
+  .trajetoria {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: clamp(720px, 88vh, 980px);
+    padding-block: clamp(5rem, 8vw, 8rem);
+    background-image:
+      linear-gradient(180deg, rgba(6, 7, 8, 0.62) 0%, rgba(6, 7, 8, 0.3) 32%, rgba(6, 7, 8, 0.72) 72%, rgba(6, 7, 8, 0.96) 100%),
+      radial-gradient(120% 90% at 50% 30%, transparent 35%, rgba(6, 7, 8, 0.7) 100%),
+      url("imagens/henrique treinador.webp");
+    background-size: 100% 100%, 100% 100%, cover;
+    background-position: center, center, center 22%;
+    background-repeat: no-repeat, no-repeat, no-repeat;
+  }
+  .trajetoria > .container { width: 100%; }
+  .trajetoria-media { display: none; }
+  .trajetoria .section-title { font-size: clamp(3rem, 4.6vw, 5.4rem); margin-bottom: 0; }
+  .timeline-trajetoria { margin-top: clamp(3.5rem, 7vw, 7rem); gap: clamp(1.5rem, 3vw, 3rem); }
+  .trajetoria-item { border-left: 0; padding-inline: 0; }
+  .trajetoria-escudo { width: clamp(110px, 10vw, 170px); height: clamp(110px, 10vw, 170px); }
+  .trajetoria-escudo img { width: auto; height: auto; max-width: clamp(96px, 8.6vw, 148px); max-height: clamp(96px, 8.6vw, 148px); }
+  .trajetoria-item--current .trajetoria-escudo img { max-width: clamp(116px, 10vw, 170px); max-height: clamp(116px, 10vw, 170px); }
+  .trajetoria-clube { font-size: clamp(1.3rem, 1.7vw, 2.1rem); }
+  .trajetoria-item--current .trajetoria-clube { font-size: clamp(1.45rem, 1.9vw, 2.3rem); }
+  .trajetoria-item-accent { display: none; }
+  .trajetoria-clube-current {
+    display: block;
+    margin-top: -0.15rem;
+    font-size: clamp(0.72rem, 0.8vw, 0.9rem);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-align: center;
+    color: var(--blue-bright);
+  }
+
+  /* ---- 11 REDES: 3 cards iguais, cor da plataforma sutil já no estado neutro ---- */
+  .social-grid { gap: clamp(1.25rem, 2.2vw, 2.25rem); }
+  .social-card { padding: clamp(2rem, 2.4vw, 3rem); }
+  .social-card-platform { font-size: clamp(1.6rem, 1.9vw, 2.3rem); }
+  .social-card-text { font-size: clamp(1rem, 1.05vw, 1.15rem); }
+  .social-stat-value { font-size: clamp(1.7rem, 2vw, 2.4rem); }
+
+  .social-card--instagram::before { opacity: 0.34; }
+  .social-card--instagram { border-color: rgba(214, 88, 159, 0.135); box-shadow: 0 10px 24px -18px rgba(193, 53, 132, 0.18); }
+  .social-card--instagram .social-card-icon { border-color: rgba(214, 102, 163, 0.21); color: #e097bb; }
+  .social-card--instagram .social-card-cta { color: #e07fb1; }
+  .social-card--youtube::before { opacity: 0.3; }
+  .social-card--youtube { border-color: rgba(255, 90, 90, 0.12); box-shadow: 0 10px 24px -18px rgba(255, 40, 40, 0.14); }
+  .social-card--youtube .social-card-icon { border-color: rgba(255, 90, 90, 0.18); color: #ff8080; }
+  .social-card--youtube .social-card-cta { color: #ff7a7a; }
+  .social-card--tiktok::before { opacity: 0.3; }
+  .social-card--tiktok { border-color: rgba(37, 244, 238, 0.11); box-shadow: 0 10px 24px -18px rgba(254, 44, 85, 0.12); }
+  .social-card--tiktok .social-card-icon { border-color: rgba(37, 244, 238, 0.18); color: #7be8e4; }
+  .social-card--tiktok .social-card-cta { color: #7be8e4; }
+  /* No hover a identidade ganha intensidade (regras :hover originais, mais específicas). */
+  .social-card--instagram:hover::before,
+  .social-card--youtube:hover::before,
+  .social-card--tiktok:hover::before { opacity: 1; }
+
+  /* ---- 12 PARA QUEM É: Henrique à esquerda (confinado à seção), accordion
+          largo à direita ---- */
+  .para-quem { padding-block: clamp(5rem, 8vw, 8rem); }
+  .para-quem-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    column-gap: clamp(3rem, 6vw, 6rem);
+    align-items: start;
+  }
+  .para-quem-inner > * { grid-column: 2; }
+  /* A foto sobe até o topo da seção (margem negativa = padding da seção) e é
+     um pouco maior que a coluna (vaza para a esquerda e sob o texto, onde já
+     está dissolvida). Máscara dissolve topo, esquerda, direita e base no fundo
+     da seção: não há borda de retângulo. Texto fica acima (z-index). */
+  /* A foto virou o FUNDO da seção inteira (sem coluna/contêiner). O elemento
+     <img> da coluna some; a imagem vive em background-image de .para-quem,
+     ancorada à esquerda, com gradientes por cima: esquerda visível, centro
+     escurecendo, direita quase preta e base dissolvendo em preto. */
+  .para-quem-photo { display: none; }
+  .para-quem { background-color: var(--bg-secondary); background-image: none; }
+  .para-quem-inner { position: relative; z-index: 1; }
+  /* Camada fixa da foto: altura = seção com itens fechados (--pq-h, medida em
+     JS), então abrir/fechar o accordion não altera escala nem posição. */
+  .para-quem::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--pq-h, 100%);
+    z-index: 0;
+    pointer-events: none;
+    background-image:
+      linear-gradient(to bottom, rgba(12, 14, 17, 0) 0%, rgba(12, 14, 17, 0) 58%, rgba(12, 14, 17, 0.55) 78%, rgba(12, 14, 17, 0.9) 92%, #0c0e11 100%),
+      linear-gradient(to right, rgba(12, 14, 17, 0) 0%, rgba(12, 14, 17, 0) 22%, rgba(12, 14, 17, 0.45) 36%, rgba(12, 14, 17, 0.82) 48%, rgba(12, 14, 17, 0.96) 58%, #0c0e11 68%, #0c0e11 100%),
+      url("imagens/JDE HEAD.webp");
+    background-repeat: no-repeat, no-repeat, no-repeat;
+    background-size: 100% 100%, 100% 100%, auto 118%;
+    background-position: 0 0, 0 0, -11.5vw 0;
+  }
+  .para-quem-intro,
+  .para-quem-list,
+  .para-quem-closing { position: relative; z-index: 1; }
+  .para-quem-inner > .para-quem-closing { grid-column: 2; }
+  .para-quem .section-title { font-size: clamp(3rem, 4.4vw, 5rem); }
+  .para-quem-list { max-width: none; }
+  .para-quem-item { grid-template-columns: clamp(5rem, 6vw, 7rem) minmax(0, 1fr) 4rem; }
+  .para-quem-num { font-size: clamp(3.6rem, 4.4vw, 5rem); }
+  .para-quem-body h3 { font-size: clamp(1.7rem, 2.2vw, 2.6rem); }
+  .para-quem-toggle::after { width: 52px; height: 52px; margin-top: -26px; background-size: 18px 2px, 2px 18px; }
+  .para-quem-item.is-open .para-quem-toggle::after { background-size: 18px 2px, 2px 0; }
+  .para-quem-toggle:hover::after { border-color: var(--blue-bright); }
+  .para-quem-panel-inner p { font-size: clamp(1.1rem, 1.25vw, 1.4rem); max-width: 34rem; }
+  .para-quem-closing { text-align: left; font-size: clamp(2rem, 2.8vw, 3.2rem); margin-top: clamp(2.5rem, 4vw, 4rem); }
+
+  /* ---- 13 CTA FINAL: encerramento forte, marca JDE centralizada ---- */
+  .cta-final { padding-block: clamp(7rem, 10vw, 12rem); }
+  .cta-watermark {
+    inset: auto;
+    top: 50%;
+    left: 50%;
+    width: clamp(420px, 32vw, 640px);
+    height: auto;
+    max-width: none;
+    margin: 0;
+    transform: translate(-50%, -50%);
+    opacity: 0.05;
+  }
+  .cta-title { font-size: clamp(3.4rem, 5.2vw, 6.4rem); }
+  .cta-highlight { font-size: clamp(1.4rem, 1.9vw, 2.2rem); }
+  .cta-subtext { font-size: clamp(1.05rem, 1.2vw, 1.3rem); max-width: 46rem; }
+}
+
+/* Desktop grande (≥1600px): mais respiro e cartões/texto proporcionais. */
+@media (min-width: 1600px) {
+  .hero-actions .btn { width: 320px; }
+  .caminho-body { padding: clamp(3.4rem, 3.4vw, 5rem); }
+  .cta-actions .btn { width: 420px; }
+}
+
+/* Timeline do Método (desktop ≥1280px): keyframes do loop contínuo. Ciclo de
+   10s: a linha chega ao 04 em 9s (90%) e fica completa por 1s. */
+@media (min-width: 1280px) {
+  @keyframes tl-fill { 0% { transform: scaleX(0); } 90%, 100% { transform: scaleX(1); } }
+
+  @keyframes tl-m2 {
+    0%, 28% { background: var(--bg-secondary); border-color: rgba(255, 255, 255, 0.22); box-shadow: none; }
+    30%, 100% { background: var(--blue-bright); border-color: var(--blue-bright); box-shadow: 0 0 8px rgba(77, 163, 255, 0.35); }
+  }
+  @keyframes tl-m3 {
+    0%, 58% { background: var(--bg-secondary); border-color: rgba(255, 255, 255, 0.22); box-shadow: none; }
+    60%, 100% { background: var(--blue-bright); border-color: var(--blue-bright); box-shadow: 0 0 8px rgba(77, 163, 255, 0.35); }
+  }
+  @keyframes tl-m4 {
+    0%, 88% { background: var(--bg-secondary); border-color: rgba(255, 255, 255, 0.22); box-shadow: none; }
+    90%, 100% { background: var(--blue-bright); border-color: var(--blue-bright); box-shadow: 0 0 8px rgba(77, 163, 255, 0.35); }
+  }
+  @keyframes tl-n2 { 0%, 28% { color: var(--text); } 30%, 100% { color: var(--blue-bright); } }
+  @keyframes tl-n3 { 0%, 58% { color: var(--text); } 60%, 100% { color: var(--blue-bright); } }
+  @keyframes tl-n4 { 0%, 88% { color: var(--text); } 90%, 100% { color: var(--blue-bright); } }
+}
+
+/* Sem movimento: timeline estática, completa e legível. */
+@media (min-width: 1280px) and (prefers-reduced-motion: reduce) {
+  .timeline-progress { animation: none; transform: scaleX(1); }
+  .timeline-step::before { animation: none !important; background: var(--blue-bright); border-color: var(--blue-bright); }
+  .timeline-step .timeline-name { animation: none !important; color: var(--blue-bright); }
+}
+
+/* ==========================================================================
+   NA PRÁTICA (#videos) — cena própria, em todas as larguras.
+   Fundo levemente azulado/grafite; o topo nasce do preto da seção anterior
+   (gradiente) e a base volta ao preto, sem linha nem faixa. O vazio entre o
+   fim dos cards de Serviços e o início do conteúdo foi reduzido só no
+   padding-top desta seção.
+   ========================================================================== */
+.videos {
+  background:
+    linear-gradient(to bottom, var(--bg) 0, rgba(6, 7, 8, 0) clamp(4rem, 9vw, 8rem)),
+    linear-gradient(to top, var(--bg) 0, rgba(6, 7, 8, 0) clamp(3rem, 6vw, 5rem)),
+    radial-gradient(ellipse at 50% 22%, rgba(31, 111, 235, 0.075) 0%, rgba(10, 18, 30, 0.045) 35%, transparent 65%),
+    radial-gradient(110% 90% at 10% 100%, rgba(31, 111, 235, 0.045), transparent 55%),
+    #090b0f;
+}
+@media (max-width: 767px) {
+  .videos { padding-top: 2.75rem; }
+}
+@media (min-width: 768px) and (max-width: 1279px) {
+  .videos { padding-top: clamp(3rem, 6vw, 4.75rem); }
+}
+@media (min-width: 1280px) {
+  .videos { padding-top: clamp(3.75rem, 6vw, 6rem); }
+}
+/* EXPERIÊNCIA (#trajetoria) — microajuste de enquadramento da foto de fundo.
+   `cover` já é o menor zoom que cobre a seção sem faixa vazia, então o zoom
+   não muda; só sobe a janela vertical (mostra mais do topo da foto, com a
+   cabeça do Henrique mais abaixo da zona escurecida). Mobile (<768px) fica
+   como está. Overlays, altura, título e logos não são tocados. */
+@media (min-width: 768px) and (max-width: 1279px) {
+  .trajetoria { background-position: center, center, center 16%; }
+}
+@media (min-width: 1280px) {
+  .trajetoria { background-position: center, center, center 15%; }
+}
