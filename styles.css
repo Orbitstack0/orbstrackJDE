@@ -4621,6 +4621,16 @@ textarea,
    de duas hastes; o estado fechado não é alterado. */
 @media (max-width: 767px) {
   .hero { padding-bottom: 1.9rem; }
+  /* Hero mais alto (112 dvh). O conteúdo é alinhado ao fundo (flex-end), então
+     desce junto. Foto e gradiente continuam dimensionados pela altura anterior
+     (100 dvh) para o enquadramento do Henrique não mudar; abaixo disso a seção
+     é o próprio --bg, igual ao fim do gradiente. */
+  .hero {
+    min-height: 112vh;
+    min-height: 112dvh;
+    background-size: 100% 100vh, auto 100vh;
+    background-size: 100% 100dvh, auto 100dvh;
+  }
   .menu-toggle span { flex: none; }
   .menu-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; transform: scaleX(0); }
 }
