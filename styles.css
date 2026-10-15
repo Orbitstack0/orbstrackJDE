@@ -4614,3 +4614,13 @@ textarea,
 @media (min-width: 1280px) {
   .trajetoria { background-position: center, center, center 15%; }
 }
+/* MOBILE (<=767px) — hero: conteúdo um pouco mais baixo (libera o rosto); a
+   altura da seção (min-height: 100dvh) não muda, só o respiro inferior
+   (padding-bottom 3.1rem -> 1.9rem). Hamburger aberto: barra central some por
+   completo (opacity + scaleX) e as barras não encolhem no flex, garantindo o X
+   de duas hastes; o estado fechado não é alterado. */
+@media (max-width: 767px) {
+  .hero { padding-bottom: 1.9rem; }
+  .menu-toggle span { flex: none; }
+  .menu-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+}
