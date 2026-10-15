@@ -1005,3 +1005,230 @@
     });
   }
 })();
+
+/* ==========================================================================
+   INTRO CINEMATOGRÁFICA — código isolado (ver html.jde-intro-on no CSS).
+   Uma vez por sessão (sessionStorage "jogadorEliteIntroSeen"); ~15s; PULAR.
+   Fallback: erro/autoplay bloqueado/demora => encerra e mostra o site.
+   Para testar de novo: sessionStorage.removeItem("jogadorEliteIntroSeen")
+   ========================================================================== */
+(function () {
+  "use strict";
+
+  var INTRO_KEY = "jogadorEliteIntroSeen";
+  /* Trailer oficial em duas versões; só UMA é carregada, escolhida pela orientação
+     real da viewport no início da intro e mantida até o fim (sem troca na rotação). */
+  var INTRO_VIDEO_SRC_LANDSCAPE = "Vídeos/intro-jde-horizontal.mp4";
+  var INTRO_VIDEO_SRC_PORTRAIT = "Vídeos/intro-jde-vertical.mp4";
+  var INTRO_VIDEO_START = 0; /* segundos do início do arquivo a pular (novo trailer: nenhum) */
+  var root = document.documentElement;
+  var intro = document.getElementById("jde-intro");
+  if (!intro) return;
+
+  function clearFailsafe() {
+    if (window.__jdeIntroFailsafe) { window.clearTimeout(window.__jdeIntroFailsafe); window.__jdeIntroFailsafe = null; }
+  }
+
+  /* Emergência: se algo travar, encerra pelo caminho normal (finish) — e não só tira a
+     classe, o que deixaria o site inert. O relógio é re-armado quando o vídeo realmente toca. */
+  function armFailsafe(ms) {
+    clearFailsafe();
+    window.__jdeIntroFailsafe = window.setTimeout(function () { finish(true); }, ms);
+  }
+
+  if (!root.classList.contains("jde-intro-on")) { clearFailsafe(); return; }
+
+  var video = document.getElementById("jde-intro-video");
+  var skipBtn = document.getElementById("jde-intro-skip");
+  var dark = intro.querySelector(".jde-intro-dark");
+  var msgs = {};
+  intro.querySelectorAll("[data-intro-msg]").forEach(function (el) { msgs[el.getAttribute("data-intro-msg")] = el; });
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var timers = [];
+  var ended = false;
+  var started = false;
+
+  try { window.sessionStorage.setItem(INTRO_KEY, "1"); } catch (e) {}
+
+  function later(ms, fn) { timers.push(window.setTimeout(fn, ms)); }
+  function show(el) { if (el) { el.classList.remove("is-out"); el.classList.add("is-in"); } }
+  function hide(el) { if (el) { el.classList.remove("is-in"); el.classList.add("is-out"); } }
+
+  /* Fundo do site fica inerte durante a intro (foco/teclado não escapam). */
+  function setInert(on) {
+    Array.prototype.forEach.call(document.body.children, function (el) {
+      if (el === intro || el.tagName === "SCRIPT") return;
+      if (on) { el.setAttribute("inert", ""); } else { el.removeAttribute("inert"); }
+    });
+  }
+  setInert(true);
+  armFailsafe(14000);   /* cobre a fase anterior ao play (o limite de carregamento é 10s) */
+
+  function onKey(e) { if (e.key === "Escape") finish(true); }
+
+  function cleanup() {
+    root.classList.remove("jde-intro-on");
+    setInert(false);
+    if (video) { video.pause(); video.removeAttribute("src"); video.load(); }
+    document.removeEventListener("keydown", onKey);
+  }
+
+  function finish(fast) {
+    if (ended) return;
+    ended = true;
+    timers.forEach(window.clearTimeout);
+    timers = [];
+    clearFailsafe();
+    if (fast) intro.classList.add("is-fast");
+    intro.classList.add("is-leaving");
+    window.setTimeout(cleanup, fast ? 380 : 1500);
+  }
+
+  document.addEventListener("keydown", onKey);
+  if (skipBtn) {
+    skipBtn.addEventListener("click", function () { finish(true); });
+  }
+
+  function runTimeline() {
+    if (started || ended) return;
+    started = true;
+    /* Trailer ~23s. 0–2s só vídeo; mensagens com ~1s de respiro entre elas (2–17s).
+       O fechamento é ancorado no fim REAL do vídeo (duration): o trailer segue
+       tocando e vai sumindo (últimos ~3s), a marca fica isolada e a intro dissolve
+       sobre o site (crossfade). O vídeo NUNCA é pausado antes de ficar invisível. */
+    var dur = isFinite(video.duration) && video.duration > 0 ? video.duration : 23;
+    var closeAt = Math.max(dur - INTRO_VIDEO_START - 2.1, 18) * 1000;   /* últimos ~2s do trailer */
+    armFailsafe(closeAt + 9000);   /* timeline normal termina em closeAt + ~5,9s */
+    later(2000, function () { show(msgs["1"]); });
+    later(6000, function () { hide(msgs["1"]); });
+    later(7000, function () { show(msgs["2"]); });
+    later(12000, function () { hide(msgs["2"]); });
+    later(13000, function () { show(msgs["3"]); });
+    later(17000, function () { hide(msgs["3"]); });
+    later(closeAt, function () { intro.classList.add("is-closing"); if (dark) dark.classList.add("is-dark"); });
+    later(closeAt + 1700, function () { show(msgs.brand); });                 /* logo entra com o vídeo já escuro (1,4s) */
+    later(closeAt + 4400, function () { hide(msgs.brand); finish(false); });  /* logo plena ~1,3s; saída da logo + crossfade juntos (~1,4s) */
+  }
+
+  if (reduced || !video) {
+    /* Versão curta e estática: só a identidade, sem vídeo. */
+    show(msgs.brand);
+    later(1800, function () { finish(false); });
+    return;
+  }
+
+  /* Vídeo só é baixado agora (nunca em sessões que pulam a intro). */
+  video.muted = true;
+  /* Só depois de metadata (-> seek, se INTRO_VIDEO_START > 0) -> play real é que o
+     vídeo aparece (is-ready) e a timeline começa. */
+  var seekDone = false;
+  video.addEventListener("loadedmetadata", function () {
+    if (INTRO_VIDEO_START > 0) {
+      try { video.currentTime = INTRO_VIDEO_START; } catch (e) { seekDone = true; startPlayback(); }
+    } else {
+      seekDone = true;
+      startPlayback();
+    }
+  }, { once: true });
+  video.addEventListener("seeked", function () {
+    if (seekDone) return;
+    seekDone = true;
+    startPlayback();
+  });
+  video.addEventListener("playing", function () {
+    if (!seekDone || started) return;
+    video.classList.add("is-ready");
+    runTimeline();
+  });
+  video.addEventListener("error", function () { finish(true); });
+  later(10000, function () { if (!started) finish(true); });
+
+  function startPlayback() {
+    var p = video.play();
+    if (p && typeof p.catch === "function") { p.catch(function () { finish(true); }); }
+  }
+
+  video.src = window.matchMedia("(orientation: portrait)").matches ? INTRO_VIDEO_SRC_PORTRAIT : INTRO_VIDEO_SRC_LANDSCAPE;
+  video.load();
+})();
+
+/* ==========================================================================
+   CONVITE "TREINO COMPLETO COM DAVI" — código isolado (independente da intro).
+   O CTA é um link (nova aba) para o YouTube; sem player local.
+   sessionStorage "jogadorEliteDaviInviteSeen" (gravada ao fechar ou clicar no CTA).
+   Para testar de novo: sessionStorage.removeItem("jogadorEliteDaviInviteSeen")
+   ========================================================================== */
+(function () {
+  "use strict";
+
+  var INVITE_KEY = "jogadorEliteDaviInviteSeen";
+  var PHOTO_SRC = "imagens/davi anúncio.png";
+  var INVITE_DELAY = 4500;      /* ms com o site já revelado antes do convite */
+
+  var root = document.documentElement;
+  var invite = document.getElementById("davi-invite");
+  var card = document.getElementById("davi-invite-card");
+  var photo = document.getElementById("davi-invite-photo");
+  if (!invite || !card || !photo) return;
+
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var inviteOpen = false;
+  var timers = [];
+
+  function later(ms, fn) { var id = window.setTimeout(fn, ms); timers.push(id); return id; }
+  function markSeen() { try { window.sessionStorage.setItem(INVITE_KEY, "1"); } catch (e) {} }
+  function alreadySeen() { try { return !!window.sessionStorage.getItem(INVITE_KEY); } catch (e) { return false; } }
+
+  function showInvite() {
+    if (inviteOpen) return;
+    if (document.getElementById("jde-modal") && document.getElementById("jde-modal").classList.contains("is-open")) return;
+    inviteOpen = true;
+    photo.src = PHOTO_SRC;
+    invite.hidden = false;
+    window.requestAnimationFrame(function () {
+      window.requestAnimationFrame(function () { invite.classList.add("is-in"); });
+    });
+    later(50, function () { card.focus({ preventScroll: true }); });
+  }
+
+  function hideInvite() {
+    if (!inviteOpen) return;
+    inviteOpen = false;
+    markSeen();
+    invite.classList.remove("is-in");
+    later(reduced ? 0 : 720, function () { invite.hidden = true; });
+  }
+
+  function scheduleInvite() {
+    if (alreadySeen()) return;
+    /* pré-carrega a foto durante a espera; o card entra após INVITE_DELAY (se a foto ainda
+       não chegou, espera até +2,5s) */
+    var loaded = false;
+    var img = new Image();
+    img.onload = img.onerror = function () { loaded = true; };
+    img.src = PHOTO_SRC;
+    later(INVITE_DELAY, function () {
+      if (loaded) { showInvite(); return; }
+      img.onload = img.onerror = showInvite;
+      later(2500, showInvite);
+    });
+  }
+
+  document.getElementById("davi-invite-close").addEventListener("click", hideInvite);
+  invite.addEventListener("click", function (e) { if (e.target === invite) hideInvite(); });
+  /* CTA: o próprio <a target="_blank"> abre o YouTube; aqui só marca como visto e fecha o card. */
+  document.getElementById("davi-invite-cta").addEventListener("click", hideInvite);
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && inviteOpen) hideInvite(); });
+
+  /* Gatilho: só depois da intro (ou direto, se ela não rodar) */
+  if (alreadySeen()) return;
+  if (!root.classList.contains("jde-intro-on")) {
+    if (document.readyState === "complete") { scheduleInvite(); }
+    else { window.addEventListener("load", scheduleInvite, { once: true }); }
+  } else {
+    var mo = new MutationObserver(function () {
+      if (!root.classList.contains("jde-intro-on")) { mo.disconnect(); scheduleInvite(); }
+    });
+    mo.observe(root, { attributes: true, attributeFilter: ["class"] });
+  }
+})();

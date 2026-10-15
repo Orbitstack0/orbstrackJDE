@@ -54,8 +54,35 @@
   ]
 }
 </script>
+<!-- INTRO (head): decide cedo, sem flash, se a abertura cinematográfica roda nesta sessão. Failsafe: nunca prende o visitante. -->
+<script>
+(function () {
+  var root = document.documentElement;
+  try { if (window.sessionStorage.getItem("jogadorEliteIntroSeen")) return; } catch (e) {}
+  root.classList.add("jde-intro-on");
+  window.__jdeIntroFailsafe = window.setTimeout(function () { root.classList.remove("jde-intro-on"); }, 32000);
+})();
+</script>
 </head>
 <body>
+
+<!-- ================= INTRO CINEMATOGRÁFICA (camada isolada; vídeo carregado só via JS quando a intro roda) ================= -->
+<div class="jde-intro" id="jde-intro" aria-label="Abertura Jogador de Elite">
+  <video class="jde-intro-video" id="jde-intro-video" muted playsinline preload="auto" aria-hidden="true"></video>
+  <div class="jde-intro-shade" aria-hidden="true"></div>
+  <div class="jde-intro-dark" aria-hidden="true"></div>
+
+  <p class="jde-intro-msg" data-intro-msg="1">TREINO PRESENCIAL.<br>100% PERSONALIZADO.</p>
+  <p class="jde-intro-msg" data-intro-msg="2">CADA ATLETA TEM UM OBJETIVO.<br>CADA TREINO, UM PROPÓSITO.</p>
+  <p class="jde-intro-msg jde-intro-msg--hero" data-intro-msg="3">PREPARAÇÃO PARA EXTRAIR<br><span class="jde-intro-accent">O SEU MÁXIMO.</span></p>
+
+  <div class="jde-intro-brand" data-intro-msg="brand">
+    <img src="imagens/LOGO COM ESCRITA EM CIMA.png" alt="Jogador de Elite" class="jde-intro-logo" width="846" height="1178">
+    <p class="jde-intro-tagline">Prepare-se para jogar.</p>
+  </div>
+
+  <button type="button" class="jde-intro-skip" id="jde-intro-skip">Pular intro <span aria-hidden="true">→</span></button>
+</div>
 
 <!-- ================= HEADER ================= -->
 <header class="site-header" id="site-header">
@@ -326,6 +353,13 @@
           <span class="video-desc">Trabalho de força realizado no Caravaggio.</span>
         </span>
       </button>
+    </div>
+
+    <!-- Fechamento editorial da seção: link externo para o treino completo (nova aba) -->
+    <div class="videos-more reveal">
+      <p class="videos-more-lead">Quer ver além dos cortes?</p>
+      <p class="videos-more-text">Acompanhe uma sessão completa de treinamento e veja como o trabalho acontece do início ao fim.</p>
+      <a class="videos-more-cta" href="https://www.youtube.com/watch?v=-MowxVXk3HI" target="_blank" rel="noopener noreferrer">Assistir treino completo com Davi <span aria-hidden="true">↗</span></a>
     </div>
   </div>
 </section>
@@ -802,6 +836,22 @@
           </div>
         </form>
       </section>
+    </div>
+  </div>
+</div>
+
+<!-- ================= CONVITE: TREINO COMPLETO COM DAVI (aparece depois da intro; fechado por padrão) ================= -->
+<div class="davi-invite" id="davi-invite" role="dialog" aria-labelledby="davi-invite-title" hidden>
+  <div class="davi-invite-card" id="davi-invite-card" tabindex="-1">
+    <img class="davi-invite-photo" id="davi-invite-photo" alt="" width="1024" height="1536" decoding="async">
+    <div class="davi-invite-shade" aria-hidden="true"></div>
+    <button type="button" class="davi-invite-close" id="davi-invite-close" aria-label="Fechar convite">&times;</button>
+    <div class="davi-invite-body">
+      <p class="eyebrow">Treinamento presencial</p>
+      <h2 class="davi-invite-title" id="davi-invite-title">QUER VER COMO É<br><span class="text-blue">TREINAR COM A JDE?</span></h2>
+      <p class="davi-invite-text">Acompanhe uma sessão completa e veja na prática como funciona o treinamento presencial.</p>
+      <a class="btn btn-primary davi-invite-cta" id="davi-invite-cta" href="https://www.youtube.com/watch?v=-MowxVXk3HI" target="_blank" rel="noopener noreferrer">Assistir treino completo <span aria-hidden="true">→</span></a>
+      <p class="davi-invite-note">Treino completo com Davi • YouTube <span aria-hidden="true">↗</span></p>
     </div>
   </div>
 </div>
