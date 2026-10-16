@@ -4877,7 +4877,7 @@ html.jde-intro-on .jde-intro {
 .davi-invite-close:hover { color: var(--text); }
 
 @media (max-width: 767px) {
-  .davi-invite-photo { width: 70%; right: -25.5%; opacity: 0.35; }
+  .davi-invite-photo { width: 70%; right: -20.5%; opacity: 0.35; }
   .davi-invite-body { max-width: none; }
 }
 @media (prefers-reduced-motion: reduce) {
