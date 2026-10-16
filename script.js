@@ -1162,7 +1162,7 @@
   "use strict";
 
   var INVITE_KEY = "jogadorEliteDaviInviteSeen";
-  var PHOTO_SRC = "imagens/davi anúncio.png";
+  var PHOTO_SRC = "imagens/jogador_de_elite.webp";
   var INVITE_DELAY = 4500;      /* ms com o site já revelado antes do convite */
 
   var root = document.documentElement;
